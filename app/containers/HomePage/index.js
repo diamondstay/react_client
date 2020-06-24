@@ -25,6 +25,7 @@ import saga from './saga';
 
 import Welcome from 'components/Welcome';
 import BestPlaces from 'components/BestPlaces';
+import BookVilla from 'components/BookVilla';
 
 const key = 'home';
 
@@ -54,6 +55,7 @@ export function HomePage({
     <article id="home-page">
       <Welcome />
       <BestPlaces />
+      <BookVilla />
     </article>
   );
 }

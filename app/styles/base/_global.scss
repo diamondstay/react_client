@@ -13,6 +13,11 @@ p {
   line-height: $line-height;
 }
 
+a, a:hover, a:focus {
+  color: $body-color;
+  text-decoration: none;
+}
+
 strong {
   font-weight: 600;
 }
@@ -27,4 +32,14 @@ strong {
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+.content {
+  padding: 2rem 0;
+  @include media-breakpoint-up(md) {
+    padding: 3rem 0;
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 4rem 0;
+  }
 }
