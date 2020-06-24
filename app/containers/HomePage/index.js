@@ -17,12 +17,14 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from 'containers/App/selectors';
-import Welcome from 'components/Welcome';
 import { loadRepos } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+
+import Welcome from 'components/Welcome';
+import BestPlaces from 'components/BestPlaces';
 
 const key = 'home';
 
@@ -51,6 +53,7 @@ export function HomePage({
   return (
     <article id="home-page">
       <Welcome />
+      <BestPlaces />
     </article>
   );
 }

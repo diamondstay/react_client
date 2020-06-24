@@ -1,0 +1,51 @@
+.slick-slider {
+  margin: 0 -5px;
+  @include media-breakpoint-up(lg) {
+    margin: 0 -0.5rem;
+  }
+}
+
+.slick-list {
+  margin: 0 -5px;
+  @include media-breakpoint-up(lg) {
+    margin: 0 -0.5rem;
+  }
+}
+
+.slick-slide {
+  padding: 0 5px;
+  @include media-breakpoint-up(lg) {
+    padding: 0 0.5rem;
+  }
+}
+
+.slick-prev, .slick-next {
+  width: 56px !important;
+  height: 56px !important;
+  background-color: white !important;
+  border: 1px solid #e6e6e6 !important;
+  box-shadow: 0 0 7px -4px black;
+  @include border-radius(50%);
+  @include transition(all 0.3s ease-in-out);
+  z-index: 1;
+  &:before {
+    content: '' !important;
+    display: inline-block;
+    width: 8px;
+    height: 24px;
+    background: transparent no-repeat scroll center center / 100% auto;
+    z-index: 2;
+  }
+}
+
+.slick-prev {
+  &:before {
+    background-image: url("../images/icon/chevron-left.svg");
+  }
+}
+
+.slick-next {
+  &:before {
+    background-image: url("../images/icon/chevron-right.svg");
+  }
+}
