@@ -1,17 +1,18 @@
-#diamond-book-villa {
-  .villa-item {
-    position: relative;
-    &:after {
-      content: '';
-      position: absolute;
+.location-item {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+  }
+  &:hover {
+    .location-image div {
+      @include transform(scale3d(1.1, 1.1, 1));
     }
-    &:hover {
-      .villa-image div {
-        @include transform(scale3d(1.1, 1.1, 1));
-      }
+    .location-description {
+      color: $orange;
     }
   }
-  .villa-image {
+  .location-image {
     position: relative;
     width: 100%;
     @include border-radius(10px);
@@ -32,14 +33,17 @@
       @include transition(all 0.5s ease);
     }
   }
-  .villa-text {
+  .location-text {
     margin-top: 30px;
   }
-  .villa-name {
+  .location-name {
     color: #555;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
     margin-bottom: 10px;
+  }
+  .location-description {
+    @include transition(color 0.3s linear);
   }
 }

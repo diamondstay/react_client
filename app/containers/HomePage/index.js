@@ -26,6 +26,8 @@ import saga from './saga';
 import Welcome from 'components/Welcome';
 import BestPlaces from 'components/BestPlaces';
 import BookVilla from 'components/BookVilla';
+import SaiGon from 'components/Location/SaiGon';
+import VungTau from 'components/Location/VungTau';
 
 const key = 'home';
 
@@ -56,6 +58,8 @@ export function HomePage({
       <Welcome />
       <BestPlaces />
       <BookVilla />
+      <SaiGon />
+      <VungTau />
     </article>
   );
 }

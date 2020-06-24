@@ -1,6 +1,6 @@
 /**
  *
- * Best Places
+ * Book Villa
  *
  */
 
@@ -9,7 +9,6 @@ import { Container } from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from 'react-router-dom';
 
 import villa1 from 'images/villa/vt.jpg';
 import villa2 from 'images/villa/hn.jpg';
@@ -17,6 +16,7 @@ import villa3 from 'images/villa/dn.jpg';
 import villa4 from 'images/villa/nt.jpg';
 import villa5 from 'images/villa/hl.jpg';
 import villa6 from 'images/villa/sg.jpg';
+import LocationItem from '../Location/location';
 
 function BookVilla() {
 
@@ -73,7 +73,7 @@ function BookVilla() {
   };
 
   return (
-    <section id="diamond-book-villa" className="content pb-0">
+    <section id="diamond-book-villa" className="content">
       <Container>
         <h2 className="page-title">Book Villa đi nào. Mãi bên nhau bạn nhé!</h2>
         <p className="mb-4">Top Villa sang chảnh đón hè đã sẵn sàng trên Luxstay. Book hôm nay đi ngay cùng nhóm bạn.
@@ -81,17 +81,7 @@ function BookVilla() {
         </p>
         <Slider {...settings}>
           {villas && villas.map(villa => (
-            <Link to={villa.url} key={villa.id}>
-              <div className="villa-item">
-                <div className="villa-image">
-                  <div style={{ backgroundImage: `url(${villa.image})` }}/>
-                </div>
-                <div className="villa-text">
-                  <h5 className="villa-name">{villa.name}</h5>
-                  <p className="villa-description">{villa.description}</p>
-                </div>
-              </div>
-            </Link>
+            <LocationItem item={villa} key={villa.id} />
           ))}
         </Slider>
       </Container>
