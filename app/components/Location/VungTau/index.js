@@ -69,7 +69,8 @@ function VungTau() {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    className: 'location-slider'
   };
 
   return (

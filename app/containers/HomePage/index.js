@@ -30,6 +30,8 @@ import SaiGon from 'components/Location/SaiGon';
 import VungTau from 'components/Location/VungTau';
 import HaNoi from 'components/Location/HaNoi';
 import DaLat from 'components/Location/DaLat';
+import MienTrung from 'components/Location/MienTrung';
+import Vinhomes from 'components/Location/Vinhomes';
 
 const key = 'home';
 
@@ -64,6 +66,8 @@ export function HomePage({
       <VungTau />
       <HaNoi />
       <DaLat />
+      <MienTrung />
+      <Vinhomes />
     </article>
   );
 }
