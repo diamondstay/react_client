@@ -28,6 +28,8 @@ import BestPlaces from 'components/BestPlaces';
 import BookVilla from 'components/BookVilla';
 import SaiGon from 'components/Location/SaiGon';
 import VungTau from 'components/Location/VungTau';
+import HaNoi from 'components/Location/HaNoi';
+import DaLat from 'components/Location/DaLat';
 
 const key = 'home';
 
@@ -60,6 +62,8 @@ export function HomePage({
       <BookVilla />
       <SaiGon />
       <VungTau />
+      <HaNoi />
+      <DaLat />
     </article>
   );
 }
