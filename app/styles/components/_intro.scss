@@ -1,0 +1,23 @@
+#diamond-intro {
+  .intro-logo {
+    width: 50%;
+  }
+  .intro-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 30px 0;
+    @include media-breakpoint-up(md) {
+      font-size: 26px;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 30px;
+    }
+  }
+  .intro-text {
+    margin-bottom: 30px;
+  }
+  .download-app {
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+}

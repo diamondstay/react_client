@@ -32,6 +32,7 @@ import HaNoi from 'components/Location/HaNoi';
 import DaLat from 'components/Location/DaLat';
 import MienTrung from 'components/Location/MienTrung';
 import Vinhomes from 'components/Location/Vinhomes';
+import Intro from 'components/Intro';
 
 const key = 'home';
 
@@ -68,6 +69,7 @@ export function HomePage({
       <DaLat />
       <MienTrung />
       <Vinhomes />
+      <Intro />
     </article>
   );
 }

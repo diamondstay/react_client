@@ -22,6 +22,10 @@ strong {
   font-weight: 600;
 }
 
+img, video, audio {
+  width: 100%;
+}
+
 #app {
   background: white;
 }
@@ -46,4 +50,9 @@ strong {
   @include media-breakpoint-up(lg) {
     padding: 4rem 0;
   }
+}
+
+.qr-code {
+  border: 1px solid rgba(0,0,0,.09);
+  padding: 12px;
 }
