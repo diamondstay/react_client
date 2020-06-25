@@ -22,6 +22,10 @@ strong {
   font-weight: 600;
 }
 
+#app {
+  background: white;
+}
+
 .container {
   @include media-breakpoint-up(lg) {
     max-width: 90%;

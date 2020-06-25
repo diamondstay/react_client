@@ -1,0 +1,19 @@
+.col-md-20 {
+  @include media-breakpoint-up(md) {
+    flex-basis: 20%;
+    max-width: 20%;
+  }
+}
+
+.col-md-40 {
+  @include media-breakpoint-up(md) {
+    flex-basis: 40%;
+    max-width: 40%;
+  }
+}
+
+.offset-md-20 {
+  @include media-breakpoint-up(md) {
+    margin-left: 20%;
+  }
+}

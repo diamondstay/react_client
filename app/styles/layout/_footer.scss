@@ -1,0 +1,116 @@
+#diamond-footer {
+  font-size: 14px;
+  img {
+    display: block;
+    width: 100%;
+  }
+  .footer-gap {
+    height: 2rem;
+    @include media-breakpoint-up(md) {
+      height: 3rem;
+    }
+    @include media-breakpoint-up(lg) {
+      height: 4rem;
+    }
+  }
+  .footer-logo {
+    margin-bottom: 30px;
+  }
+  .contact-item {
+    display: table;
+    width: 100%;
+    margin-bottom: 20px;
+    > div {
+      display: table-cell;
+      vertical-align: middle;
+      &:first-child {
+        width: 40px;
+      }
+      &:last-child {
+        @include  calc(width, '100% - 40px');
+        padding-left: 15px;
+      }
+    }
+    .item-icon {
+      svg {
+        width: 30px;
+        font-size: 30px;
+      }
+    }
+    .item-text {
+      h4 {
+        font-weight: 700;
+      }
+    }
+  }
+  .footer-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .qr-code {
+    border: 1px solid rgba(0,0,0,.09);
+    padding: 12px;
+  }
+  ul.footer-download {
+    > li {
+      margin-bottom: 20px;
+    }
+  }
+  ul.footer-list {
+    > li {
+      line-height: 2;
+      > a {
+        @include transition(color 0.3s linear);
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
+  }
+  ul.footer-pay {
+    > li {
+      display: inline-block;
+    }
+  }
+  ul.footer-certification {
+    > li {
+      display: inline-block;
+      width: 95px;
+      vertical-align: middle;
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+  ul.social-networking-list {
+    > li {
+      display: inline-block;
+      margin-right: 15px;
+      > a {
+        position: relative;
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background: black;
+        border: 1px solid black;
+        @include border-radius(50%);
+        @include transition(background-color 0.3s ease);
+        svg {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          color: white;
+          font-size: 20px;
+          @include translate(-50%, -50%);
+        }
+        &:hover {
+          background-color: white;
+          svg {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
