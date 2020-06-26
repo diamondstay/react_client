@@ -14,7 +14,7 @@ p {
 }
 
 a, a:hover, a:focus {
-  color: $body-color;
+  color: $body-color !important;
   text-decoration: none;
 }
 
@@ -23,11 +23,11 @@ strong {
 }
 
 img, video, audio {
-  width: 100%;
+  max-width: 100%;
 }
 
 #app {
-  background: white;
+  padding-top: 80px;
 }
 
 .container {

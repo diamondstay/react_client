@@ -1,0 +1,106 @@
+#diamond-search {
+  @include media-breakpoint-up(md) {
+    width: 50%;
+  }
+  .search-form {
+    background-color: rgba(0,0,0,.04);
+    @include border-radius(5px);
+    input {
+      color: black;
+      font-weight: 500;
+    }
+    ::-webkit-input-placeholder { /* Edge */
+      color: black;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: black;
+    }
+    ::placeholder {
+      color: black;
+    }
+  }
+  .search-location {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      @include translate(0, -50%);
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: url("../images/icon/search.svg") no-repeat center center / 100% auto;
+    }
+    input {
+      height: 45px;
+      background-color: transparent;
+      border-color: transparent;
+      padding-left: 40px;
+      box-shadow: none;
+    }
+  }
+  .search-date {
+    position: relative;
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      bottom: 3px;
+      width: 1px;
+      background-color: #ccc;
+    }
+    &:before {
+      left: 0;
+    }
+    &:after {
+      right: 0;
+    }
+    .ant-picker {
+      height: 45px;
+      background-color: transparent;
+      border-color: transparent;
+    }
+    .ant-picker-suffix {
+      display: none;
+    }
+    .ant-picker-focused {
+      box-shadow: none;
+    }
+  }
+  .search-guest {
+    .guest-info {
+      padding: 4px 11px 4px;
+      i, span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      i {
+        margin-right: 10px;
+      }
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+  .search-btn {
+    background: #555;
+    @include transition(background-color 0.3s ease);
+    margin-right: 5px;
+    svg {
+      color: white;
+    }
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.guest-select-number {
+  .select-item {
+    margin-bottom: 15px;
+  }
+  h5 {
+    font-size: 12px;
+  }
+}

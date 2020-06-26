@@ -16,6 +16,8 @@ import { ConnectedRouter } from 'connected-react-router';
 import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
+import { ConfigProvider } from 'antd';
+import viVN from 'antd/es/locale/vi_VN';
 
 // Import root app
 import App from 'containers/App';
@@ -41,6 +43,7 @@ openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
+
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);
@@ -51,7 +54,9 @@ const render = messages => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ConfigProvider locale={viVN}>
+            <App />
+          </ConfigProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,

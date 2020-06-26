@@ -27,7 +27,7 @@
         width: 40px;
       }
       &:last-child {
-        @include  calc(width, '100% - 40px');
+        @include calc(width, '100% - 40px');
         padding-left: 15px;
       }
     }

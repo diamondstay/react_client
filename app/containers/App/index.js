@@ -16,7 +16,6 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import 'styles/main.scss';
-import GlobalStyle from '../../global-styles';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHome, faMapMarkerAlt, faEnvelope, faPhoneAlt, faFax, faPaperPlane, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram, faYoutube, faVimeo, faSoundcloud } from '@fortawesome/free-brands-svg-icons'
@@ -25,7 +24,6 @@ library.add(
   faHome, faMapMarkerAlt, faEnvelope, faPhoneAlt, faFax, faPaperPlane, faHeart,
   faFacebookF, faTwitter, faInstagram, faYoutube, faVimeo, faSoundcloud
 );
-
 
 const AppWrapper = styled.div``;
 
@@ -52,7 +50,6 @@ export default function App() {
         <AuthLayout exact path="/" component={HomePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
-      <GlobalStyle />
     </AppWrapper>
   );
 }

@@ -3,6 +3,7 @@
 @import 'abstracts/mixins';
 
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "~antd/dist/antd.css";
 
 @import 'base/reset';
 @import 'base/fonts';
@@ -19,6 +20,7 @@
 @import 'components/buttons';
 @import 'components/tabs';
 @import 'components/slider';
+@import 'components/search';
 @import 'components/welcome';
 @import 'components/places';
 @import 'components/location';
