@@ -1,21 +1,15 @@
-.slick-slider {
-  margin: 0 -5px;
-  @include media-breakpoint-up(lg) {
-    margin: 0 -0.5rem;
+.custom-slider {
+  .slick-list {
+    margin: 0 -5px;
+    @include media-breakpoint-up(lg) {
+      margin: 0 -0.5rem;
+    }
   }
-}
-
-.slick-list {
-  margin: 0 -5px;
-  @include media-breakpoint-up(lg) {
-    margin: 0 -0.5rem;
-  }
-}
-
-.slick-slide {
-  padding: 0 5px;
-  @include media-breakpoint-up(lg) {
-    padding: 0 0.5rem;
+  .slick-slide {
+    padding: 0 5px;
+    @include media-breakpoint-up(lg) {
+      padding: 0 0.5rem;
+    }
   }
 }
 

@@ -86,7 +86,7 @@ function SaiGon() {
       <Container>
         <h2 className="page-title">Thiết lập trạng thái "bình thường mới" tại Sài Gòn</h2>
         <p className="mb-4">Top chỗ ở sạch đep, giá tốt tại TP.Hồ Chí Minh cho chuyến du lịch và công tác của bạn.</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {options && options.map(option => (
             <LocationItem item={option} key={option.id} />
           ))}

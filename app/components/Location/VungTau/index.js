@@ -78,7 +78,7 @@ function VungTau() {
       <Container>
         <h2 className="page-title">Thiết lập trạng thái "bình thường mới" tại tại Vũng Tàu</h2>
         <p className="mb-4">Đổi gió cùng bạn bè hoặc người thân tại thành phố biển Vũng Tàu xinh đẹp</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {options && options.map(option => (
             <LocationItem item={option} key={option.id} />
           ))}

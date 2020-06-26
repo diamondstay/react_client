@@ -78,7 +78,7 @@ function DaLat() {
       <Container>
         <h2 className="page-title">Thiết lập trạng thái "bình thường mới" tại Đà Lạt</h2>
         <p className="mb-4">Đến Đà Lạt cùng người thương để thấy cảm xúc vẫn vẹn nguyên như những lần đầu.</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {options && options.map(option => (
             <LocationItem item={option} key={option.id} />
           ))}

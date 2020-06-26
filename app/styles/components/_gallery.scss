@@ -1,0 +1,33 @@
+#diamond-hotel-gallery {
+  figure.gallery-slide {
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    @include flexbox();
+    flex-wrap: wrap;
+    @include transition(opacity 0.3s ease-in);
+    img {
+      height: 190px;
+      @include scale(1);
+      @include transition(-webkit-transform .45s cubic-bezier(.645,.045,.355,1) 0s,transform .45s cubic-bezier(.645,.045,.355,1) 0s,opacity .45s cubic-bezier(.645,.045,.355,1) 0s);
+      @include media-breakpoint-up(md) {
+        height: 400px;
+      }
+      @include media-breakpoint-up(lg) {
+        height: 420px;
+      }
+    }
+    &:hover {
+      img {
+        @include scale(1.025);
+      }
+    }
+  }
+
+  .slick-prev {
+    left: 50px;
+  }
+  .slick-next {
+    right: 50px;
+  }
+}

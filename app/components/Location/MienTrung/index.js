@@ -70,7 +70,7 @@ function MienTrung() {
       <Container>
         <h2 className="page-title">Thiết lập trạng thái "bình thường mới" dọc miền Trung</h2>
         <p className="mb-4">Thiên đường biển miền Trung từ Đà Nẵng - Hội An - Huế đầy nắng và gió đang chờ đón bạn khám phá.</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {options && options.map(option => (
             <LocationItem item={option} key={option.id} />
           ))}

@@ -94,7 +94,7 @@ function Vinhomes() {
       <Container>
         <h2 className="page-title">Vinhomes</h2>
         <p className="mb-4">Tận hưởng không gian sống tuyệt vời tại thương hiệu đô thị hàng đầu Việt Nam</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {options && options.map(option => (
             <LocationItem item={option} key={option.id} />
           ))}

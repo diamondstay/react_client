@@ -86,7 +86,7 @@ function HaNoi() {
       <Container>
         <h2 className="page-title">Thiết lập trạng thái "bình thường mới" tại Hà Nội</h2>
         <p className="mb-4">Khám phá từng góc phố Hà Nội cùng Top chỗ ở siêu ưu đãi.</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {options && options.map(option => (
             <LocationItem item={option} key={option.id} />
           ))}

@@ -93,7 +93,7 @@ function BestPlaces() {
       <Container>
         <h2 className="page-title">Địa điểm nổi bật</h2>
         <p className="mb-4">Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn</p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {places && places.map(place => (
             <Link to={place.url} key={place.id}>
               <div className="place-item">

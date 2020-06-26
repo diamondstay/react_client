@@ -12,8 +12,10 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
+import Header1 from 'components/Header/header_1';
 import Footer from 'components/Footer';
 import 'styles/main.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -29,7 +31,7 @@ const AppWrapper = styled.div``;
 
 export default function App() {
 
-  const AuthLayout = ({component: Component, ...rest}) => {
+  const HomeLayout = ({component: Component, ...rest}) => {
     return (
       <Route {...rest} render={matchProps => (
         <>
@@ -41,13 +43,27 @@ export default function App() {
     )
   };
 
+  const HotelLayout = ({component: Component, ...rest}) => {
+    return (
+      <Route {...rest} render={matchProps => (
+        <>
+          <Header1 />
+          <Component {...matchProps} />
+        </>
+      )} />
+    )
+  };
+
   return (
     <AppWrapper>
       <Helmet titleTemplate="%s - Diamond Stay" defaultTitle="Diamond Stay">
         <meta name="description" content="Diamond Stay" />
       </Helmet>
       <Switch>
-        <AuthLayout exact path="/" component={HomePage} />
+        <HomeLayout exact path="/" component={HomePage} />
+
+        <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
+
         <Route path="" component={NotFoundPage} />
       </Switch>
     </AppWrapper>

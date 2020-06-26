@@ -79,7 +79,7 @@ function BookVilla() {
         <p className="mb-4">Top Villa sang chảnh đón hè đã sẵn sàng trên Luxstay. Book hôm nay đi ngay cùng nhóm bạn.
           Đặc biệt, tặng mã giảm giá đến 400.000đ cho các chỗ ở trong chương trình.
         </p>
-        <Slider {...settings}>
+        <Slider {...settings} className="custom-slider">
           {villas && villas.map(villa => (
             <LocationItem item={villa} key={villa.id} />
           ))}
