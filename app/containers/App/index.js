@@ -13,6 +13,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
+import LocationPage from 'containers/SearchResultPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Header1 from 'components/Header/header_1';
@@ -63,7 +64,9 @@ export default function App() {
         <HomeLayout exact path="/" component={HomePage} />
 
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
-
+        <Route exact path="/" component={HomePage} />
+        {/* <Route path="/location/:slug.:id" component={LocationPage} exact /> */}
+        <Route path="/search-result" component={LocationPage} exact />
         <Route path="" component={NotFoundPage} />
       </Switch>
     </AppWrapper>
