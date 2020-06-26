@@ -1,0 +1,19 @@
+  .filter-by-item{
+    margin-right: 12px;
+    border:1px solid #444;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    span{
+       color: #555;
+       font-weight: 500;
+       font-size: 14px;;
+    }
+  }
+  .active {
+    background-color: #f65e39;
+    border-color: #f65e39;
+    span{
+      color: #fff;
+    }
+  }

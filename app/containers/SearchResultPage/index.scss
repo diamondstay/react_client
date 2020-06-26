@@ -1,0 +1,34 @@
+.filter-by{
+  padding:12px 0;
+  display: flex;
+  
+}
+
+
+// ----- lít proproduct
+.list-room{
+  padding-top: 20px;
+}
+
+//---- room item
+
+
+
+
+//--- nut xem them
+
+.btn-seeMore{
+  display: block;
+    width: 150px;
+    background: #f6673a;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: 10px;
+    margin: 30px auto;
+    cursor: pointer;
+    &:hover{
+      background: #d84c21;
+    }
+}

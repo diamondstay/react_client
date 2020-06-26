@@ -12,12 +12,14 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import LocationPage from 'containers/SearchResultPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import 'styles/main.scss';
 
 import GlobalStyle from '../../global-styles';
+
 const AppWrapper = styled.div``;
 
 export default function App() {
@@ -29,6 +31,8 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        {/* <Route path="/location/:slug.:id" component={LocationPage} exact /> */}
+        <Route path="/search-result" component={LocationPage} exact />
         <Route path="" component={NotFoundPage} />
       </Switch>
       <Footer />
