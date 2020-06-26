@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container, Row, Col } from 'react-bootstrap';
-import { envelope, phone } from 'components/Icon';
+import { email, phone } from 'components/Icon';
 import { Link } from 'react-router-dom';
 import Logo from 'images/logo.png';
 import QRCode from 'images/brand/qr-code.png';
@@ -26,7 +26,7 @@ function Footer() {
             <div className="contact-item">
               <div>
                 <i className="item-icon">
-                  {envelope}
+                  {email}
                 </i>
               </div>
               <div>

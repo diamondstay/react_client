@@ -1,0 +1,22 @@
+.icon {
+  display: inline-block;
+  background: no-repeat center center / 100% auto;
+}
+
+.icon--24 {
+  width: 24px;
+  height: 24px;
+}
+
+.svg-icon {
+  display: inline-block;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+}
+
+.svg-fill {
+  fill: currentColor;
+  stroke: none;
+}

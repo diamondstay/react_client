@@ -38,4 +38,46 @@
     border: transparent;
     cursor: pointer;
   }
+
+  .ant-dropdown-link {
+    margin-left: auto;
+  }
+  .user-info {
+    display: inline-block;
+    margin-right: 10px;
+    .user-avatar, .user-name {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .user-avatar {
+      width: 30px;
+      height: 30px;
+      background: no-repeat center center / cover;
+      @include border-radius(50%);
+    }
+    .user-name {
+      font-weight: 500;
+      margin-left: 15px;
+      @include transition(color 0.3s linear);
+      &:hover {
+        color: $orange
+      }
+    }
+  }
+}
+
+.user-menu {
+  padding: 0;
+  .menu-item {
+    a {
+      padding: 0.5rem 1rem;
+    }
+    i, span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    i {
+      margin-right: 15px;
+    }
+  }
 }

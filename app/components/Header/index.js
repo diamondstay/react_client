@@ -1,10 +1,16 @@
 import React from 'react';
-import { Nav, Navbar, Container, Row, Col } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from 'images/header-logo.png';
 import Search from 'components/Search';
+import { Menu, Dropdown, message } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import defaultAvatar from 'images/default-avatar.png';
+import UserMenu from './menu';
 
 function Header() {
+  let auth = true;
+
   return (
     <header id="diamond-header">
       <Navbar expand="sm" className="align-items-center">
@@ -14,14 +20,30 @@ function Header() {
         <Search />
         <Navbar.Toggle aria-controls="navbar-menu" />
         <Navbar.Collapse id="navbar-menu">
-          <Nav>
-            <Nav.Item>
-              <NavLink exact activeClassName="active" to="/register" className="nav-link">Đăng ký</NavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <NavLink exact activeClassName="active" to="/login" className="nav-link">Đăng nhập</NavLink>
-            </Nav.Item>
-          </Nav>
+          {
+            auth ?
+              <>
+                <Dropdown overlay={UserMenu}>
+                  <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                    <div className="user-info">
+                      <div className="user-avatar" style={{ backgroundImage: `url(${defaultAvatar})` }} />
+                      <div className="user-name">Linh Yo</div>
+                    </div>
+                    <DownOutlined />
+                  </a>
+                </Dropdown>
+              </> :
+              <>
+                <Nav>
+                  <Nav.Item>
+                    <NavLink exact activeClassName="active" to="/register" className="nav-link">Đăng ký</NavLink>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <NavLink exact activeClassName="active" to="/login" className="nav-link">Đăng nhập</NavLink>
+                  </Nav.Item>
+                </Nav>
+              </>
+          }
         </Navbar.Collapse>
       </Navbar>
     </header>
