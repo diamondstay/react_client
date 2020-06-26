@@ -1,0 +1,49 @@
+#diamond-best-places {
+  .place-item {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+    }
+    &:hover {
+      .place-image div {
+        @include transform(scale3d(1.1, 1.1, 1));
+      }
+    }
+  }
+  .place-image {
+    position: relative;
+    width: 100%;
+    @include border-radius(10px);
+    overflow: hidden;
+    @include box-sizing();
+    &:before {
+      content: "";
+      display: block;
+      padding-bottom: 125%;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: no-repeat scroll center center / cover;
+      @include transition(all 0.5s ease);
+    }
+  }
+  .place-text {
+    position: absolute;
+    left: 20px;
+    right: 0;
+    bottom: 20px;
+  }
+  .place-name {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .place-slot {
+    color: white;
+  }
+}

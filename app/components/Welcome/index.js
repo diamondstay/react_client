@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap';
 
 function Welcome() {
   return (
-    <section id="diamond-welcome">
+    <section id="diamond-welcome" className="content">
       <Container>
         <h2 className="welcome-title">Chào mừng đến với Diamond Stay!</h2>
         <div className="welcome-text">

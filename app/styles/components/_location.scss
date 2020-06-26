@@ -1,0 +1,49 @@
+.location-item {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+  }
+  &:hover {
+    .location-image div {
+      @include transform(scale3d(1.1, 1.1, 1));
+    }
+    .location-description {
+      color: $orange;
+    }
+  }
+  .location-image {
+    position: relative;
+    width: 100%;
+    @include border-radius(10px);
+    overflow: hidden;
+    @include box-sizing();
+    &:before {
+      content: "";
+      display: block;
+      padding-bottom: 66.75%;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: no-repeat scroll center center / cover;
+      @include transition(all 0.5s ease);
+    }
+  }
+  .location-text {
+    margin-top: 30px;
+  }
+  .location-name {
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .location-description {
+    @include transition(color 0.3s linear);
+  }
+}

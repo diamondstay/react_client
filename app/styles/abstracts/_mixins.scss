@@ -115,3 +115,9 @@
   -webkit-justify-content: $args;
   justify-content: $args;
 }
+
+@mixin box-sizing($box-model: 'border-box') {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+  -moz-box-sizing: $box-model; // Firefox <= 19
+  box-sizing: $box-model;
+}
