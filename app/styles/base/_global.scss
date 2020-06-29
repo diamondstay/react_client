@@ -30,7 +30,7 @@ img, video, audio {
   padding-top: 80px;
 }
 
-.container {
+.container:not(.container-origin) {
   @include media-breakpoint-up(lg) {
     max-width: 90%;
   }
@@ -38,6 +38,12 @@ img, video, audio {
 
 .page-title {
   font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 18px;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -55,4 +61,20 @@ img, video, audio {
 .qr-code {
   border: 1px solid rgba(0,0,0,.09);
   padding: 12px;
+}
+
+.bullet {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  @include border-radius(50%);
+  margin: 3px 10px;
+}
+
+.gap-50 {
+  height: 50px;
+  @include media-breakpoint-down(sm) {
+    height: 30px
+  }
 }

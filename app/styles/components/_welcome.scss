@@ -1,8 +1,14 @@
 #diamond-welcome {
   .welcome-title {
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 700;
     margin-bottom: 15px;
+    @include media-breakpoint-up(md) {
+      font-size: 26px;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 30px;
+    }
   }
   .welcome-text {
     p {

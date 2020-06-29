@@ -1,6 +1,18 @@
 import React from 'react';
 
 export const hotelDetail = {
+  name: 'BAVI Padme Home - Villa',
+  location: 'Ba Vì, Hà Nội, Vietnam',
+  category: 'Biệt Thự',
+  acreage: 200,
+  intro: {
+    type: 'Nguyên căn',
+    bathroom: 3,
+    bed: 11,
+    bedroom: 2,
+    guest: 22,
+    maxGuest: 26,
+  },
   media: [
     {
       id: 1,
@@ -150,5 +162,8 @@ export const hotelDetail = {
       id: 37,
       url: 'https://cdn.luxstay.com/rooms/30505/large/fc9c3a765e72b92ce063.jpg'
     },
-  ]
+  ],
+  description: '<p>Biệt thự 2 phòng Dorm, có thể sử dụng cho 22 khách và tối đa cho 26 khách. Có phòng khách, bếp ăn riêng biệt đầy đủ tiện nghi. Có dịch vụ mở rộng cho thuê dàn karaoke, Loa kéo, bếp nướng BBQ.</p>' +
+    '<p>Tọa lạc dưới chân núi BAVI, homestay có khuôn viên gần 3000m2, gồm 2 căn bungalow; 1 biệt thự 2 tầng với phòng sinh hoạt chung bếp ăn riêng biệt và 2 phòng ngủ tập thể có khả năng phuc vụ tiêu chuẩn cho 26 khách và tối đa lên tới hơn 30 khách. Bavipadmehome có đầy đủ bể bơi, Sân đốt lửa trại, sân BBQ ngoài trời có mái che và sân trượt cỏ có thể tổ chức teambuilding cho 50 người.</p>' +
+    '<p>Sử dụng chung bể bơi với căn bungalow</p>'
 };

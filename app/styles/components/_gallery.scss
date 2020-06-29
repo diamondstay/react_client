@@ -24,10 +24,20 @@
     }
   }
 
+  .slick-prev, .slick-next {
+    background-color: rgba(0,0,0,0.5) !important;
+    border-color: transparent !important;
+  }
   .slick-prev {
     left: 50px;
+    &:before {
+      background-image: url("../images/icon/white-chevron-left.svg");
+    }
   }
   .slick-next {
     right: 50px;
+    &:before {
+      background-image: url("../images/icon/white-chevron-right.svg");
+    }
   }
 }

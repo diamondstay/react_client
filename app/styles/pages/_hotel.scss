@@ -1,0 +1,63 @@
+#diamond-general {
+  .hotel-name {
+    font-size: 28px;
+    @include media-breakpoint-up(md) {
+      font-size: 32px;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 36px;
+    }
+  }
+  .hotel-title {
+    font-size: 22px;
+    @include media-breakpoint-up(md) {
+      font-size: 26px;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 30px;
+    }
+  }
+  .hotel-name, .hotel-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  ul.hotel-info {
+    > li {
+      margin-bottom: 10px;
+      > i, > span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      > i {
+        width: 20px;
+        > svg {
+          width: 20px;
+        }
+      }
+      > span {
+        @include calc(width, '100% - 30px');
+        padding-left: 10px;
+      }
+    }
+  }
+}
+
+#diamond-facilities {
+  ul.facilities-list {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @include box-sizing();
+    > li {
+      @include flex-basis(33.33333%);
+      line-height: 2;
+      margin-bottom: 10px;
+      > i, > span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      > i {
+        margin-right: 15px;
+      }
+    }
+  }
+}
