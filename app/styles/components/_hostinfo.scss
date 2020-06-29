@@ -1,0 +1,69 @@
+.label-host{
+  padding: 24px 0 36px 0 ;
+  border-radius: 5px;
+  background: #f6f6f6;
+  margin-top: 30px;
+  &__logo{
+    text-align: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    img{
+      width: 78px;
+      height: 78px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 100%;
+    }
+  }
+  &__name{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 00px;
+  }
+  &__country{
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    color: #666;
+    height: 16px;
+    line-height: 16px;;
+  }
+  .border-line{
+    width: 100%;
+    height: 0.5px;
+    background: #fff8f8;
+    margin-top: 32px;
+
+  }
+  &__social{
+    padding:  0 18px;
+    display: flex;
+    flex-direction: column;
+    
+    p{
+      font-weight: 500;
+      color: #555;
+      text-align: center;
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+    .facebook{
+      height: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;;
+      img{
+        width: 21px;
+        height: auto;
+      }
+      span{
+        font-size: 15px;
+        color: #333;
+        font-weight: 600;
+        letter-spacing: 0.5;
+      }
+    }
+  }
+}

@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Form } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 function ItemFilter(props) {
   const [active, setActive] = useState(false);
+  const [q, setQ] = useState('');
+  const [type, setType] = useState([]);
 
   const { item } = props;
 
   const hanlCheckbox = e => {
-    props.getOption({ name: e.target.name, value: e.target.value });
+    if (e.target && e.target.name === 'type') {
+      setType([...type, e.target.value]);
+    }
+    // props.getOption({ name: e.target.name, value: e.target.value });
   };
+  useEffect(() => {
+    if (type.length > 0) {
+      setQ(`type=${type.join('&type=')}`);
+    }
+  }, [type]);
   return (
     <div
       className={classNames('filter-by-item', {
@@ -51,6 +62,20 @@ function ItemFilter(props) {
                 name={item.name}
               />
             ))}
+          <NavLink
+            to={`/search-result?${q}`}
+            style={{
+              color: '#fff',
+              background: '#FF5722',
+              textAlign: 'center',
+              width: '100px',
+              padding: '4px',
+              borderRadius: '20px',
+              fontSize: '12px',
+            }}
+          >
+            Ap dụng
+          </NavLink>
         </div>
       ) : null}
     </div>

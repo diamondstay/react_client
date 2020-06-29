@@ -9,50 +9,112 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
-import LocationPage from 'containers/SearchResultPage/Loadable';
+import SearchResultPage from 'containers/SearchResultPage/Loadable';
+import HostPage from 'containers/HostPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Header1 from 'components/Header/header_1';
 import Footer from 'components/Footer';
 import 'styles/main.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faMapMarkerAlt, faEnvelope, faPhoneAlt, faFax, faPaperPlane, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faTwitter, faInstagram, faYoutube, faVimeo, faSoundcloud } from '@fortawesome/free-brands-svg-icons'
+import {
+  faHome,
+  faMapMarkerAlt,
+  faEnvelope,
+  faPhoneAlt,
+  faFax,
+  faPaperPlane,
+  faHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebookF,
+  faTwitter,
+  faInstagram,
+  faYoutube,
+  faVimeo,
+  faSoundcloud,
+} from '@fortawesome/free-brands-svg-icons';
 
 library.add(
-  faHome, faMapMarkerAlt, faEnvelope, faPhoneAlt, faFax, faPaperPlane, faHeart,
-  faFacebookF, faTwitter, faInstagram, faYoutube, faVimeo, faSoundcloud
+  faHome,
+  faMapMarkerAlt,
+  faEnvelope,
+  faPhoneAlt,
+  faFax,
+  faPaperPlane,
+  faHeart,
+  faFacebookF,
+  faTwitter,
+  faInstagram,
+  faYoutube,
+  faVimeo,
+  faSoundcloud,
 );
 
 const AppWrapper = styled.div``;
 
-export default function App() {
-
-  const HomeLayout = ({component: Component, ...rest}) => {
+function App(props) {
+  const HomeLayout = ({ component: Component, ...rest }) => {
     return (
-      <Route {...rest} render={matchProps => (
-        <>
-          <Header />
-          <Component {...matchProps} />
-          <Footer />
-        </>
-      )} />
-    )
+      <Route
+        {...rest}
+        render={matchProps => (
+          <>
+            <Header />
+            <Component {...matchProps} />
+            <Footer />
+          </>
+        )}
+      />
+    );
   };
 
-  const HotelLayout = ({component: Component, ...rest}) => {
+  const HotelLayout = ({ component: Component, ...rest }) => {
     return (
-      <Route {...rest} render={matchProps => (
-        <>
-          <Header1 />
-          <Component {...matchProps} />
-        </>
-      )} />
-    )
+      <Route
+        {...rest}
+        render={matchProps => (
+          <>
+            <Header1 />
+            <Component {...matchProps} />
+          </>
+        )}
+      />
+    );
+  };
+
+  const SearchPageLayout = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={matchProps => (
+          <>
+            <Header />
+            <Component {...matchProps} />
+            <Footer />
+          </>
+        )}
+      />
+    );
+  };
+
+  const HostPageLayot = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={matchProps => (
+          <>
+            <Header />
+            <Component {...matchProps} />
+            <Footer />
+          </>
+        )}
+      />
+    );
   };
 
   return (
@@ -62,13 +124,21 @@ export default function App() {
       </Helmet>
       <Switch>
         <HomeLayout exact path="/" component={HomePage} />
-
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
-        <Route exact path="/" component={HomePage} />
+
+        <SearchPageLayout
+          path="/search-result"
+          component={SearchResultPage}
+          exact
+        />
+        <HostPageLayot path="/host/:id" component={HostPage} exact />
+
+        {/* <Route exact path="/" component={HomePage} /> */}
         {/* <Route path="/location/:slug.:id" component={LocationPage} exact /> */}
-        <Route path="/search-result" component={LocationPage} exact />
+        {/* <Route path="/search-result" component={LocationPage} exact /> */}
         <Route path="" component={NotFoundPage} />
       </Switch>
     </AppWrapper>
   );
 }
+export default withRouter(App);

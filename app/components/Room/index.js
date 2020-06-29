@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 
-export default function Room() {
+export default function Room(props) {
+  const { width } = props;
   return (
-    <Col style={{ maxWidth: '20%' }}>
+    <Col style={{ maxWidth: `${width}%` }}>
       <div className="room">
         <img
           src="https://cdn.luxstay.com/users/349579/B1ua4HgCD21oE7ayhRpFCz33.jpg"
