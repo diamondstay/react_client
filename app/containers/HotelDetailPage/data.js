@@ -1422,7 +1422,113 @@ export const places = [
         "name": "UBND Xã Yên Bái"
       }
     ]
-  }
+  },
+  {
+    "category": "Ẩm thực",
+    "slug": "cuisine",
+    "places": [
+      {
+        "_id": "5bedb11c9dc6d66ac849b707",
+        "avatar": "https://images.foody.vn/res/g26/257089/prof/s576x330/foody-mobile-m-bun-jpg-298-636044303605406344.jpg",
+        "name": "Bà Sâm - Bún Chả Cá"
+      },
+      {
+        "_id": "5bed42009dc6d66ac849b65d",
+        "avatar": "https://images.foody.vn/res/g68/675383/prof/s576x330/foody-mobile-m-tinh-jpg-736-636371166927152105.jpg",
+        "name": "Quách Tỉnh - Hải Sản Tươi Sống"
+      },
+      {
+        "_id": "5bef63549dc6d66ac76b182d",
+        "avatar": "https://images.foody.vn/res/g2/13006/prof/s576x330/foody-mobile-day-jpg-575-636293996401763198.jpg",
+        "name": "New Day Cafe"
+      }
+    ]
+  },
+  {
+    "category": "Giải trí",
+    "slug": "entertainment",
+    "places": [
+      {
+        "_id": "5bece5f89dc6d605d6062979",
+        "avatar": "https://images.foody.vn/res/g26/252691/prof/s576x330/foody-mobile-m-kjii-jpg-120-636032472151424059.jpg",
+        "name": "Sky Bar - Royal Lotus Hotel"
+      },
+      {
+        "_id": "5bed894b9dc6d66ac66a0515",
+        "avatar": "https://images.foody.vn/res/g69/688535/prof/s576x330/foody-mobile-30-jpg-820-636410644436836656.jpg",
+        "name": "Wanderlust Coffee & Cocktail Bar"
+      },
+      {
+        "_id": "5bed40269dc6d66ac849b62f",
+        "avatar": "https://images.foody.vn/res/g20/195891/prof/s576x330/foody-mobile-trp-jpg-468-636246493856572179.jpg",
+        "name": "Tranquilos - Restaurant & Bar"
+      }
+    ]
+  },
+  {
+    "category": "Mua sắm",
+    "slug": "shopping",
+    "places": [
+      {
+        "_id": "5bedad419dc6d6ff737fb9c7",
+        "name": "Cửa Hàng Tạp Hóa Mỹ"
+      },
+      {
+        "_id": "5bec798b9dc6d631342fdc49",
+        "name": "Hàng Tiêu Dùng Thái Lan"
+      },
+      {
+        "_id": "5beb12949dc6d67e0e1a042d",
+        "name": "Beauty Salon Hải"
+      }
+    ]
+  },
+  {
+    "category": "Y tế",
+    "slug": "medical",
+    "places": [
+      {
+        "_id": "5bce8ece5203173648327f17",
+        "name": "Bệnh viện Đa khoa Hải Châu"
+      },
+      {
+        "_id": "5be9c3539dc6d6ff621953a5",
+        "name": "Quầy Thuốc Dapharco 148"
+      },
+      {
+        "_id": "5bec779d9dc6d630e75139e8",
+        "name": "Nhà Thuốc SKV"
+      }
+    ]
+  },
+  {
+    "category": "Khu đô thị",
+    "slug": "urban_area",
+    "places": [
+      {
+        "_id": "5bfe41659dc6d6064720c514",
+        "name": "Khu đô thị Gaia City"
+      },
+      {
+        "_id": "5bfe419f9dc6d696922b4a07",
+        "name": "Khu Đô Thị Sungate City"
+      },
+      {
+        "_id": "5bfe41cf9dc6d606434c1b74",
+        "name": "Khu Đô Thị Eco Future Park"
+      }
+    ]
+  },
+  {
+    "category": "Thể dục thể thao",
+    "slug": "sports",
+    "places": [
+      {
+        "_id": "5bce8ece5203173648327eb3",
+        "name": "Sân vận động Ngũ Hành Sơn"
+      }
+    ]
+  },
 ];
 
 // https://www.luxstay.com/api/booking/drawing-chart?room_id=30505

@@ -5,88 +5,11 @@
  */
 
 import React from 'react';
-import { wifi, tv, airConditioner, shampoo, towel, toothpaste, soap, dryer, toiletPaper, napkins, bottle,
-  electricStove, microwave, fridge, bbq, swimmingPool, naturalSurround, beach, balcony, smartTV,
-  cradle, noSmoking} from 'components/Icon';
+import { getIcon } from 'components/Icon/function';
 
 function HotelAmenities(props) {
 
   const { amenities } = {...props};
-
-  const getIcon = (str) => {
-    switch(str) {
-      case "lst-icon-hotel-wifi": {
-        return wifi;
-      }
-      case "lst-icon-tv": {
-        return tv;
-      }
-      case "lst-icon-air-conditioning": {
-        return airConditioner;
-      }
-      case "lst-icon-shampoo": {
-        return shampoo;
-      }
-      case "lst-icon-towels": {
-        return towel;
-      }
-      case "lst-icon-uniF12D": {
-        return toothpaste;
-      }
-      case "lst-icon-uniF126": {
-        return soap;
-      }
-      case "lst-icon-hair-dryer": {
-        return dryer;
-      }
-      case "lst-icon-toilet-paper-1": {
-        return toiletPaper;
-      }
-      case "lst-icon-tissues": {
-        return napkins;
-      }
-      case "lst-icon-complimentary-bottled-water": {
-        return bottle;
-      }
-      case "lst-icon-stove-electric": {
-        return electricStove;
-      }
-      case "lst-icon-microwave": {
-        return microwave;
-      }
-      case "lst-icon-refrigerator": {
-        return fridge;
-      }
-      case "lst-icon-bbq-facilities": {
-        return bbq;
-      }
-      case "lst-icon-mountain-view": {
-        return naturalSurround;
-      }
-      case "lst-icon-beach": {
-        return beach;
-      }
-      case "icon_ private_pool": {
-        return swimmingPool;
-      }
-      case "lst-icon-balcony-terrace": {
-        return balcony;
-      }
-      case "lst-icon-smart-tv": {
-        return smartTV;
-      }
-      case "lst-icon-family-room": {
-        return cradle;
-      }
-      case "lst-icon-non-smoking-room": {
-        return noSmoking;
-      }
-      default: {
-        console.log("No icons");
-        break;
-      }
-    }
-  };
 
   return (
     <section id="diamond-amenities">

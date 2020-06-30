@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { hotelDetail, reviews, settings, chart } from './data';
+import { hotelDetail, reviews, settings, chart, places } from './data';
 import { Container, Row, Col } from 'react-bootstrap';
 import { find } from 'lodash';
 import HotelGallery from './gallery';
@@ -15,6 +15,7 @@ import HotelAmenities from './amenities';
 import HotelRoomRate from './room-rate';
 import HotelReview from './review';
 import HotelPolicy from './policy';
+import HotelPlaces from './places';
 
 export default function HotelDetail( {match} ) {
 
@@ -45,6 +46,8 @@ export default function HotelDetail( {match} ) {
             <HotelReview reviews={reviews} count={hotelDetail.review_count} />
             <div className="gap-50" />
             <HotelPolicy policy={policy.tip} chart={chart} note={hotelDetail.special_note} time={hotelDetail.price.data} />
+            <div className="gap-50" />
+            <HotelPlaces places={places} />
           </Col>
           <Col xs={12} md={4}>
 
