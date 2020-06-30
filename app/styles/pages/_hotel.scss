@@ -62,7 +62,7 @@
   }
 }
 
-#diamond-room-rate {
+#diamond-room-rate, #diamond-policy {
   .price-item {
     padding: 10px 15px;
     &:nth-child(odd) {
@@ -120,6 +120,169 @@
       height: 16px;
       background-image: url("../images/icon/star.svg");
       margin: 0 3px;
+    }
+  }
+}
+
+#diamond-policy {
+  .cancellation-rule {
+    max-width: 678px;
+  }
+  .rule-title {
+    @include flexbox();
+    font-size: 14px;
+    font-weight: 700;
+    .title {
+      display: -webkit-inline-box !important;
+      display: -ms-inline-flexbox !important;
+      display: inline-flex !important;
+      width: 169px;
+      @include align-items();
+      p {
+        display: inline-block;
+        max-width: 130px;
+        margin-bottom: .5rem;
+      }
+      &.title-1 {
+        p {
+          max-width: 100px;
+        }
+      }
+      &.title-2, &.title-3 {
+        p {
+          transform: translateX(calc(-50% + 15px));
+          text-align: center;
+        }
+      }
+      &.title-4 {
+        @include justify-content(flex-end);
+      }
+    }
+  }
+  .rule-content {
+    .content {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0;
+      &.content-1, &.content-2 {
+        .rule-process {
+          width: 169px;
+        }
+      }
+      &.content-1, &.content-4 {
+        .symbol {
+          width: 32px;
+          height: 32px;
+        }
+        .text {
+          margin-left: 36px;
+        }
+      }
+      &.content-2, &.content-3 {
+        .symbol {
+          width: 20px;
+          height: 20px;
+          margin-top: 6px;
+        }
+        .text {
+          margin-left: 28px;
+        }
+      }
+      &.content-3 {
+        flex-grow: 1;
+        .rule-process {
+          width: 304px;
+        }
+      }
+      &.content-4 {
+        .symbol {
+          transform: translateX(-10px);
+        }
+        .line.is-top {
+          border-radius: 0 5px 5px 0;
+          right: -10px !important;
+          left: auto !important;
+        }
+      }
+      .rule-process {
+        .symbol {
+          position: relative;
+          @include border-radius(50%);
+          &.is-first, &.is-last {
+            position: relative;
+            &:after {
+              content: "";
+              position: absolute;
+              width: calc(100% + 2px);
+              height: calc(100% + 2px);
+              top: 50%;
+              left: 50%;
+              @include translate(-50%,-50%);
+              @include border-radius(50%);
+              background: transparent;
+              border: 3px solid #fff;
+            }
+          }
+          &.is-normal {
+            &:before {
+              content: '';
+              display: block;
+              width: 10px;
+              height: 10px;
+              background: white;
+              @include border-radius(50%);
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              @include translate(-50%,-50%);
+              z-index: 1;
+            }
+          }
+        }
+        .line {
+          position: absolute;
+          &.is-top {
+            width: 169px;
+            height: 4px;
+            top: 50%;
+            left: 0;
+            @include translate(0,-50%);
+          }
+          &.is-bottom {
+            width: 1px;
+            height: 120px;
+            left: calc(50% - 1px);
+            top: 0;
+          }
+        }
+        .text {
+          font-size: 14px;
+          min-height: 120px;
+        }
+      }
+    }
+  }
+  .symbol-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    z-index: 2;
+  }
+  .check-mark {
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    z-index: 3;
+    top: 9px;
+    left: 14px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    @include rotate(45);
+  }
+  .special-note {
+    ul > li {
+      line-height: 2;
     }
   }
 }

@@ -191,6 +191,16 @@ export const home = (
   </svg>
 );
 
+export const letter = (
+  <svg version="1.1" viewBox="0 0 24 24" className="icon--16 symbol-icon svg-icon svg-fill">
+    <g fill="none" fill-rule="evenodd">
+      <path pid="0" d="M0 0h24v24H0z"></path>
+      <path pid="1" fill="#FFF"
+            d="M3.957 8.415L11.48 3.82a1 1 0 0 1 1.042 0l7.522 4.596A2 2 0 0 1 21 10.122V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8.878a2 2 0 0 1 .957-1.707zM13.8 12c-.644 0-1.397.73-1.8 1.2-.403-.47-1.156-1.2-1.8-1.2-1.14 0-1.8.889-1.8 2.02 0 1.253 1.2 2.58 3.6 3.98 2.4-1.4 3.6-2.7 3.6-3.9 0-1.131-.66-2.1-1.8-2.1z"></path>
+    </g>
+  </svg>
+);
+
 export const mapMarker = (
   <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="map-marker-alt" role="img"
        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="svg-inline--fa fa-map-marker-alt fa-w-12">

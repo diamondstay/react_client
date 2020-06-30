@@ -72,6 +72,13 @@ img, video, audio {
   margin: 3px 10px;
 }
 
+.gap-30 {
+  height: 30px;
+  @include media-breakpoint-down(sm) {
+    height: 15px
+  }
+}
+
 .gap-50 {
   height: 50px;
   @include media-breakpoint-down(sm) {

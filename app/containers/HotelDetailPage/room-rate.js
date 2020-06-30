@@ -63,7 +63,6 @@ function HotelRoomRate(props) {
             <>:</>
         }
       </div>
-
     </section>
   );
 }
