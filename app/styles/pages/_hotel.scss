@@ -61,3 +61,16 @@
     }
   }
 }
+
+#diamond-room-rate {
+  .price-item {
+    padding: 10px 15px;
+    &:nth-child(odd) {
+      background: #f6f6f6;
+    }
+    > span:last-child {
+      font-weight: 600;
+      text-align: right;
+    }
+  }
+}

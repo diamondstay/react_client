@@ -4,7 +4,7 @@
     position: relative;
     box-sizing: border-box;
     @include flexbox();
-    flex-wrap: wrap;
+    @include flex-wrap(wrap);
     @include transition(opacity 0.3s ease-in);
     img {
       height: 190px;

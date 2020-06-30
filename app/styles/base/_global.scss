@@ -78,3 +78,13 @@ img, video, audio {
     height: 30px
   }
 }
+
+.is-flex {
+  @include flexbox();
+  @include flex-wrap(wrap);
+  @include box-sizing();
+}
+
+.fl-item-50 {
+  flex: 0 0 50%;
+}

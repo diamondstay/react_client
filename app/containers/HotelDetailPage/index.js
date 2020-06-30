@@ -35,7 +35,7 @@ export default function HotelDetail( {match} ) {
             <div className="gap-50" />
             <HotelAmenities />
             <div className="gap-50" />
-            <HotelRoomRate detail={hotelDetail} />
+            <HotelRoomRate price={hotelDetail.price.data} />
           </Col>
           <Col xs={12} md={4}>
 
