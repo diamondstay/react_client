@@ -74,3 +74,52 @@
     }
   }
 }
+
+#diamond-review {
+  h2.page-title {
+    margin-bottom: 30px;
+  }
+  .review-item {
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+  .review-header {
+    margin-bottom: 15px;
+  }
+  .review-avatar, .review-info {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .review-avatar {
+    @include border-radius(50%);
+    overflow: hidden;
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit:cover;
+    }
+  }
+  .review-info {
+    @include calc(width, '100% - 48px');
+    padding-left: 20px;
+  }
+  .review-name {
+    font-weight: 600;
+    margin: 0;
+  }
+  .review-time {
+    font-size: 0.8rem;
+  }
+  .stars {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+    > i {
+      width: 16px;
+      height: 16px;
+      background-image: url("../images/icon/star.svg");
+      margin: 0 3px;
+    }
+  }
+}

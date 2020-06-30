@@ -5,14 +5,13 @@
  */
 
 import React from 'react';
-import { wifi, tv, airConditioner, shampoo, towel, toothpaste, soap, dryer,
-  electricStove, microwave, fridge, bbq, swimmingPool, balcony, smartTV,
-  cradle} from 'components/Icon';
+import { wifi, tv, airConditioner, shampoo, towel, toothpaste, soap, dryer, toiletPaper, napkins, bottle,
+  electricStove, microwave, fridge, bbq, swimmingPool, naturalSurround, beach, balcony, smartTV,
+  cradle, noSmoking} from 'components/Icon';
 
 function HotelAmenities(props) {
 
   const { amenities } = {...props};
-  console.log(amenities);
 
   const getIcon = (str) => {
     switch(str) {
@@ -40,6 +39,15 @@ function HotelAmenities(props) {
       case "lst-icon-hair-dryer": {
         return dryer;
       }
+      case "lst-icon-toilet-paper-1": {
+        return toiletPaper;
+      }
+      case "lst-icon-tissues": {
+        return napkins;
+      }
+      case "lst-icon-complimentary-bottled-water": {
+        return bottle;
+      }
       case "lst-icon-stove-electric": {
         return electricStove;
       }
@@ -52,6 +60,12 @@ function HotelAmenities(props) {
       case "lst-icon-bbq-facilities": {
         return bbq;
       }
+      case "lst-icon-mountain-view": {
+        return naturalSurround;
+      }
+      case "lst-icon-beach": {
+        return beach;
+      }
       case "icon_ private_pool": {
         return swimmingPool;
       }
@@ -63,6 +77,9 @@ function HotelAmenities(props) {
       }
       case "lst-icon-family-room": {
         return cradle;
+      }
+      case "lst-icon-non-smoking-room": {
+        return noSmoking;
       }
       default: {
         console.log("No icons");

@@ -980,8 +980,7 @@ export const hotelDetail = {
 };
 
 // https://www.luxstay.com/api/setting/common
-
-export const hotelSettings = {
+export const settings = {
   "hotline": "18006586",
   "fanpage": "https://m.me/luxstay",
   "verify_phone_enable": false,
@@ -1367,3 +1366,134 @@ export const hotelSettings = {
     ]
   }
 }
+
+// https://www.luxstay.com/api/rooms/30505/places?_rpc=
+export const places = [
+  {
+    "category": "Địa điểm nổi tiếng",
+    "slug": "famous_places",
+    "places": [
+      {
+        "_id": "5bfe046b9dc6d6064461e1a0",
+        "name": "Khu Du Lịch Khoang Xanh Suối Tiên"
+      },
+      {
+        "_id": "5bfe044f9dc6d6068143f548",
+        "name": "Vườn quốc gia Ba Vì"
+      },
+      {
+        "_id": "5bd9774e9dc6d61a5b3dd71d",
+        "name": "Khu vui chơi giải trí Thác Bạc Suối Sao"
+      },
+      {
+        "_id": "5bdfc1f29dc6d606114838df",
+        "name": "Đền Thờ Bác Hồ"
+      }
+    ]
+  },
+  {
+    "category": "Giao thông",
+    "slug": "transportation",
+    "places": [
+      {
+        "_id": "5bfcf50c9dc6d679f42a4d87",
+        "name": "Sân bay Hòa Lạc"
+      },
+      {
+        "_id": "5be9d3a29dc6d67e2e54e281",
+        "name": "Trạm Xăng Petrolimex phú thọ"
+      },
+      {
+        "_id": "5be9d3db9dc6d67e603188e8",
+        "name": "Trạm Xăng Petrolimex 38 phú thọ"
+      }
+    ]
+  },
+  {
+    "category": "Cơ quan ban ngành",
+    "slug": "head_office",
+    "places": [
+      {
+        "_id": "5bce8ed55203173648328ee9",
+        "name": "UBND Xã Vân Hòa"
+      },
+      {
+        "_id": "5bce8ed55203173648328eeb",
+        "name": "UBND Xã Yên Bái"
+      }
+    ]
+  }
+];
+
+// https://www.luxstay.com/api/booking/drawing-chart?room_id=30505
+export const chart = [
+  {
+    "label": "Đặt phòng thành công",
+    "color": "#28ca6e",
+    "content": "Hoàn tiền 50%"
+  },
+  {
+    "label": " Sau 48h",
+    "color": "#ffb500",
+    "content": "Hoàn 50% (trừ phí dịch vụ)"
+  },
+  {
+    "label": "14 ngày trước check-in",
+    "color": "#f65e39",
+    "content": "Không hoàn tiền"
+  },
+  {
+    "label": "Check-in",
+    "color": "#f65e39",
+    "content": ""
+  }
+];
+
+// https://www.luxstay.com/api/rooms/27190/reviews?_rpc=&page=1&limit=9
+export const reviews = [
+  {
+    "id": 11088,
+    "booking_id": 276623,
+    "star_number": 5,
+    "feedback": "",
+    "content": "homestay nằm trong 1 khu phố cổ rất yên tĩnh bình yên",
+    "emotion": 0,
+    "created_at": "2020-02-29T09:45:45+00:00",
+    "image": [],
+    "reviewer": {
+      "id": 309996,
+      "name": "Anh Ngoc",
+      "avatar": "https://lh3.googleusercontent.com/a-/AAuE7mBOtMaPMr-saw_uuhB67saXQL7soML1-js0_PXeMw"
+    }
+  },
+  {
+    "id": 7577,
+    "booking_id": 214883,
+    "star_number": 4,
+    "feedback": "",
+    "content": "Mình đi cùng bạn, phòng rất đáng yêu và sạch sẽ. Chắc chắn sẽ quay lại khi có dịp",
+    "emotion": 1,
+    "created_at": "2019-11-28T07:01:56+00:00",
+    "image": [],
+    "reviewer": {
+      "id": 203111,
+      "name": "Phạm Lành",
+      "avatar": "https://cdn.luxstay.com/users_avatar_default/default-avatar.png"
+    }
+  },
+  {
+    "id": 6199,
+    "booking_id": 180329,
+    "star_number": 3,
+    "feedback": "",
+    "content": "sạch sẽ tiện nghi, hài lòng",
+    "emotion": 5,
+    "created_at": "2019-10-21T09:52:51+00:00",
+    "image": [],
+    "reviewer": {
+      "id": 231975,
+      "name": "Trang Nguyen",
+      "avatar": "https://lh3.googleusercontent.com/a-/AAuE7mDUUjF9JIZhkBUlJ4w9U5ktTcyvf-AWA-tTaPeB"
+    }
+  }
+];
