@@ -16,20 +16,20 @@ function HotelGeneral(props) {
       <h2 className="hotel-name">{hotelDetail.name}</h2>
       <ul className="hotel-info">
         <li>
-          <i>{mapMarker}</i> <span>{hotelDetail.location}</span>
+          <i>{mapMarker}</i> <span>{hotelDetail.address.data.city}, {hotelDetail.address.data.state}, {hotelDetail.address.data.country}</span>
         </li>
         <li>
-          <i>{building}</i> <span><strong>{hotelDetail.category}</strong> &middot; {hotelDetail.acreage}m<sup>2</sup></span>
+          <i>{building}</i> <span><strong>{hotelDetail.propertyType.data.name}</strong> &middot; {hotelDetail.area}m<sup>2</sup></span>
         </li>
       </ul>
       <div className="hotel-overview mb-3">
-        <span>{hotelDetail.intro.type}</span><span className="bullet" />
-        <span>{hotelDetail.intro.bathroom}</span> phòng tắm<span className="bullet" />
-        <span>{hotelDetail.intro.bed}</span> giường<span className="bullet" />
-        <span>{hotelDetail.intro.bedroom}</span> phòng ngủ<span className="bullet" />
-        <span>{hotelDetail.intro.guest}</span> khách {hotelDetail.intro.maxGuest ? '(tối đa ' + hotelDetail.intro.maxGuest + ' khách)' : ''}
+        <span>{hotelDetail.roomType.data.name}</span><span className="bullet" />
+        <span>{hotelDetail.num_bathrooms}</span> phòng tắm<span className="bullet" />
+        <span>{hotelDetail.num_beds}</span> giường<span className="bullet" />
+        <span>{hotelDetail.num_bedrooms}</span> phòng ngủ<span className="bullet" />
+        <span>{hotelDetail.price.data.standard_guests}</span> khách (tối đa {hotelDetail.maximum_guests} khách)
       </div>
-      <div className="hotel-description" dangerouslySetInnerHTML={{__html: hotelDetail.description}} />
+      <div className="hotel-description" dangerouslySetInnerHTML={{__html: hotelDetail.introduction}} />
     </section>
   );
 }

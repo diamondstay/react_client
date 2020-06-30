@@ -1,6 +1,6 @@
 /**
  *
- * Hotel Facilities
+ * Hotel Amenities
  *
  */
 
@@ -8,16 +8,16 @@ import React from 'react';
 import { wifi, tv, airConditioner, shampoo, towel, toothpaste, soap, dryer,
   electricStove, microwave, fridge, bbq, swimmingPool} from 'components/Icon';
 
-function HotelFacilities() {
+function HotelAmenities() {
 
   return (
-    <section id="diamond-facilities">
+    <section id="diamond-amenities">
       <h2 className="page-title">Tiện nghi chỗ ở</h2>
       <p className="mb-4">Giới thiệu về các tiện nghi và dịch vụ tại nơi lưu trú</p>
 
-      <div className="facilities-item">
+      <div className="amenities-item">
         <h3 className="section-title">Tiện ích</h3>
-        <ul className="facilities-list">
+        <ul className="amenities-list">
           <li>
             <i>{wifi}</i>
             <span>Wifi</span>
@@ -53,9 +53,9 @@ function HotelFacilities() {
         </ul>
       </div>
 
-      <div className="facilities-item">
+      <div className="amenities-item">
         <h3 className="section-title">Tiện ích bếp</h3>
-        <ul className="facilities-list">
+        <ul className="amenities-list">
           <li>
             <i>{electricStove}</i>
             <span>Bếp điện</span>
@@ -71,9 +71,9 @@ function HotelFacilities() {
         </ul>
       </div>
 
-      <div className="facilities-item">
+      <div className="amenities-item">
         <h3 className="section-title">Tiện ích giải trí</h3>
-        <ul className="facilities-list">
+        <ul className="amenities-list">
           <li>
             <i>{bbq}</i>
             <span>BBQ</span>
@@ -88,4 +88,4 @@ function HotelFacilities() {
   );
 }
 
-export default HotelFacilities;
+export default HotelAmenities;

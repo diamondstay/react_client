@@ -42,8 +42,8 @@
   }
 }
 
-#diamond-facilities {
-  ul.facilities-list {
+#diamond-amenities {
+  ul.amenities-list {
     @include flexbox();
     @include flex-wrap(wrap);
     @include box-sizing();

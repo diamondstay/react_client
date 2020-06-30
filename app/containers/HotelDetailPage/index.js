@@ -7,10 +7,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { hotelDetail } from './data';
-import HotelGallery from 'components/Carousel/hotel-gallery';
 import { Container, Row, Col } from 'react-bootstrap';
+import HotelGallery from './gallery';
 import HotelGeneral from './general';
-import HotelFacilities from './facilities';
+import HotelAmenities from './amenities';
+import HotelRoomRate from './room-rate';
 
 export default function HotelDetail( {match} ) {
 
@@ -24,7 +25,7 @@ export default function HotelDetail( {match} ) {
         <title>Hotel</title>
       </Helmet>
 
-      <HotelGallery media={hotelDetail.media} />
+      <HotelGallery media={hotelDetail.photos.data} />
 
       <Container className="container-origin">
         <Row>
@@ -32,8 +33,9 @@ export default function HotelDetail( {match} ) {
             <div className="gap-50" />
             <HotelGeneral detail={hotelDetail} />
             <div className="gap-50" />
-            <HotelFacilities />
+            <HotelAmenities />
             <div className="gap-50" />
+            <HotelRoomRate detail={hotelDetail} />
           </Col>
           <Col xs={12} md={4}>
 
