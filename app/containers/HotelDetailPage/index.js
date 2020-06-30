@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { hotelDetail } from './data';
+import { hotelDetail, hotelSettings } from './data';
 import { Container, Row, Col } from 'react-bootstrap';
 import HotelGallery from './gallery';
 import HotelGeneral from './general';
@@ -33,7 +33,7 @@ export default function HotelDetail( {match} ) {
             <div className="gap-50" />
             <HotelGeneral detail={hotelDetail} />
             <div className="gap-50" />
-            <HotelAmenities />
+            <HotelAmenities amenities={hotelDetail.amenityTypes.data} />
             <div className="gap-50" />
             <HotelRoomRate price={hotelDetail.price.data} />
           </Col>
