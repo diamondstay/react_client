@@ -56,12 +56,17 @@ export default function HotelDetail( {match} ) {
             <HotelBooking promotion={promotion} host={hotelDetail.host.data} />
           </Col>
         </Row>
-        <div className="gap-50" />
-        <HotelSimilarList list={similarList} />
-        <div className="gap-50" />
-        <HotelOtherList list={otherList} host={hotelDetail.host.data.full_name} />
-        <div className="gap-50" />
       </Container>
+
+      <div className="full-width-wrapper">
+        <Container className="container-origin">
+          <div className="gap-50" />
+          <HotelSimilarList list={similarList} />
+          <div className="gap-50" />
+          <HotelOtherList list={otherList} host={hotelDetail.host.data.full_name} />
+          <div className="gap-50" />
+        </Container>
+      </div>
     </div>
   );
 }

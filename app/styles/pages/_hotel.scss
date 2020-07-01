@@ -466,5 +466,10 @@
   @include media-breakpoint-up(sm) {
     top: 40px !important;
   }
-  z-index: 99;
+}
+
+.full-width-wrapper {
+  position: relative;
+  background-color: white;
+  z-index: 10;
 }
