@@ -33,10 +33,15 @@ const API = {
  * Auth API
  */
 
-API.register = (data) => {
+API.register = (params) => {
+  const data = {
+    first_name: params.firstName,
+    last_name: params.lastName,
+    email: params.email,
+    password: params.password,
+  };
   return API.instance
     .post(Endpoints.REGISTER_URL, data, {
-      noAppendToken: true,
       headers: headers,
     })
     .then(response => {
@@ -50,7 +55,6 @@ API.register = (data) => {
 API.login = (data) => {
   return API.instance
     .post(Endpoints.LOGIN_URL, data, {
-      noAppendToken: true,
       headers: headers,
     })
     .then(response => {

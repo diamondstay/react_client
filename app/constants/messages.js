@@ -1,10 +1,13 @@
 module.exports = {
-  loginSuccess: 'You have logged in successfully',
+  loginSuccess: 'Đăng nhập thành công.',
+  loginError: 'Đăng nhập thất bại.',
   loginRequired: 'You need to log in to continue.',
   logoutSuccess: 'You have logged out',
 
-  registerSuccess: 'You have registered successfully',
+  registerSuccess: 'Đăng ký thành công.',
+  registerError: 'Đăng ký thất bại.',
   resetPasswordSuccess: 'You have reset your password successfully',
+  resetPasswordError: 'You have reset your password failed',
 
   confirmTitle: 'Confirm',
   confirmLogout: 'Are you sure you want to logout?',

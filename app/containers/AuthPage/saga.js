@@ -3,33 +3,35 @@ import { call, put, select, takeLatest  } from 'redux-saga/effects';
 import { loginSuccess,  registerSuccess,  resetPasswordSuccess } from './actions';
 import { LOGIN, REGISTER, RESET_PASSWORD } from './constants';
 import { API } from '../../network';
-import { showAlert } from 'containers/App/actions';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import * as Messages from 'constants/messages';
 
-export function* login(args) {
+export function* userLogin(args) {
   try {
     const resp = yield call(API.login, args.data);
     if (resp.code === 200) {
       yield put(loginSuccess(resp));
-      yield put(showAlert({ type: 'success', message: messages.loginSuccess }));
+      toast(Messages.loginSuccess);
     } else {
-      yield put(showAlert({ type: 'error', message: resp.messages }));
+      toast(Messages.loginError);
     }
   } catch (err) {
-    yield put(showAlert({ type: 'error', message: messages.error }));
+    toast(Messages.loginError);
   }
 }
 
-export function* register(args) {
+export function* userRegister(args) {
   try {
     const resp = yield call(API.register, args.data);
     if (resp.code === 200) {
       yield put(registerSuccess(resp));
-      yield put(showAlert({ type: 'success', message: messages.registerSuccess }));
+      toast(Messages.registerSuccess);
     } else {
-      yield put(showAlert({ type: 'error', message: resp.messages }));
+      toast(Messages.registerError);
     }
   } catch (err) {
-    yield put(showAlert({ type: 'error', message: messages.error }));
+    toast(Messages.registerError);
   }
 }
 
@@ -38,19 +40,19 @@ export function* resetPassword(args) {
     const resp = yield call(API.resetPassword, args.data);
     if (resp.code === 200) {
       yield put(resetPasswordSuccess(resp));
-      yield put(showAlert({ type: 'success', message: messages.resetPasswordSuccess }));
+      toast(Messages.resetPasswordSuccess);
     } else {
-      yield put(showAlert({ type: 'error', message: resp.messages }));
+      toast(Messages.resetPasswordError);
     }
   } catch (err) {
-    yield put(showAlert({ type: 'error', message: messages.error }));
+    toast(Messages.resetPasswordError);
   }
 }
 
 // Individual exports for testing
 export default function* authPageSaga() {
   // See example in containers/HomePage/saga.js
-  yield takeLatest(LOGIN, login);
-  yield takeLatest(REGISTER, register);
+  yield takeLatest(LOGIN, userLogin);
+  yield takeLatest(REGISTER, userRegister);
   yield takeLatest(RESET_PASSWORD, resetPassword);
 }

@@ -16,9 +16,10 @@ export function defaultAction() {
   };
 }
 
-export function userLogin() {
+export function userLogin(data) {
   return {
     type: LOGIN,
+    data
   };
 }
 
@@ -35,9 +36,10 @@ export function loginError() {
   };
 }
 
-export function userRegister() {
+export function userRegister(data) {
   return {
     type: REGISTER,
+    data
   };
 }
 

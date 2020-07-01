@@ -6,13 +6,17 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
-
+import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPage from 'containers/AuthPage/login';
+import RegisterPage from 'containers/AuthPage/register';
 import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
 import SearchResultPage from 'containers/SearchResultPage/Loadable';
 import HostPage from 'containers/HostPage/Loadable';
@@ -21,6 +25,8 @@ import Header from 'components/Header';
 import Header1 from 'components/Header/header_1';
 import Header2 from 'components/Header/header_2';
 import Footer from 'components/Footer';
+import Alert from 'components/Alert';
+import { useInjectReducer } from 'utils/injectReducer';
 import 'styles/main.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -41,6 +47,9 @@ import {
   faSoundcloud,
 } from '@fortawesome/free-brands-svg-icons';
 
+import { makeSelectAlert } from './selectors';
+import reducer from './reducer';
+
 library.add(
   faHome,
   faMapMarkerAlt,
@@ -58,8 +67,11 @@ library.add(
 );
 
 const AppWrapper = styled.div``;
+const key = 'app';
 
-function App(props) {
+function App({ alerts }) {
+  useInjectReducer({ key, reducer });
+
   const GeneralLayout = ({ component: Component, ...rest }) => {
     return (
       <Route
@@ -89,7 +101,7 @@ function App(props) {
     );
   };
 
-  const LoginLayout = ({ component: Component, ...rest }) => {
+  const AuthLayout = ({ component: Component, ...rest }) => {
     return (
       <Route
         {...rest}
@@ -103,14 +115,20 @@ function App(props) {
     );
   };
 
+  const alertsProps = {
+    alerts
+  };
+
   return (
     <AppWrapper>
       <Helmet titleTemplate="%s - Diamond Stay" defaultTitle="Diamond Stay">
         <meta name="description" content="Diamond Stay" />
       </Helmet>
+      <Alert {...alertsProps} />
       <Switch>
         <GeneralLayout exact path="/" component={HomePage} />
-        <LoginLayout exact path="/login" component={LoginPage} />
+        <AuthLayout exact path="/login" component={LoginPage} />
+        <AuthLayout exact path="/register" component={RegisterPage} />
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
 
         <GeneralLayout
@@ -128,4 +146,27 @@ function App(props) {
     </AppWrapper>
   );
 }
-export default withRouter(App);
+
+App.propTypes = {
+  alerts: PropTypes.any
+};
+
+const mapStateToProps = createStructuredSelector({
+  alerts: makeSelectAlert()
+});
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(App);

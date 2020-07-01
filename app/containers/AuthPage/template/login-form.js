@@ -55,7 +55,7 @@ function FormTemplate(props) {
         </Form.Group>
 
         <div className="form-submit">
-          <button className="submit-button" type="submit">Submit</button>
+          <button className="btn submit-button" type="submit">Submit</button>
         </div>
       </Form>
     </section>
