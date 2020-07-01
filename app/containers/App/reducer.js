@@ -9,7 +9,6 @@
 
 import produce from 'immer';
 import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR, SHOW_ALERT } from './constants';
-import { API_ERROR } from '../../../../prism-trainer-website-react/app/containers/App/constants';
 
 // The initial state of the App
 export const initialState = {
@@ -46,11 +45,6 @@ const appReducer = (state = initialState, action) =>
 
       case SHOW_ALERT:
         draft.systemAlert = action.message;
-        break;
-
-      case API_ERROR:
-        draft.apiError = action.payload;
-        draft.loggingIn = false;
         break;
     }
   });

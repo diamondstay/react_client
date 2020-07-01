@@ -19,6 +19,7 @@ import HostPage from 'containers/HostPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Header1 from 'components/Header/header_1';
+import Header2 from 'components/Header/header_2';
 import Footer from 'components/Footer';
 import 'styles/main.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -88,6 +89,20 @@ function App(props) {
     );
   };
 
+  const LoginLayout = ({ component: Component, ...rest }) => {
+    return (
+      <Route
+        {...rest}
+        render={matchProps => (
+          <>
+            <Header2 />
+            <Component {...matchProps} />
+          </>
+        )}
+      />
+    );
+  };
+
   return (
     <AppWrapper>
       <Helmet titleTemplate="%s - Diamond Stay" defaultTitle="Diamond Stay">
@@ -95,7 +110,7 @@ function App(props) {
       </Helmet>
       <Switch>
         <GeneralLayout exact path="/" component={HomePage} />
-        <HotelLayout exact path="/login" component={LoginPage} />
+        <LoginLayout exact path="/login" component={LoginPage} />
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
 
         <GeneralLayout

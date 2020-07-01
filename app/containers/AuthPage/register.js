@@ -22,7 +22,7 @@ export function AuthPage() {
   useInjectSaga({ key: 'authPage', saga });
 
   return (
-    <AuthTemplate type={1} />
+    <AuthTemplate type={2} />
   );
 }
 

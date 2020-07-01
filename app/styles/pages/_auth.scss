@@ -1,0 +1,60 @@
+#auth-welcome {
+  background: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);
+  padding: 3rem 0;
+  .welcome-content {
+    h2, p {
+      color: white;
+    }
+  }
+  .welcome-title {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    margin-bottom: .625rem;
+    @include media-breakpoint-down(sm) {
+      font-size: 1.25rem;
+      margin-bottom: .625rem;
+    }
+  }
+  .welcome-desc {
+    font-size: 1.125rem;
+    margin: 0;
+    @include media-breakpoint-down(sm) {
+      font-size: .95rem;
+    }
+  }
+}
+
+#auth-feature {
+  .feature-item {
+    margin-bottom: 30px;
+  }
+  .feature-icon {
+    img {
+      width: auto;
+      height: 70px;
+    }
+  }
+  .feature-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+}
+
+#auth-form {
+  background: white;
+  box-shadow: 0 9px 46px 8px rgba(0,0,0,.02), 0 24px 38px 3px rgba(0,0,0,.04), 0 11px 15px -7px rgba(0,0,0,.05);
+  @include border-radius(0.625rem);
+  padding: 2rem;
+  @include media-breakpoint-up(md) {
+    margin-top: -6.875rem;
+  }
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .form-control {
+    height: 48px;
+    @include border-radius(3em);
+  }
+}
