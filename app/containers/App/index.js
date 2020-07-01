@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import LoginPage from 'containers/AuthPage/login';
 import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
 import SearchResultPage from 'containers/SearchResultPage/Loadable';
 import HostPage from 'containers/HostPage/Loadable';
@@ -58,7 +59,7 @@ library.add(
 const AppWrapper = styled.div``;
 
 function App(props) {
-  const HomeLayout = ({ component: Component, ...rest }) => {
+  const GeneralLayout = ({ component: Component, ...rest }) => {
     return (
       <Route
         {...rest}
@@ -87,51 +88,22 @@ function App(props) {
     );
   };
 
-  const SearchPageLayout = ({ component: Component, ...rest }) => {
-    return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <>
-            <Header />
-            <Component {...matchProps} />
-            <Footer />
-          </>
-        )}
-      />
-    );
-  };
-
-  const HostPageLayot = ({ component: Component, ...rest }) => {
-    return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <>
-            <Header />
-            <Component {...matchProps} />
-            <Footer />
-          </>
-        )}
-      />
-    );
-  };
-
   return (
     <AppWrapper>
       <Helmet titleTemplate="%s - Diamond Stay" defaultTitle="Diamond Stay">
         <meta name="description" content="Diamond Stay" />
       </Helmet>
       <Switch>
-        <HomeLayout exact path="/" component={HomePage} />
+        <GeneralLayout exact path="/" component={HomePage} />
+        <HotelLayout exact path="/login" component={LoginPage} />
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
 
-        <SearchPageLayout
+        <GeneralLayout
           path="/search-result"
           component={SearchResultPage}
           exact
         />
-        <HostPageLayot path="/host/:id" component={HostPage} exact />
+        <GeneralLayout path="/host/:id" component={HostPage} exact />
 
         {/* <Route exact path="/" component={HomePage} /> */}
         {/* <Route path="/location/:slug.:id" component={LocationPage} exact /> */}

@@ -16,6 +16,7 @@
  */
 
 import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import { SHOW_ALERT } from './constants';
 
 /**
  * Load the repositories, this action starts the request saga
@@ -57,3 +58,11 @@ export function repoLoadingError(error) {
     error,
   };
 }
+
+export function showAlert(message) {
+  return {
+    type: SHOW_ALERT,
+    message,
+  };
+}
+

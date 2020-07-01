@@ -1,3 +1,5 @@
 module.exports = {
-  LOGIN_URL: '/login',
+  LOGIN_URL: '/users/login',
+  REGISTER_URL: '/users',
+  RESET_PASSWORD_URL: '/users/reset-password-request',
 };
