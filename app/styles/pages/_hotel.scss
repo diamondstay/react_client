@@ -111,17 +111,6 @@
   .review-time {
     font-size: 0.8rem;
   }
-  .stars {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 20px;
-    > i {
-      width: 16px;
-      height: 16px;
-      background-image: url("../images/icon/star.svg");
-      margin: 0 3px;
-    }
-  }
 }
 
 #diamond-policy {
@@ -334,6 +323,17 @@
     }
     .ant-tabs-tabpane {
       padding: 1rem 1.25rem;
+    }
+  }
+}
+
+#diamond-similar-list, #diamond-other-list {
+  .row {
+    margin-right: -7.5px;
+    margin-left: -7.5px;
+    > .col, > [class*="col-"] {
+      padding-right: 7.5px !important;
+      padding-left: 7.5px !important;
     }
   }
 }

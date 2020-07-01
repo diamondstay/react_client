@@ -37,7 +37,7 @@ function HotelReview(props) {
             <div className="review-info">
               <h4 className="review-name">
                 {review.reviewer.name}
-                <span className="stars" dangerouslySetInnerHTML={{__html: getReviewStars(review.star_number)}} />
+                <span className="stars ml-3" dangerouslySetInnerHTML={{__html: getReviewStars(review.star_number)}} />
               </h4>
               <div className="review-time">{getReviewTime(review.created_at)}</div>
             </div>

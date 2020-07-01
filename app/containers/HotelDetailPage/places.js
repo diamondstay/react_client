@@ -14,8 +14,6 @@ function HotelPlaces(props) {
   const { places } = {...props};
   const { TabPane } = Tabs;
 
-  console.log(places);
-
   return (
     <section id="diamond-places">
       <h2 className="page-title">Tiện ích xung quanh</h2>

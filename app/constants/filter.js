@@ -35,6 +35,21 @@ const formatVndCurrency = (str) => {
   return str.toLocaleString('vi', {style : 'currency', currency : 'VND'});
 };
 
-const filter = { limitHtml, slugUrl, firstSentence, suffix, formatVndCurrency };
+const getReviewStars = (number) => {
+  let stars = '';
+  let nostars = '';
+  for (let i = 0; i < number; i ++) {
+    stars += '<i class="icon star" /></i>';
+  }
+  if (number < 5) {
+    let minus = 5 - number;
+    for (let i = 0; i < minus; i ++) {
+      nostars += '<i class="icon star no-star" /></i>';
+    }
+  }
+  return number === 0 ? '' : stars + nostars;
+};
+
+const filter = { limitHtml, slugUrl, firstSentence, suffix, formatVndCurrency, getReviewStars };
 
 module.exports = filter;

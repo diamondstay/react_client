@@ -1603,3 +1603,403 @@ export const reviews = [
     }
   }
 ];
+
+// https://www.luxstay.com/api/rooms/30505/similarity?limit=4
+export const similarList = [
+  {
+    "id": 36440,
+    "name": "Luxury L3 - Biệt thự sang chảnh",
+    "booking_type": "request_to_book",
+    "origin_price": 5500000,
+    "price": "5,500,000₫",
+    "image": "https://cdn.luxstay.com/rooms/36440/large/53352498_2063313303973263_7888745897771663360_n.jpg",
+    "type_room": "Villa",
+    "location": "Ba Vì, Hà Nội",
+    "reviews_count": 0,
+    "liked_count": 8,
+    "num_bedrooms": 4,
+    "num_beds": 4,
+    "rating": 0,
+    "num_bathrooms": 5,
+    "maximum_guests": 20,
+    "cashback": null,
+    "liked": false
+  },
+  {
+    "id": 15175,
+    "name": "An Vui Villa 20",
+    "booking_type": "request_to_book",
+    "origin_price": 4500000,
+    "price": "4,500,000₫",
+    "image": "https://cdn.luxstay.com/rooms/15175/large/1537408143_IMG_7810.jpg",
+    "type_room": "Villa",
+    "location": "Ba Vì, Hà Nội",
+    "reviews_count": 5,
+    "liked_count": 116,
+    "num_bedrooms": 5,
+    "num_beds": 16,
+    "rating": 3,
+    "num_bathrooms": 6,
+    "maximum_guests": 26,
+    "cashback": null,
+    "liked": false
+  },
+  {
+    "id": 15176,
+    "name": "An Vui Villa 14",
+    "booking_type": "request_to_book",
+    "origin_price": 3500000,
+    "price": "3,500,000₫",
+    "image": "https://cdn.luxstay.com/rooms/15176/large/1537408626_IMG_7751.jpg",
+    "type_room": "Villa",
+    "location": "Ba Vì, Hà Nội",
+    "reviews_count": 9,
+    "liked_count": 101,
+    "num_bedrooms": 3,
+    "num_beds": 12,
+    "rating": 5,
+    "num_bathrooms": 3,
+    "maximum_guests": 18,
+    "cashback": null,
+    "liked": false
+  },
+  {
+    "id": 72002,
+    "name": "BAVI padme home - Villa 8",
+    "booking_type": "instant_book",
+    "origin_price": 3000000,
+    "price": "3,000,000₫",
+    "image": "https://cdn.luxstay.com/users/165375/ELwC220B8b6sH8MgMIKc75Kk.jpg",
+    "type_room": "Other",
+    "location": "Ba Vì, Hà Nội",
+    "reviews_count": 0,
+    "liked_count": 2,
+    "num_bedrooms": 1,
+    "num_beds": 4,
+    "rating": 0,
+    "num_bathrooms": 1,
+    "maximum_guests": 10,
+    "cashback": null,
+    "liked": false
+  }
+];
+
+// https://www.luxstay.com/api/hosts/177313/rooms?limit=4&page=1&popular&excluded=30505
+export const otherList = [
+  {
+    "id": 30538,
+    "name": "BAVI Padme Home - Bungalow 2",
+    "num_bedrooms": 1,
+    "num_bathrooms": 1,
+    "num_beds": 1,
+    "maximum_guests": 3,
+    "standard_guests": 2,
+    "booking_type": "instant_book",
+    "status": "Listed",
+    "popular": false,
+    "url": "https://www.luxstay.com/rooms/30538",
+    "rating": 5,
+    "reviews_count": 2,
+    "cashback": null,
+    "instant_fake": false,
+    "propertyType": {
+      "data": {
+        "id": 32,
+        "name": "Khác",
+        "description": "khác"
+      }
+    },
+    "address": {
+      "data": {
+        "address_line_1": " Đường đi khoang xanh, Vân Hoà, Ba Vì, Hà Nội, Việt Nam",
+        "address_line_2": null,
+        "area": "396",
+        "area_id": 396,
+        "area_path": "vietnam/ha-noi/ba-vi/396",
+        "city": "Ba Vì",
+        "city_id": 368,
+        "city_path": "vietnam/ha-noi/ba-vi",
+        "state": "Hà Nội",
+        "state_id": 352,
+        "state_path": "vietnam/ha-noi",
+        "country": "Vietnam",
+        "country_path": "vietnam",
+        "latitude": "21.0579138",
+        "longitude": "105.4008073",
+        "full_address": " Đường đi khoang xanh, Vân Hoà, Ba Vì, Hà Nội, Việt Nam"
+      }
+    },
+    "host": {
+      "data": {
+        "id": 177313,
+        "full_name": "Nguyễn Thu Thủy",
+        "created_at": "2019-08-19T16:04:26+00:00",
+        "avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "tiny_avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "about": null,
+        "email_verified": true,
+        "phone_verified": false,
+        "subscribe_url": "/api/me/subscriptions/user/177313",
+        "super_host": false,
+        "response_rate": 100,
+        "cancellation_rate": 0,
+        "rooms": 8,
+        "cc_mails": null
+      }
+    },
+    "photo": {
+      "data": {
+        "id": 2339681,
+        "photo_url": "https://cdn.luxstay.com/rooms/30538/large/8722ec0a898d6ed3379c.jpg",
+        "thumbnail": "https://cdn.luxstay.com/rooms/30538/large/8722ec0a898d6ed3379c.jpg"
+      }
+    },
+    "price": {
+      "data": {
+        "nightly_price": 43.72,
+        "nightly_price_formatted": "$44",
+        "symbol": "$",
+        "currency_code": "USD",
+        "nightly_price_usd": 43.72,
+        "nightly_price_vnd": 1020377.1451999999
+      }
+    }
+  },
+  {
+    "id": 30534,
+    "name": "BAVI Padme Home - Bungalow 1",
+    "num_bedrooms": 1,
+    "num_bathrooms": 1,
+    "num_beds": 1,
+    "maximum_guests": 3,
+    "standard_guests": 2,
+    "booking_type": "instant_book",
+    "status": "Listed",
+    "popular": false,
+    "url": "https://www.luxstay.com/rooms/30534",
+    "rating": 5,
+    "reviews_count": 2,
+    "cashback": null,
+    "instant_fake": false,
+    "propertyType": {
+      "data": {
+        "id": 32,
+        "name": "Khác",
+        "description": "khác"
+      }
+    },
+    "address": {
+      "data": {
+        "address_line_1": "đường vào khoang xanh Đường đi khoang xanh, Vân Hoà, Ba Vì, Hà Nội, Việt Nam",
+        "address_line_2": null,
+        "area": "396",
+        "area_id": 396,
+        "area_path": "vietnam/ha-noi/ba-vi/396",
+        "city": "Ba Vì",
+        "city_id": 368,
+        "city_path": "vietnam/ha-noi/ba-vi",
+        "state": "Hà Nội",
+        "state_id": 352,
+        "state_path": "vietnam/ha-noi",
+        "country": "Vietnam",
+        "country_path": "vietnam",
+        "latitude": "21.0579138",
+        "longitude": "105.4008073",
+        "full_address": "đường vào khoang xanh Đường đi khoang xanh, Vân Hoà, Ba Vì, Hà Nội, Việt Nam"
+      }
+    },
+    "host": {
+      "data": {
+        "id": 177313,
+        "full_name": "Nguyễn Thu Thủy",
+        "created_at": "2019-08-19T16:04:26+00:00",
+        "avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "tiny_avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "about": null,
+        "email_verified": true,
+        "phone_verified": false,
+        "subscribe_url": "/api/me/subscriptions/user/177313",
+        "super_host": false,
+        "response_rate": 100,
+        "cancellation_rate": 0,
+        "rooms": 8,
+        "cc_mails": null
+      }
+    },
+    "photo": {
+      "data": {
+        "id": 2339776,
+        "photo_url": "https://cdn.luxstay.com/rooms/30534/large/f785394a9a4f7d11245e.jpg",
+        "thumbnail": "https://cdn.luxstay.com/rooms/30534/large/f785394a9a4f7d11245e.jpg"
+      }
+    },
+    "price": {
+      "data": {
+        "nightly_price": 43.72,
+        "nightly_price_formatted": "$44",
+        "symbol": "$",
+        "currency_code": "USD",
+        "nightly_price_usd": 43.72,
+        "nightly_price_vnd": 1020377.1451999999
+      }
+    }
+  },
+  {
+    "id": 72002,
+    "name": "BAVI padme home - Villa 8",
+    "num_bedrooms": 1,
+    "num_bathrooms": 1,
+    "num_beds": 4,
+    "maximum_guests": 10,
+    "standard_guests": 8,
+    "booking_type": "instant_book",
+    "status": "Listed",
+    "popular": false,
+    "url": "https://www.luxstay.com/rooms/72002",
+    "rating": 0,
+    "reviews_count": 0,
+    "cashback": null,
+    "instant_fake": false,
+    "propertyType": {
+      "data": {
+        "id": 32,
+        "name": "Khác",
+        "description": "khác"
+      }
+    },
+    "address": {
+      "data": {
+        "address_line_1": "2,  Đường vào Khoang xanh - suối tiên,  Xã Vân Hòa,  Huyện Ba Vì,  Thành phố Hà Nội,  Viet Nam",
+        "address_line_2": null,
+        "area": "396",
+        "area_id": 396,
+        "area_path": "vietnam/ha-noi/ba-vi/396",
+        "city": "Ba Vì",
+        "city_id": 368,
+        "city_path": "vietnam/ha-noi/ba-vi",
+        "state": "Hà Nội",
+        "state_id": 352,
+        "state_path": "vietnam/ha-noi",
+        "country": "Vietnam",
+        "country_path": "vietnam",
+        "latitude": "21.057680080232267",
+        "longitude": "105.40068336633361",
+        "full_address": "2,  Đường vào Khoang xanh - suối tiên,  Xã Vân Hòa,  Huyện Ba Vì,  Thành phố Hà Nội,  Viet Nam"
+      }
+    },
+    "host": {
+      "data": {
+        "id": 177313,
+        "full_name": "Nguyễn Thu Thủy",
+        "created_at": "2019-08-19T16:04:26+00:00",
+        "avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "tiny_avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "about": null,
+        "email_verified": true,
+        "phone_verified": false,
+        "subscribe_url": "/api/me/subscriptions/user/177313",
+        "super_host": false,
+        "response_rate": 100,
+        "cancellation_rate": 0,
+        "rooms": 8,
+        "cc_mails": null
+      }
+    },
+    "photo": {
+      "data": {
+        "id": 2341503,
+        "photo_url": "https://cdn.luxstay.com/users/165375/ELwC220B8b6sH8MgMIKc75Kk.jpg",
+        "thumbnail": "https://cdn.luxstay.com/users/165375/ELwC220B8b6sH8MgMIKc75Kk.jpg"
+      }
+    },
+    "price": {
+      "data": {
+        "nightly_price": 131.16,
+        "nightly_price_formatted": "$131",
+        "symbol": "$",
+        "currency_code": "USD",
+        "nightly_price_usd": 131.16,
+        "nightly_price_vnd": 3061131.4356
+      }
+    }
+  },
+  {
+    "id": 30539,
+    "name": "BAVI Padme Home - Nguyên Khu",
+    "num_bedrooms": 5,
+    "num_bathrooms": 6,
+    "num_beds": 20,
+    "maximum_guests": 40,
+    "standard_guests": 36,
+    "booking_type": "instant_book",
+    "status": "Listed",
+    "popular": false,
+    "url": "https://www.luxstay.com/rooms/30539",
+    "rating": 5,
+    "reviews_count": 2,
+    "cashback": null,
+    "instant_fake": false,
+    "propertyType": {
+      "data": {
+        "id": 32,
+        "name": "Khác",
+        "description": "khác"
+      }
+    },
+    "address": {
+      "data": {
+        "address_line_1": "Đường vào Khoang xanh suối tiên Đường đi khoang xanh, Vân Hoà, Ba Vì, Hà Nội, Vietnam",
+        "address_line_2": null,
+        "area": "396",
+        "area_id": 396,
+        "area_path": "vietnam/ha-noi/ba-vi/396",
+        "city": "Ba Vì",
+        "city_id": 368,
+        "city_path": "vietnam/ha-noi/ba-vi",
+        "state": "Hà Nội",
+        "state_id": 352,
+        "state_path": "vietnam/ha-noi",
+        "country": "Vietnam",
+        "country_path": "vietnam",
+        "latitude": "21.0579138",
+        "longitude": "105.4008073",
+        "full_address": "Đường vào Khoang xanh suối tiên Đường đi khoang xanh, Vân Hoà, Ba Vì, Hà Nội, Vietnam"
+      }
+    },
+    "host": {
+      "data": {
+        "id": 177313,
+        "full_name": "Nguyễn Thu Thủy",
+        "created_at": "2019-08-19T16:04:26+00:00",
+        "avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "tiny_avatar": "https://cdn.luxstay.com/users/177313/avatar_4889e8e1-bbb9-4f56-89fb-512cf23fdc31.",
+        "about": null,
+        "email_verified": true,
+        "phone_verified": false,
+        "subscribe_url": "/api/me/subscriptions/user/177313",
+        "super_host": false,
+        "response_rate": 100,
+        "cancellation_rate": 0,
+        "rooms": 8,
+        "cc_mails": null
+      }
+    },
+    "photo": {
+      "data": {
+        "id": 2339555,
+        "photo_url": "https://cdn.luxstay.com/rooms/30539/large/room_30539_48_1566543360.jpg",
+        "thumbnail": "https://cdn.luxstay.com/rooms/30539/large/room_30539_48_1566543360.jpg"
+      }
+    },
+    "price": {
+      "data": {
+        "nightly_price": 437.21,
+        "nightly_price_formatted": "$437",
+        "symbol": "$",
+        "currency_code": "USD",
+        "nightly_price_usd": 437.21,
+        "nightly_price_vnd": 10204004.8411
+      }
+    }
+  }
+];

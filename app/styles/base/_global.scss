@@ -72,6 +72,20 @@ img, video, audio {
   margin: 3px 10px;
 }
 
+.stars {
+  display: inline-block;
+  vertical-align: middle;
+  > i {
+    width: 16px;
+    height: 16px;
+    background-image: url("../images/icon/star.svg");
+    margin: 0 3px;
+    &.no-star {
+      background-image: url("../images/icon/no-star.svg");
+    }
+  }
+}
+
 .gap-30 {
   height: 30px;
   @include media-breakpoint-down(sm) {
