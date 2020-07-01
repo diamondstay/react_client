@@ -19,13 +19,9 @@ function Search(props) {
 
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
-    let name = data.keyword,
-      email = data.email,
-      phone = data.phone,
-      address = data.address,
-      message = data.message;
+    let keyword = data.keyword;
 
-    props.onSubmit({name, email, phone, address, message});
+    props.onSubmit({keyword});
     e.target.reset(); // reset after form submit
   };
 

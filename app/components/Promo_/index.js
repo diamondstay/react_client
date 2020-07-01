@@ -24,12 +24,6 @@ function Promo(props) {
           <div style={{ backgroundImage: `url(${item.photo.data.photo_url})` }}/>
         </div>
         <div className="promo-content">
-          {
-            item.type_room ?
-              <div className="promo-type">
-                {item.type_room}
-              </div> : <></>
-          }
           <h3 className="promo-name">{item.name}</h3>
           <div className="promo-description">
             {item.maximum_guests} khách <span className="bullet" />

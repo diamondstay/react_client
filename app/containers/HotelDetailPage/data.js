@@ -2003,3 +2003,17 @@ export const otherList = [
     }
   }
 ];
+
+// https://www.luxstay.com/api/rooms/30505/promotion?_rpc=
+export const promotion = {
+  "percent": 15,
+  "promotion_ids": [
+    12223,
+    12224,
+    12225
+  ],
+  "sale_price": 5100000,
+  "price": 6000000,
+  "flash_sale": null,
+  "my_coupon": null
+};
