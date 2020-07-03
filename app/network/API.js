@@ -89,6 +89,24 @@ API.filter = param => {
     });
 };
 
+API.fetchRoomNextPage = param => {
+  // console.log('lan 3', param);
+  // console.log(headers);
+  const queryStringParam = queryString.stringify(param);
+
+  // debugger;
+  return API.instance
+    .get(`${Endpoints.ENDPOINT_CLIENT}/search?${queryStringParam}`)
+    .then(
+      response =>
+        // console.log(response);
+        response.data,
+    )
+    .catch(error => {
+      throw error;
+    });
+};
+
 // == search loaction
 
 API.searchLoction = query => {
