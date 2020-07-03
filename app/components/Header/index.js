@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Logo from 'images/header-logo.png';
@@ -7,9 +7,19 @@ import { Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import defaultAvatar from 'images/default-avatar.png';
 import UserMenu from './menu';
+import isEmpty from 'lodash/isEmpty';
+import reactLocalStorage from 'utils/localStorage';
 
 function Header() {
-  let auth = true;
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    const userAccount = reactLocalStorage.getObject('user-account');
+    if (isEmpty(userAccount)) {
+      setAuth(false);
+    } else {
+      setAuth(true);
+    }
+  }, []);
 
   return (
     <header id="diamond-header">

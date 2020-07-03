@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Logo from 'images/logo.png';
@@ -6,15 +6,25 @@ import { Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import defaultAvatar from 'images/default-avatar.png';
 import UserMenu from './menu';
+import reactLocalStorage from 'utils/localStorage';
+import isEmpty from 'lodash/isEmpty';
 
 function Header() {
-  let auth = true;
+  const [auth, setAuth] = useState(false);
+  useEffect(() => {
+    const userAccount = reactLocalStorage.getObject('user-account');
+    if (isEmpty(userAccount)) {
+      setAuth(false);
+    } else {
+      setAuth(true);
+    }
+  }, []);
 
   return (
     <header id="diamond-header">
       <Navbar expand="sm" className="align-items-center">
         <Navbar.Brand href="/">
-          <img src={Logo} alt="Diadmon Stay" />
+          <img src={Logo} alt="Diadmond Stay" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-menu" />
         <Navbar.Collapse id="navbar-menu">

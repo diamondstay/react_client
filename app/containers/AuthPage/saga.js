@@ -7,13 +7,15 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Messages from 'constants/messages';
 import { push } from 'react-router-redux';
+import reactLocalStorage from 'utils/localStorage';
 
 export function* userLogin(args) {
   try {
     const resp = yield call(API.login, args.data);
     if (resp.code === 200) {
       yield put(loginSuccess(resp));
-      // toast(Messages.loginSuccess);
+      toast(Messages.loginSuccess);
+      yield call(reactLocalStorage.setObject, 'user-account', resp.data);
       yield put(push('/')); // Redirect to Home page
     } else {
       toast(Messages.loginError);
