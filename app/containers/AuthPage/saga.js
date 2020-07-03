@@ -6,13 +6,15 @@ import { API } from '../../network';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Messages from 'constants/messages';
+import { push } from 'react-router-redux';
 
 export function* userLogin(args) {
   try {
     const resp = yield call(API.login, args.data);
     if (resp.code === 200) {
       yield put(loginSuccess(resp));
-      toast(Messages.loginSuccess);
+      // toast(Messages.loginSuccess);
+      yield put(push('/')); // Redirect to Home page
     } else {
       toast(Messages.loginError);
     }
@@ -26,7 +28,8 @@ export function* userRegister(args) {
     const resp = yield call(API.register, args.data);
     if (resp.code === 200) {
       yield put(registerSuccess(resp));
-      toast(Messages.registerSuccess);
+      // toast(Messages.registerSuccess);
+      yield put(push('/thank-you')); // Redirect to Thank you page
     } else {
       toast(Messages.registerError);
     }

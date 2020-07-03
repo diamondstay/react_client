@@ -12,31 +12,37 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectAuthPage from './selectors';
+import makeSelectAuthPage, { makeSelectLogin } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import AuthTemplate from './template';
+import { userLogin } from './actions';
 
-export function AuthPage() {
+export function AuthPage({onSubmitForm}) {
   useInjectReducer({ key: 'authPage', reducer });
   useInjectSaga({ key: 'authPage', saga });
 
   return (
-    <AuthTemplate type={2} />
+    <AuthTemplate type={2} onSubmit={onSubmitForm} />
   );
 }
 
 AuthPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  login: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   authPage: makeSelectAuthPage(),
+  loginSuccess: makeSelectLogin()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onSubmitForm: (data) => {
+      dispatch(userLogin(data));
+    },
   };
 }
 

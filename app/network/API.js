@@ -52,7 +52,11 @@ API.register = (params) => {
     });
 };
 
-API.login = (data) => {
+API.login = (params) => {
+  const data = {
+    email: params.email,
+    password: params.password,
+  };
   return API.instance
     .post(Endpoints.LOGIN_URL, data, {
       headers: headers,

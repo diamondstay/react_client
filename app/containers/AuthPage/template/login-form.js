@@ -1,63 +1,56 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 function FormTemplate(props) {
 
   const { register, handleSubmit, watch, errors } = useForm();
 
   const onSubmit = (data, e) => {
-    let name = data.name,
-      email = data.email,
-      phone = data.phone;
+    let email = data.email,
+        password = data.password;
 
-    props.onSubmit({name, email, phone});
+    props.onSubmit({email, password});
     e.target.reset(); // reset after form submit
   };
 
   return (
     <section id="auth-form">
-      <h2 className="page-title">Đăng nhập thành viên</h2>
+      <h2 className="page-title">Đăng nhập</h2>
+      <p className="mb-4">Đăng nhập Luxstay để trải nghiệm</p>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" name="name" placeholder="Name"
-                        ref={register({
-                          required: "This field is required"
-                        })} />
-          {errors.name && <p className="error">{errors.name.message}</p>}
-        </Form.Group>
-
         <Form.Group controlId="formEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" name="email" placeholder="Email"
+          <Form.Control type="email" name="email" placeholder=""
                         ref={register({
-                          required: "This field is required",
+                          required: "Vui lòng nhập",
                           pattern: {
                             value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                            message: "Invalid email address"
+                            message: "Địa chỉ email sai"
                           }
                         })} />
           {errors.email && <p className="error">{errors.email.message}</p>}
         </Form.Group>
 
-        <Form.Group controlId="formPhone">
-          <Form.Label>Phone</Form.Label>
-          <Form.Control type="text" name="phone" placeholder="Phone"
+        <Form.Group controlId="formPassword">
+          <Form.Label>Mật khẩu</Form.Label>
+          <Form.Control type="password" name="password" placeholder=""
                         ref={register({
-                          required: "This field is required",
-                          pattern: {
-                            value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
-                            message: "Invalid phone number"
-                          }
+                          required: "Vui lòng nhập"
                         })} />
-          {errors.phone && <p className="error">{errors.phone.message}</p>}
+          {errors.password && <p className="error">{errors.password.message}</p>}
         </Form.Group>
 
         <div className="form-submit">
-          <button className="btn submit-button" type="submit">Submit</button>
+          <button className="btn submit-button" type="submit">Đăng nhập</button>
         </div>
       </Form>
+
+      <div className="form-note">
+        <p>Quên mật khẩu? <br /> <Link to={'/reset-password'}>Nhấn vào đây</Link></p>
+        <p>Bạn chưa có tài khoản Luxstay? <br /> <Link to={'/register'}>Đăng ký</Link></p>
+      </div>
     </section>
   );
 }

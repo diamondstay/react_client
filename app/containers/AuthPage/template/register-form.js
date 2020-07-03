@@ -9,9 +9,9 @@ function FormTemplate(props) {
 
   const onSubmit = (data, e) => {
     let firstName = data.firstName,
-      lastName = data.lastName,
-      email = data.email,
-      password = data.password;
+        lastName = data.lastName,
+        email = data.email,
+        password = data.password;
 
     props.onSubmit({firstName, lastName, email, password});
     e.target.reset(); // reset after form submit
@@ -49,7 +49,7 @@ function FormTemplate(props) {
                           required: "Vui lòng nhập",
                           pattern: {
                             value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                            message: "Invalid email address"
+                            message: "Địa chỉ email sai"
                           }
                         })} />
           {errors.email && <p className="error">{errors.email.message}</p>}
@@ -59,7 +59,11 @@ function FormTemplate(props) {
           <Form.Label>Mật khẩu</Form.Label>
           <Form.Control type="password" name="password" placeholder=""
                         ref={register({
-                          required: "Vui lòng nhập"
+                          required: "Vui lòng nhập",
+                          pattern: {
+                            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+                            message: "Mật khẩu tối thiểu 6 ký tự, gồm chữ và số."
+                          }
                         })} />
           {errors.password && <p className="error">{errors.password.message}</p>}
         </Form.Group>
@@ -79,7 +83,7 @@ function FormTemplate(props) {
         </div>
       </Form>
       <div className="form-note">
-        Bạn đã có tài khoản Diadmond Stay? <br /> <Link to={'/login'}>Đăng nhập</Link>
+        <p>Bạn đã có tài khoản Diadmond Stay? <br /> <Link to={'/login'}>Đăng nhập</Link></p>
       </div>
     </section>
   );

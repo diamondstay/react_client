@@ -31,7 +31,7 @@
     padding-left: 1rem;
     @include transition(color 0.3s linear);
     &:hover, &:focus {
-      color: $orange;
+      color: $orange !important;
     }
   }
   .navbar-toggler {

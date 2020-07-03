@@ -17,6 +17,7 @@ import { compose } from 'redux';
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPage from 'containers/AuthPage/login';
 import RegisterPage from 'containers/AuthPage/register';
+import ThankYouPage from 'containers/AuthPage/thank-you';
 import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
 import SearchResultPage from 'containers/SearchResultPage/Loadable';
 import HostPage from 'containers/HostPage/Loadable';
@@ -129,6 +130,7 @@ function App({ alerts }) {
         <GeneralLayout exact path="/" component={HomePage} />
         <AuthLayout exact path="/login" component={LoginPage} />
         <AuthLayout exact path="/register" component={RegisterPage} />
+        <AuthLayout exact path="/thank-you" component={ThankYouPage} />
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
 
         <GeneralLayout
