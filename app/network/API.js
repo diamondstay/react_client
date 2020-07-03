@@ -80,4 +80,46 @@ API.resetPassword = (data) => {
     });
 };
 
+API.getHotelDetail = (id) =>
+  API.instance
+    .get(`${Endpoints.APARTMENT_URL}/${id}`)
+    .then(response => response.data)
+    .catch(error => {
+      throw error;
+    });
+
+// === bo loc
+API.filter = param => {
+  // console.log('lan 3', param);
+  // console.log(headers);
+  const queryStringParam = queryString.stringify(param);
+
+  // debugger;
+  return API.instance
+    .get(`${Endpoints.ENDPOINT_CLIENT}/search?${queryStringParam}`)
+    .then(
+      response =>
+        // console.log(response);
+        response.data,
+    )
+    .catch(error => {
+      throw error;
+    });
+};
+
+// == search loaction
+
+API.searchLoction = query => {
+  debugger;
+  console.log('lan 3', query);
+  // console.log(headers);
+
+  return API.instance
+    .post(`${Endpoints.ENDPOINT_CLIENT}/search-box?key=${query}`)
+    .then(response => response.data)
+    .catch(error => {
+      throw error;
+    });
+};
+
 export default API;
