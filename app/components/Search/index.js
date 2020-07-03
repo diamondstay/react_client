@@ -7,10 +7,10 @@
 import React, { useState, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { Row, Col, Form } from 'react-bootstrap';
-import { search } from 'components/Icon';
+import { search, user } from 'components/Icon';
 import { DatePicker, Popover, InputNumber } from 'antd';
 import moment from 'moment';
-import { user } from 'components/Icon';
+
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import 'moment/locale/vi';
@@ -24,7 +24,7 @@ function Search(props) {
 
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
-    let keyword = data.keyword;
+    const { keyword } = data;
 
     props.onSubmit({ keyword });
     e.target.reset(); // reset after form submit
@@ -154,7 +154,7 @@ function Search(props) {
                 <div className="guest-info">
                   <i className="guest-icon">{user}</i>
                   <span className="guest-quality">
-                    {adult < 1 ? 'Số khách' : adult + kid + baby + ' khách'}
+                    {adult < 1 ? 'Số khách' : `${adult + kid + baby} khách`}
                   </span>
                 </div>
               </Popover>
@@ -196,42 +196,39 @@ function Search(props) {
         <div className="search-box">
           <h4 className="title">Kết quả tìm kiếm</h4>
           <div className="result">
-            {location.map(item => {
-              return (
-                <span
-                  className="item"
-                  key={item}
-                  onClick={() =>
-                    props.history.push(
-                      `/search?${queryString.stringify({
-                        convenience:
-                          queryString.parse(props.location.search)
-                            .convenience || '',
-                        type:
-                          queryString.parse(props.location.search).type || '',
-                        guest:
-                          adult + kid + baby !== 0
-                            ? adult + kid + baby
-                            : undefined,
-                        checkin,
-                        checkout,
-                        province: item,
-                        min_price: queryString.parse(props.location.search)
-                          .min_price,
-                        max_price: queryString.parse(props.location.search)
-                          .max_price,
-                        limit: 10,
-                        page: 1,
-                        sort_by_price: 'desc',
-                      })}`,
-                      setLocation(() => []),
-                    )
-                  }
-                >
-                  {item}
-                </span>
-              );
-            })}
+            {location.map(item => (
+              <span
+                className="item"
+                key={item}
+                onClick={() =>
+                  props.history.push(
+                    `/search?${queryString.stringify({
+                      convenience:
+                        queryString.parse(props.location.search).convenience ||
+                      type:
+                      type: queryString.parse(props.location.search).type || '',
+                      guest:
+                        adult + kid + baby !== 0
+                          ? adult + kid + baby
+                          : undefined,
+                      checkin,
+                      checkout,
+                      province: item,
+                      min_price: queryString.parse(props.location.search)
+                        .min_price,
+                      max_price: queryString.parse(props.location.search)
+                        .max_price,
+                      limit: 10,
+                      page: 1,
+                      sort_by_price: 'desc',
+                    })}`,
+                    setLocation(() => []),
+                  )
+                }
+              >
+                {item}
+              </span>
+            ))}
           </div>
         </div>
       ) : null}

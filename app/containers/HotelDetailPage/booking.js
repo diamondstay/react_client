@@ -6,12 +6,11 @@
 
 import React, { useState } from 'react';
 import Sticky from 'react-sticky-el';
-import { Filter } from 'constants/index';
+import { Filter, DateTime } from 'constants/index';
 import { Col, Form, Row } from 'react-bootstrap';
 import moment from 'moment';
 import { DatePicker, Popover, InputNumber } from 'antd';
 import { useForm } from 'react-hook-form';
-import { DateTime } from 'constants/index';
 
 function HotelBooking(props) {
   const { promotion } = { ...props };
@@ -22,7 +21,7 @@ function HotelBooking(props) {
 
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
-    let keyword = data.keyword;
+    const { keyword } = data;
 
     props.onSubmit({ keyword });
     e.target.reset(); // reset after form submit
@@ -101,12 +100,10 @@ function HotelBooking(props) {
     </div>
   );
 
-  const getJoinTime = date => {
-    return moment(date).format(DateTime.SHORT_DATE_1);
-  };
+  const getJoinTime = date => moment(date).format(DateTime.SHORT_DATE_1);
 
   return (
-    <Sticky stickyClassName={'booking-sticky'}>
+    <Sticky stickyClassName="booking-sticky">
       <section id="diamond-booking">
         <div className="booking-wrapper">
           <div className="booking-price">
@@ -142,7 +139,7 @@ function HotelBooking(props) {
               >
                 <div className="guest-info">
                   <span className="guest-quality">
-                    {adult < 1 ? 'Số khách' : adult + kid + baby + ' khách'}
+                    {adult < 1 ? 'Số khách' : `${adult + kid + baby} khách`}
                   </span>
                 </div>
               </Popover>

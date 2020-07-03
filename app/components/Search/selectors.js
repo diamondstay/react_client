@@ -12,12 +12,11 @@ const selectSearchLocationDomain = state =>
  * Other specific selectors
  */
 
-const makeSelectLocation = () => {
-  return createSelector(
+const makeSelectLocation = () =>
+  createSelector(
     selectSearchLocationDomain,
     globalState => globalState.searchLocation,
   );
-};
 
 /**
  * Default selector used by SearchLocation

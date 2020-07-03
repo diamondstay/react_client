@@ -54,9 +54,9 @@ function SearchResultPage(props) {
         </div>
         <Row>
           {filterResult && filterResult.data
-            ? filterResult.data.map(room => {
-                return <Room width={20} key={room.id} room={room} />;
-              })
+            ? filterResult.data.map(room => (
+                <Room width={20} key={room.id} room={room} />
+              ))
             : null}
         </Row>
         {/* Phân trang */}

@@ -1,9 +1,9 @@
 // import { take, call, put, select } from 'redux-saga/effects';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 import { searchLocationSuccess } from './actions';
 import { SEARCH_LOCATION } from './constants';
 import { API } from '../../network';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Messages from 'constants/messages';
 

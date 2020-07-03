@@ -12,12 +12,11 @@ const selectSearchResultPageDomain = state =>
  * Other specific selectors
  */
 
-const makeSelectFilter = () => {
-  return createSelector(
+const makeSelectFilter = () =>
+  createSelector(
     selectSearchResultPageDomain,
     globalState => globalState.filterResult,
   );
-};
 
 /**
  * Default selector used by SearchResultPage

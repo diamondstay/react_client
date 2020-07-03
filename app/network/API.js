@@ -1,9 +1,9 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import moment from 'moment';
 import * as AccessTokenInterceptor from './interceptors/accessToken';
 import * as UnauthorizeInterceptor from './interceptors/unauthorize';
 import { AppConfig, Env, Endpoints, Enum } from '../constants';
-import moment from 'moment';
 import endpoints from '../constants/endpoints';
 
 const headers = {
@@ -44,39 +44,31 @@ API.register = params => {
   };
   return API.instance
     .post(Endpoints.REGISTER_URL, data, {
-      headers: headers,
+      headers,
     })
-    .then(response => {
-      return response.data;
-    })
+    .then(response => response.data)
     .catch(error => {
       throw error;
     });
 };
 
-API.login = data => {
-  return API.instance
+API.login = data =>
+  API.instance
     .post(Endpoints.LOGIN_URL, data, {
-      headers: headers,
+      headers,
     })
-    .then(response => {
-      return response.data;
-    })
+    .then(response => response.data)
     .catch(error => {
       throw error;
     });
-};
 
-API.resetPassword = data => {
-  return API.instance
+API.resetPassword = data =>
+  API.instance
     .post(Endpoints.RESET_PASSWORD_URL, data)
-    .then(response => {
-      return response.data;
-    })
+    .then(response => response.data)
     .catch(error => {
       throw error;
     });
-};
 
 // === bo loc
 API.filter = param => {
@@ -87,10 +79,11 @@ API.filter = param => {
   // debugger;
   return API.instance
     .get(`${Endpoints.ENDPOINT_CLIENT}/search?${queryStringParam}`)
-    .then(response => {
-      // console.log(response);
-      return response.data;
-    })
+    .then(
+      response =>
+        // console.log(response);
+        response.data,
+    )
     .catch(error => {
       throw error;
     });
@@ -105,9 +98,7 @@ API.searchLoction = query => {
 
   return API.instance
     .post(`${Endpoints.ENDPOINT_CLIENT}/search-box?key=${query}`)
-    .then(response => {
-      return response.data;
-    })
+    .then(response => response.data)
     .catch(error => {
       throw error;
     });
