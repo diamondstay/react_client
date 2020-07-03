@@ -1700,17 +1700,17 @@ export const chart = [
   {
     label: 'Đặt phòng thành công',
     color: '#28ca6e',
-    content: 'Hoàn tiền 50%',
+    content: 'Hoàn tiền 100%',
   },
   {
     label: ' Sau 48h',
     color: '#ffb500',
-    content: 'Hoàn 50% (trừ phí dịch vụ)',
+    content: 'Hoàn tiền 100% (trừ phí dịch vụ)',
   },
   {
     label: '14 ngày trước check-in',
     color: '#f65e39',
-    content: 'Không hoàn tiền',
+    content: 'Hoàn 50% (trừ phí đêm đầu tiên, phí dịch vụ và các phí kèm theo)',
   },
   {
     label: 'Check-in',

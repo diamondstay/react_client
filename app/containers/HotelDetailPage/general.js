@@ -19,7 +19,7 @@ function HotelGeneral(props) {
           <i>{mapMarker}</i> <span>{detail.address.data.city}, {detail.address.data.state}, {detail.address.data.country}</span>
         </li>
         <li>
-          <i>{building}</i> <span><strong>{detail.propertyType.data.name}</strong> &middot; {detail.area}m<sup>2</sup></span>
+          <i>{building}</i> <span><strong>{detail.propertyType.data.name}</strong> <span className="bullet" /> {detail.area}m<sup>2</sup></span>
         </li>
       </ul>
       <div className="hotel-overview mb-3">
