@@ -131,11 +131,7 @@ function App({ alerts }) {
         <AuthLayout exact path="/register" component={RegisterPage} />
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
 
-        <GeneralLayout
-          path="/search-result"
-          component={SearchResultPage}
-          exact
-        />
+        <GeneralLayout path="/search" component={SearchResultPage} exact />
         <GeneralLayout path="/host/:id" component={HostPage} exact />
 
         {/* <Route exact path="/" component={HomePage} /> */}

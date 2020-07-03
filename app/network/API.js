@@ -1,11 +1,13 @@
 import axios from 'axios';
+import queryString from 'query-string';
 import * as AccessTokenInterceptor from './interceptors/accessToken';
 import * as UnauthorizeInterceptor from './interceptors/unauthorize';
 import { AppConfig, Env, Endpoints, Enum } from '../constants';
 import moment from 'moment';
+import endpoints from '../constants/endpoints';
 
 const headers = {
-  Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`
+  Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
 };
 
 const getInstance = () => {
@@ -33,7 +35,7 @@ const API = {
  * Auth API
  */
 
-API.register = (params) => {
+API.register = params => {
   const data = {
     first_name: params.firstName,
     last_name: params.lastName,
@@ -52,7 +54,7 @@ API.register = (params) => {
     });
 };
 
-API.login = (data) => {
+API.login = data => {
   return API.instance
     .post(Endpoints.LOGIN_URL, data, {
       headers: headers,
@@ -65,9 +67,44 @@ API.login = (data) => {
     });
 };
 
-API.resetPassword = (data) => {
+API.resetPassword = data => {
   return API.instance
     .post(Endpoints.RESET_PASSWORD_URL, data)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      throw error;
+    });
+};
+
+// === bo loc
+API.filter = param => {
+  // console.log('lan 3', param);
+  // console.log(headers);
+  const queryStringParam = queryString.stringify(param);
+
+  // debugger;
+  return API.instance
+    .get(`${Endpoints.ENDPOINT_CLIENT}/search?${queryStringParam}`)
+    .then(response => {
+      // console.log(response);
+      return response.data;
+    })
+    .catch(error => {
+      throw error;
+    });
+};
+
+// == search loaction
+
+API.searchLoction = query => {
+  debugger;
+  console.log('lan 3', query);
+  // console.log(headers);
+
+  return API.instance
+    .post(`${Endpoints.ENDPOINT_CLIENT}/search-box?key=${query}`)
     .then(response => {
       return response.data;
     })

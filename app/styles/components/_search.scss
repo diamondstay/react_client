@@ -94,6 +94,33 @@
       opacity: 0.85;
     }
   }
+  .search-box{
+    position: absolute;
+    background: white;
+    width: 305px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.2);
+    top: 67.5px;
+    .title{
+      padding: 10px;
+    }
+    .result{
+      padding-left: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .item{
+      font-weight: 600;
+      color: #555;
+      padding-bottom: 10px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      &:hover{
+        color: rgb(221, 106, 11);
+        padding-left: 8px;
+      }
+    }
+  }
 }
 
 .guest-select-number {
