@@ -1,119 +1,63 @@
-import React from 'react';
-import './index.scss';
-import { NavLink, withRouter } from 'react-router-dom';
-import { Container, Row } from 'react-bootstrap';
-import ItemFilter from '../../components/ItemFilter/index';
-import Room from '../../components/Room/index';
+import React, { useEffect, memo } from 'react';
 import queryString from 'query-string';
+import { withRouter } from 'react-router-dom';
+import { Container, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+
+import { useInjectSaga } from 'utils/injectSaga';
+import { useInjectReducer } from 'utils/injectReducer';
+import makeSelectSearchResultPage, { makeSelectFilter } from './selectors';
+
+import reducer from './reducer';
+import saga from './saga';
+import './index.scss';
+
+import ItemFilters from '../../components/ItemFilters/index';
+import Room from '../../components/Room/index';
+import { filter } from './actions';
 
 function SearchResultPage(props) {
-  const { location } = props;
-  console.log(queryString.parse(location.search).type);
-  // console.log(queryString.parse(location.search).user);
+  const { location, filterResult } = props;
+  console.log(filterResult);
+  useInjectReducer({ key: 'searchResultPage', reducer });
+  useInjectSaga({ key: 'searchResultPage', saga });
 
-  // const slug = 'da-nang';
-  // const id = 2;
-  // const keywor = '2nguoi';
-  // const user = 10;
-  const filterButton = [
-    {
-      lable: 'Địa điểm',
-      name: 'loaction',
-      id: 1,
-      options: [
-        {
-          name: 'Sài gòn',
-          id: 12,
-        },
-        {
-          name: 'Đà Nẵng',
-          id: 11,
-        },
-        {
-          name: 'Vũng Tàu',
-          id: 9,
-        },
-      ],
-    },
-    {
-      lable: 'Gía cả',
-      name: 'price',
-      id: 2,
-      options: [
-        {
-          name: '100.000 - 200.000',
-          id: 126,
-        },
-        {
-          name: '300.000 - 400.000',
-          id: 117,
-        },
-        {
-          name: '500.000 - 600.000',
-          id: 19,
-        },
-      ],
-    },
-    {
-      lable: 'Tiện ích',
-      name: 'utils',
-      id: 3,
-      options: [
-        {
-          name: 'Có điều hòa',
-          id: 123,
-        },
-        {
-          name: 'Có máy giặt',
-          id: 114,
-        },
-        {
-          name: 'Có ghế tình yêu',
-          id: 89,
-        },
-      ],
-    },
-    {
-      lable: 'Loại căn hộ',
-      name: 'type',
-      id: 4,
-      options: [
-        {
-          name: 'Chung cư',
-          id: 134,
-        },
-        {
-          name: 'Biệt thự',
-          id: 111,
-        },
-        {
-          name: 'Nhà riêng',
-          id: 112,
-        },
-      ],
-    },
-  ];
-  // const getOption = value => {
-  //   console.log(value);
-  // };
+  useEffect(() => {
+    const param = {};
+    param.type = queryString.parse(location.search).type || '';
+    param.convenience = queryString.parse(location.search).convenience || '';
+    param.guest = queryString.parse(location.search).guest;
+    param.province = queryString.parse(location.search).province;
+    param.min_price = queryString.parse(location.search).min_price;
+    param.max_price = queryString.parse(location.search).max_price;
+    param.checkin = queryString.parse(location.search).checkin;
+    param.checkout = queryString.parse(location.search).checkout;
+    param.limit = queryString.parse(location.search).limit;
+    param.page = queryString.parse(location.search).page;
+    param.sort_by_price = queryString.parse(location.search).sort_by_price;
+
+    props.onchangeFilter(param);
+  }, [location.search]);
+
   return (
     <Container>
       {/* Filter by */}
-      {/* <NavLink to={`/location/${slug}.${id}?keywor=${keywor}&user=${user}`}>
-        linh chuyen page va filter
-      </NavLink> */}
-      <div className="filter-by">
-        {filterButton.map(item => (
-          // <ItemFilter item={item} key={item.id} getOption={getOption} />
-          <ItemFilter item={item} key={item.id} />
-        ))}
-      </div>
-
+      <ItemFilters />
       {/* Phần kết quả - rooms */}
       <div className="list-room">
-        <div className="page-title"> Có 12 homestay Vũng Tàu</div>
+        <div className="page-title">
+          {' '}
+          Có {filterResult && filterResult.total_record} homestay phù hợp cho
+          bạn
+        </div>
         <Row>
-          <Room width={20} />
+          {filterResult && filterResult.data
+            ? filterResult.data.map(room => (
+                <Room width={20} key={room.id} room={room} />
+              ))
+            : null}
         </Row>
         {/* Phân trang */}
         <span className="btn-seeMore">Xem thêm</span>
@@ -121,4 +65,28 @@ function SearchResultPage(props) {
     </Container>
   );
 }
-export default withRouter(SearchResultPage);
+
+const mapStateToProps = createStructuredSelector({
+  searchResultPage: makeSelectSearchResultPage(),
+  filterResult: makeSelectFilter(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    onchangeFilter: param => {
+      dispatch(filter(param));
+    },
+  };
+}
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default withRouter(
+  compose(
+    withConnect,
+    memo,
+  )(SearchResultPage),
+);

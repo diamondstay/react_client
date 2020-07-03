@@ -41,3 +41,11 @@ function HostPage() {
   );
 }
 export default HostPage;
+
+// git pull origin master
+// git add .
+// git commit -m "----"
+
+// git checkout master
+// git merge home-vendor-page
+// git push origin master

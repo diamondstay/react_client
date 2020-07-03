@@ -73,51 +73,45 @@ const key = 'app';
 function App({ alerts }) {
   useInjectReducer({ key, reducer });
 
-  const GeneralLayout = ({ component: Component, ...rest }) => {
-    return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <>
-            <Header />
-            <Component {...matchProps} />
-            <Footer />
-          </>
-        )}
-      />
-    );
-  };
+  const GeneralLayout = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={matchProps => (
+        <>
+          <Header />
+          <Component {...matchProps} />
+          <Footer />
+        </>
+      )}
+    />
+  );
 
-  const HotelLayout = ({ component: Component, ...rest }) => {
-    return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <>
-            <Header1 />
-            <Component {...matchProps} />
-          </>
-        )}
-      />
-    );
-  };
+  const HotelLayout = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={matchProps => (
+        <>
+          <Header1 />
+          <Component {...matchProps} />
+        </>
+      )}
+    />
+  );
 
-  const AuthLayout = ({ component: Component, ...rest }) => {
-    return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <>
-            <Header2 />
-            <Component {...matchProps} />
-          </>
-        )}
-      />
-    );
-  };
+  const AuthLayout = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={matchProps => (
+        <>
+          <Header2 />
+          <Component {...matchProps} />
+        </>
+      )}
+    />
+  );
 
   const alertsProps = {
-    alerts
+    alerts,
   };
 
   return (
@@ -133,11 +127,7 @@ function App({ alerts }) {
         <AuthLayout exact path="/thank-you" component={ThankYouPage} />
         <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
 
-        <GeneralLayout
-          path="/search-result"
-          component={SearchResultPage}
-          exact
-        />
+        <GeneralLayout path="/search" component={SearchResultPage} exact />
         <GeneralLayout path="/host/:id" component={HostPage} exact />
 
         {/* <Route exact path="/" component={HomePage} /> */}
@@ -150,16 +140,16 @@ function App({ alerts }) {
 }
 
 App.propTypes = {
-  alerts: PropTypes.any
+  alerts: PropTypes.any,
 };
 
 const mapStateToProps = createStructuredSelector({
-  alerts: makeSelectAlert()
+  alerts: makeSelectAlert(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
