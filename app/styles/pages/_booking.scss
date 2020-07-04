@@ -1,0 +1,16 @@
+#diamond-booking-info {
+  .info-item {
+    margin-bottom: 30px;
+    > div {
+      margin-right: 15px;
+    }
+    .item-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .item-value {
+      background-color: #fafafa;
+      padding: 10px 20px;
+    }
+  }
+}

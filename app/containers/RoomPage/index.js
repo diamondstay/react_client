@@ -59,7 +59,7 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
   return (
     <article>
       <Helmet>
-        <title>Hotel</title>
+        <title>Room</title>
       </Helmet>
 
       <RoomGallery gallery={roomDetail.gallery} />

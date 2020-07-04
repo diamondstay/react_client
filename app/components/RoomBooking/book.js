@@ -12,10 +12,11 @@ import Form from 'react-bootstrap/Form';
 import moment from 'moment';
 import reactLocalStorage from 'utils/localStorage';
 import { Filter } from 'constants/index';
+import { useHistory } from "react-router-dom";
 
 function Book(props) {
-
   const { detail } = {...props};
+  let history = useHistory();
 
   const maxGuests = detail.capacity_max;
   const price = detail.price_promotion ? detail.price_promotion : detail.price;
@@ -27,7 +28,10 @@ function Book(props) {
   const { RangePicker } = DatePicker;
   const dateFormat = 'DD / MM / YYYY';
 
-  const getBookTime = date => moment(date).format('YYYY-MM-DD');
+  const getBookTime = (date) => {
+    let dateArr = date.split(' / ');
+    return dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2];
+  };
 
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
@@ -35,10 +39,13 @@ function Book(props) {
       check_in: checkinDate,
       check_out: checkoutDate,
       adult: adult,
-      child: child
+      child: child,
+      days: days
     }
-    console.log(bookingInfo);
     reactLocalStorage.setObject('booking-info', bookingInfo);
+
+    // Redirect to Checkout page
+    history.push('/checkout/booking');
   };
 
   const changeDate = (date, dateString) => {
