@@ -16,24 +16,27 @@ import makeSelectBookingPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Helmet } from 'react-helmet';
-import BookingInfo from 'components/BookingInfo';
 import { Container, Row, Col } from 'react-bootstrap';
+import BookingInfo from 'components/BookingInfo';
+import BookingUser from 'components/BookingUser';
 
 export function BookingPage() {
   useInjectReducer({ key: 'bookingPage', reducer });
   useInjectSaga({ key: 'bookingPage', saga });
 
   return (
-    <article>
+    <article className="content">
       <Helmet>
         <title>Checkout | Booking</title>
       </Helmet>
       <Container>
         <Row>
-          <Col xs={12} sm={8}>
+          <Col xs={12} sm={6}>
             <BookingInfo />
+            <div className="gap-50" />
+            <BookingUser />
           </Col>
-          <Col xs={12} sm={4}>
+          <Col xs={12} sm={{ span: 4, offset: 2 }}>
 
           </Col>
         </Row>
