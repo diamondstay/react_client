@@ -42,8 +42,8 @@
   }
 }
 
-#diamond-amenities {
-  ul.amenities-list {
+#diamond-amenities, #diamond-conveniences {
+  ul.amenities-list, ul.conveniences-list {
     @include flexbox();
     @include flex-wrap(wrap);
     @include box-sizing();

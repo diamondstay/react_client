@@ -18,13 +18,11 @@ import saga from './saga';
 import { getRoomDetail } from './actions';
 import { Helmet } from 'react-helmet';
 import {
-  chart,
   hotelDetail,
   otherList,
   places,
   promotion,
   reviews,
-  settings,
   similarList,
 } from '../HotelDetailPage/data';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -41,6 +39,7 @@ import RoomGallery from 'components/RoomGallery';
 import RoomOverview from 'components/RoomOverview';
 import RoomRate from 'components/RoomRate';
 import RoomPolicy from 'components/RoomPolicy';
+import RoomConveniences from 'components/RoomConveniences';
 
 export function RoomPage({getRoomDetail, roomDetail, match}) {
   useInjectReducer({ key: 'roomPage', reducer });
@@ -70,13 +69,13 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
             <div className="gap-50" />
             <RoomOverview detail={roomDetail} />
             <div className="gap-50" />
-            <HotelAmenities amenities={hotelDetail.amenityTypes.data} />
+            <RoomConveniences conveniences={roomDetail.conveniences} />
             <div className="gap-50" />
             <RoomRate detail={roomDetail}  />
             <div className="gap-50" />
             <HotelReview reviews={reviews} count={hotelDetail.review_count} />
             <div className="gap-50" />
-            <RoomPolicy detail={roomDetail} chart={chart} note={hotelDetail.special_note} />
+            <RoomPolicy detail={roomDetail} />
             <div className="gap-50" />
             <HotelPlaces places={places} />
           </Col>
