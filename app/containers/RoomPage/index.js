@@ -40,6 +40,7 @@ import RoomOverview from 'components/RoomOverview';
 import RoomRate from 'components/RoomRate';
 import RoomPolicy from 'components/RoomPolicy';
 import RoomConveniences from 'components/RoomConveniences';
+import RoomBooking from 'components/RoomBooking';
 
 export function RoomPage({getRoomDetail, roomDetail, match}) {
   useInjectReducer({ key: 'roomPage', reducer });
@@ -80,7 +81,7 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
             <HotelPlaces places={places} />
           </Col>
           <Col xs={12} md={4}>
-            <HotelBooking promotion={promotion} host={hotelDetail.host.data} />
+            <RoomBooking detail={roomDetail} />
           </Col>
         </Row>
       </Container>
