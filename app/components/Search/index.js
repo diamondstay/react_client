@@ -205,7 +205,8 @@ function Search(props) {
                     `/search?${queryString.stringify({
                       convenience:
                         queryString.parse(props.location.search).convenience ||
-                      type:
+                        '',
+
                       type: queryString.parse(props.location.search).type || '',
                       guest:
                         adult + kid + baby !== 0

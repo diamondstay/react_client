@@ -3,6 +3,9 @@ import {
   FILTER,
   FILTER_SUCCESS,
   FILTER_ERROR,
+  FETCH_ROOM_NEXT_PAGE,
+  FETCH_ROOM_NEXT_PAGE_SUCCESS,
+  FETCH_ROOM_NEXT_PAGE_ERROR,
 } from './constants';
 
 export function defaultAction() {
@@ -32,5 +35,25 @@ export function filterSuccess(response) {
 export function filterError() {
   return {
     type: FILTER_ERROR,
+  };
+}
+
+export function fetchRoomNextPage(param) {
+  debugger;
+  console.log(param);
+  return {
+    type: FETCH_ROOM_NEXT_PAGE,
+    param,
+  };
+}
+export function fetchRoomNextPageSucces(response) {
+  return {
+    type: FETCH_ROOM_NEXT_PAGE_SUCCESS,
+    response: response.data,
+  };
+}
+export function fetchRoomNextPageError() {
+  return {
+    type: FETCH_ROOM_NEXT_PAGE_ERROR,
   };
 }

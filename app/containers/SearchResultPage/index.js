@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect, memo, useState } from 'react';
 import queryString from 'query-string';
 import { withRouter } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
@@ -16,10 +16,11 @@ import './index.scss';
 
 import ItemFilters from '../../components/ItemFilters/index';
 import Room from '../../components/Room/index';
-import { filter } from './actions';
+import { filter, fetchRoomNextPage } from './actions';
 
 function SearchResultPage(props) {
   const { location, filterResult } = props;
+  const [page, setPage] = useState(1);
   console.log(filterResult);
   useInjectReducer({ key: 'searchResultPage', reducer });
   useInjectSaga({ key: 'searchResultPage', saga });
@@ -35,11 +36,29 @@ function SearchResultPage(props) {
     param.checkin = queryString.parse(location.search).checkin;
     param.checkout = queryString.parse(location.search).checkout;
     param.limit = queryString.parse(location.search).limit;
-    param.page = queryString.parse(location.search).page;
+    param.page = page;
     param.sort_by_price = queryString.parse(location.search).sort_by_price;
 
     props.onchangeFilter(param);
   }, [location.search]);
+  useEffect(() => {
+    if (page > 1) {
+      const param = {};
+      param.type = queryString.parse(location.search).type || '';
+      param.convenience = queryString.parse(location.search).convenience || '';
+      param.guest = queryString.parse(location.search).guest;
+      param.province = queryString.parse(location.search).province;
+      param.min_price = queryString.parse(location.search).min_price;
+      param.max_price = queryString.parse(location.search).max_price;
+      param.checkin = queryString.parse(location.search).checkin;
+      param.checkout = queryString.parse(location.search).checkout;
+      param.limit = queryString.parse(location.search).limit;
+      param.page = page;
+      param.sort_by_price = queryString.parse(location.search).sort_by_price;
+
+      props.fetchRoomNextPage(param);
+    }
+  }, [page]);
 
   return (
     <Container>
@@ -60,7 +79,15 @@ function SearchResultPage(props) {
             : null}
         </Row>
         {/* Phân trang */}
-        <span className="btn-seeMore">Xem thêm</span>
+        {filterResult && filterResult.data ? (
+          <React.Fragment>
+            {filterResult.data.length < filterResult.total_record ? (
+              <span className="btn-seeMore" onClick={() => setPage(page + 1)}>
+                Xem thêm
+              </span>
+            ) : null}
+          </React.Fragment>
+        ) : null}
       </div>
     </Container>
   );
@@ -76,6 +103,9 @@ function mapDispatchToProps(dispatch) {
     dispatch,
     onchangeFilter: param => {
       dispatch(filter(param));
+    },
+    fetchRoomNextPage: param => {
+      dispatch(fetchRoomNextPage(param));
     },
   };
 }
