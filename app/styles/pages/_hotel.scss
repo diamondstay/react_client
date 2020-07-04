@@ -407,6 +407,15 @@
       line-height: 42px;
     }
   }
+  .book-price {
+    margin-top: 30px;
+    > span {
+      &:last-child {
+        font-weight: 600;
+        text-align: right;
+      }
+    }
+  }
   .book-btn {
     width: 100%;
     background-image: linear-gradient(90deg,#f65e38 0,#f68a39 51%,#f65e38);

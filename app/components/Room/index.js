@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 export default function Room(props) {
   const { width, room } = props;
@@ -11,7 +12,7 @@ export default function Room(props) {
         flexBasis: `${width}%`,
       }}
     >
-      <div className="room">
+      <NavLink className="room" to={`/hotel/${room.id}`}>
         <img
           src={
             room.thumb != ''
@@ -35,7 +36,7 @@ export default function Room(props) {
         <div className="room__address">
           {room.province}, {room.village}, Vietnam
         </div>
-      </div>
+      </NavLink>
     </Col>
   );
 }

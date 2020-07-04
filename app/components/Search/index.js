@@ -232,6 +232,47 @@ function Search(props) {
       {/*    </div>*/}
       {/*  </div>*/}
       {/*) : null}*/}
+      {location.length > 0 ? (
+        <div className="search-box">
+          <h4 className="title">Kết quả tìm kiếm</h4>
+          <div className="result">
+            {location.map(item => (
+              <span
+                className="item"
+                key={item}
+                onClick={() =>
+                  props.history.push(
+                    `/search?${queryString.stringify({
+                      convenience:
+                        queryString.parse(props.location.search).convenience ||
+                        '',
+
+                      type: queryString.parse(props.location.search).type || '',
+                      guest:
+                        adult + kid + baby !== 0
+                          ? adult + kid + baby
+                          : undefined,
+                      checkin,
+                      checkout,
+                      province: item,
+                      min_price: queryString.parse(props.location.search)
+                        .min_price,
+                      max_price: queryString.parse(props.location.search)
+                        .max_price,
+                      limit: 10,
+                      page: 1,
+                      sort_by_price: 'desc',
+                    })}`,
+                    setLocation(() => []),
+                  )
+                }
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

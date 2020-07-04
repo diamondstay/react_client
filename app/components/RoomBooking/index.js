@@ -19,7 +19,7 @@ function HotelBooking(props) {
       <section id="diamond-booking">
         <div className="booking-wrapper">
           {(isEmpty(detail)) ? '' : <Price detail={detail} />}
-          <Book />
+          <Book detail={detail} />
         </div>
         <div className="ant-divider" />
         <div className="booking-wrapper">
