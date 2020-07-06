@@ -12,10 +12,10 @@ import Form from 'react-bootstrap/Form';
 import moment from 'moment';
 import reactLocalStorage from 'utils/localStorage';
 import { Filter } from 'constants/index';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 function Book(props) {
-  const { detail } = {...props};
+  const { detail } = { ...props };
   let history = useHistory();
 
   const maxGuests = detail.capacity_max;
@@ -28,7 +28,7 @@ function Book(props) {
   const { RangePicker } = DatePicker;
   const dateFormat = 'DD / MM / YYYY';
 
-  const getBookTime = (date) => {
+  const getBookTime = date => {
     let dateArr = date.split(' / ');
     return dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2];
   };
@@ -40,8 +40,8 @@ function Book(props) {
       check_out: checkoutDate,
       adult: adult,
       child: child,
-      days: days
-    }
+      days: days,
+    };
     reactLocalStorage.setObject('booking-info', bookingInfo);
 
     // Redirect to Checkout page
@@ -54,7 +54,8 @@ function Book(props) {
     setCheckinDate(inDate);
     setCheckoutDate(outDate);
 
-    let days = parseInt(dateString[1].slice(0,2)) - parseInt(dateString[0].slice(0,2));
+    let days =
+      parseInt(dateString[1].slice(0, 2)) - parseInt(dateString[0].slice(0, 2));
     setDays(days);
   };
 
@@ -83,7 +84,7 @@ function Book(props) {
     const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
     const totalPrice = roomNum * days * parseInt(price);
     return Filter.formatVndCurrency(totalPrice);
-  }
+  };
 
   const content = (
     <div className="guest-select-number">
@@ -140,30 +141,34 @@ function Book(props) {
   return (
     <Form className="book-form" onSubmit={handleSubmit(onSubmit)}>
       <div className="book-date">
-        <RangePicker format={dateFormat} disabledDate={disabledDate} onChange={changeDate} />
+        <RangePicker
+          format={dateFormat}
+          disabledDate={disabledDate}
+          onChange={changeDate}
+        />
       </div>
       <div className="book-guest">
-        <Popover
-          placement="top"
-          title=""
-          content={content}
-          trigger="click"
-        >
+        <Popover placement="top" title="" content={content} trigger="click">
           <div className="guest-info">
             <span className="guest-quality">
               {/*{adult < 1 ? 'Số khách' : `${adult + child + baby} khách`}*/}
-              {adult < 1 ? 'Số khách' : adult + ' người lớn' + ( child > 0 ? ' - ' + child + ' trẻ em' : '' )}
+              {adult < 1
+                ? 'Số khách'
+                : adult +
+                  ' người lớn' +
+                  (child > 0 ? ' - ' + child + ' trẻ em' : '')}
             </span>
           </div>
         </Popover>
       </div>
-      {days > 0 && adult > 0 ?
+      {days > 0 && adult > 0 ? (
         <div className="book-price is-flex">
           <span className="fl-item-50">Giá thuê {days} đêm</span>
           <span className="fl-item-50">{getTotalPrice()}</span>
         </div>
-        : <></>
-      }
+      ) : (
+        <></>
+      )}
       <button className="btn book-btn" type="submit">
         Đặt ngay
       </button>

@@ -12,7 +12,7 @@ export default function Room(props) {
         flexBasis: `${width}%`,
       }}
     >
-      <NavLink className="room" to={`/hotel/${room.id}`}>
+      <NavLink className="room" to={`/room/${room.id}`}>
         <img
           src={
             room.thumb != ''
