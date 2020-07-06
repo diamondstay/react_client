@@ -81,6 +81,21 @@ API.resetPassword = data => {
     });
 };
 
+API.booking = params => {
+  return API.instance
+    .post(Endpoints.BOOKING_URL + '?aid=' + params.id + '&checkin=' + params.check_in + '&checkout=' + params.check_out +
+    '&adult=' + params.adult + '&child=' + params.child + '&nameCustomer=' + params.customer_name + '&phoneCustomer=' +
+      params.customer_phone + 'mailCustomer=' + params.customer_mail + '&nameOrder=' + params.order_name + '&phoneOrder=' +
+      params.order_phone + '&mailOrder=' + params.order_mail + '&notForMe=' + params.notforme + '&purpose=' + params.purpose +
+    '&coupon=' + params.coupon)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      throw error;
+    });
+};
+
 API.getHotelDetail = id =>
   API.instance
     .get(`${Endpoints.APARTMENT_URL}/${id}`)

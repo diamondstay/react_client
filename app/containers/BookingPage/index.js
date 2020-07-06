@@ -16,13 +16,19 @@ import makeSelectBookingPage from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Helmet } from 'react-helmet';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import { useForm, FormProvider } from "react-hook-form";
 import BookingInfo from 'components/BookingInfo';
 import BookingUser from 'components/BookingUser';
+import BookingAdditional from 'components/BookingAdditional';
+import BookingCoupon from 'components/BookingCoupon';
 
 export function BookingPage() {
   useInjectReducer({ key: 'bookingPage', reducer });
   useInjectSaga({ key: 'bookingPage', saga });
+
+  const methods = useForm();
+  const onSubmit = data => console.log(data);
 
   return (
     <article className="content">
@@ -32,9 +38,20 @@ export function BookingPage() {
       <Container>
         <Row>
           <Col xs={12} sm={6}>
-            <BookingInfo />
-            <div className="gap-50" />
-            <BookingUser />
+            <FormProvider {...methods} >
+              <Form onSubmit={methods.handleSubmit(onSubmit)} className="booking-form">
+                <BookingInfo />
+                <div className="gap-50" />
+                <BookingUser />
+                <div className="gap-50" />
+                <BookingAdditional />
+                <div className="gap-50" />
+                <BookingCoupon />
+                <div className="form-submit">
+                  <button className="btn submit-button" type="submit">Thanh toán</button>
+                </div>
+              </Form>
+            </FormProvider>
           </Col>
           <Col xs={12} sm={{ span: 4, offset: 2 }}>
 
