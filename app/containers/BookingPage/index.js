@@ -22,13 +22,19 @@ import BookingInfo from 'components/BookingInfo';
 import BookingUser from 'components/BookingUser';
 import BookingAdditional from 'components/BookingAdditional';
 import BookingCoupon from 'components/BookingCoupon';
+import { useHistory } from 'react-router-dom';
 
 export function BookingPage() {
   useInjectReducer({ key: 'bookingPage', reducer });
   useInjectSaga({ key: 'bookingPage', saga });
 
+  let history = useHistory();
+
   const methods = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    history.push('/checkout/payment');
+  }
 
   return (
     <article className="content">
