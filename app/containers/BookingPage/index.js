@@ -12,7 +12,7 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectBookingPage from './selectors';
+import makeSelectBookingPage, { makeSelectBooking } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Helmet } from 'react-helmet';
@@ -23,17 +23,31 @@ import BookingUser from 'components/BookingUser';
 import BookingAdditional from 'components/BookingAdditional';
 import BookingCoupon from 'components/BookingCoupon';
 import { useHistory } from 'react-router-dom';
+import { submitBooking } from './actions';
+import reactLocalStorage from 'utils/localStorage';
 
-export function BookingPage() {
+export function BookingPage({onSubmitForm, match}) {
   useInjectReducer({ key: 'bookingPage', reducer });
   useInjectSaga({ key: 'bookingPage', saga });
 
   let history = useHistory();
+  const bookingInfo = reactLocalStorage.getObject('booking-info');
 
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      check_in: bookingInfo.check_in,
+      check_out: bookingInfo.check_out,
+      adult: bookingInfo.adult,
+      child: bookingInfo.child,
+      start_date: bookingInfo.start_date,
+      end_date: bookingInfo.end_date,
+    }
+  });
   const onSubmit = (data) => {
+    // history.push('/checkout/payment');
+    data.id = match.params.id;
     console.log(data);
-    history.push('/checkout/payment');
+    onSubmitForm(data);
   }
 
   return (
@@ -70,15 +84,20 @@ export function BookingPage() {
 
 BookingPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  submitBooking: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   bookingPage: makeSelectBookingPage(),
+  bookingSuccess: makeSelectBooking()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    onSubmitForm: (data) => {
+      dispatch(submitBooking(data));
+    },
   };
 }
 

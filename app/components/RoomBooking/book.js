@@ -17,12 +17,15 @@ import { useHistory } from 'react-router-dom';
 function Book(props) {
   const { detail } = { ...props };
   let history = useHistory();
+  const roomId = history.location.pathname.match(/\d+/)[0];
 
   const maxGuests = detail.capacity_max;
   const price = detail.price_promotion ? detail.price_promotion : detail.price;
 
   const [checkinDate, setCheckinDate] = useState('');
   const [checkoutDate, setCheckoutDate] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   const [days, setDays] = useState(0);
 
   const { RangePicker } = DatePicker;
@@ -30,22 +33,25 @@ function Book(props) {
 
   const getBookTime = date => {
     let dateArr = date.split(' / ');
-    return dateArr[0] + '-' + dateArr[1] + '-' + dateArr[2];
+    return dateArr[2] + '-' + dateArr[1] + '-' + dateArr[0];
   };
 
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
     let bookingInfo = {
+      aid: roomId,
       check_in: checkinDate,
       check_out: checkoutDate,
       adult: adult,
       child: child,
       days: days,
-    };
+      start_date: startDate,
+      end_date: endDate
+    }
     reactLocalStorage.setObject('booking-info', bookingInfo);
 
     // Redirect to Checkout page
-    history.push('/checkout/booking');
+    history.push('/checkout/booking/' + roomId);
   };
 
   const changeDate = (date, dateString) => {
@@ -53,9 +59,11 @@ function Book(props) {
     let outDate = getBookTime(dateString[1]);
     setCheckinDate(inDate);
     setCheckoutDate(outDate);
+    
+    setStartDate(dateString[0]);
+    setEndDate(dateString[1]);
 
-    let days =
-      parseInt(dateString[1].slice(0, 2)) - parseInt(dateString[0].slice(0, 2));
+    let days = parseInt(dateString[1].slice(0,2)) - parseInt(dateString[0].slice(0,2));
     setDays(days);
   };
 

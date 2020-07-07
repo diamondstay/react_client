@@ -70,7 +70,9 @@ function BookingUser() {
             <Form.Label>Tên Khách hàng <span>*</span></Form.Label>
             <p>Họ tên trên CMND/ Thẻ căn cước</p>
             <Form.Control type="text" name="order_name" placeholder=""
-                          ref={register()} />
+                          ref={register({
+                            required: isOpen
+                          })} />
             {errors.name && <p className="error">{errors.order_name.message}</p>}
           </Form.Group>
 
@@ -79,7 +81,13 @@ function BookingUser() {
               <Form.Label>Số điện thoại <span>*</span></Form.Label>
               <p>Mã điện thoại quốc gia</p>
               <Form.Control type="text" name="order_phone" placeholder=""
-                            ref={register()} />
+                            ref={register({
+                              required: isOpen,
+                              pattern: {
+                                value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
+                                message: "Số điện thoại sai"
+                              }
+                            })} />
               {errors.phone && <p className="error">{errors.order_phone.message}</p>}
             </Form.Group>
 
@@ -88,6 +96,7 @@ function BookingUser() {
               <p>VD: email@example.com</p>
               <Form.Control type="email" name="order_email" placeholder=""
                             ref={register({
+                              required: isOpen,
                               pattern: {
                                 value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                                 message: "Địa chỉ email sai"

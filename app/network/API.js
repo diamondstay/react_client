@@ -5,9 +5,13 @@ import { AppConfig, Env, Endpoints, Enum } from '../constants';
 import moment from 'moment';
 import queryString from 'query-string';
 
-const headers = {
-  Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
-};
+let config = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
+  }
+}
 
 const getInstance = () => {
   const instance = axios.create({
@@ -42,9 +46,7 @@ API.register = params => {
     password: params.password,
   };
   return API.instance
-    .post(Endpoints.REGISTER_URL, data, {
-      headers: headers,
-    })
+    .post(Endpoints.REGISTER_URL, data)
     .then(response => {
       return response.data;
     })
@@ -59,9 +61,7 @@ API.login = params => {
     password: params.password,
   };
   return API.instance
-    .post(Endpoints.LOGIN_URL, data, {
-      headers: headers,
-    })
+    .post(Endpoints.LOGIN_URL, data, config)
     .then(response => {
       return response.data;
     })
@@ -85,9 +85,12 @@ API.booking = params => {
   return API.instance
     .post(Endpoints.BOOKING_URL + '?aid=' + params.id + '&checkin=' + params.check_in + '&checkout=' + params.check_out +
     '&adult=' + params.adult + '&child=' + params.child + '&nameCustomer=' + params.customer_name + '&phoneCustomer=' +
-      params.customer_phone + 'mailCustomer=' + params.customer_mail + '&nameOrder=' + params.order_name + '&phoneOrder=' +
-      params.order_phone + '&mailOrder=' + params.order_mail + '&notForMe=' + params.notforme + '&purpose=' + params.purpose +
-    '&coupon=' + params.coupon)
+      params.customer_phone + '&mailCustomer=' + params.customer_email +
+      '&nameOrder=' + ( params.order_name ? params.order_name : params.customer_name ) +
+      '&phoneOrder=' + ( params.order_phone ? + params.order_phone : params.customer_phone ) +
+      '&mailOrder=' + ( params.order_email ? params.order_email : params.customer_email ) +
+      '&notForMe=' + !!params.order_name + '&purpose=' + params.purpose + '&coupon=' + params.coupon,
+      {}, config)
     .then(response => {
       return response.data;
     })

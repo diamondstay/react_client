@@ -15,6 +15,9 @@
 #diamond-booking-user {
 }
 
+#diamond-booking-additional {
+}
+
 .booking-form {
   .form-label {
     font-weight: 600;
@@ -54,6 +57,14 @@
       }
     }
   }
+  .input-group {
+    position: relative;
+    span {
+      position: absolute;
+      top: 7px;
+      right: 20px;
+    }
+  }
   .submit-button {
     height: 3.5rem;
     background-image: linear-gradient(to right, #f65e38, #f66737, #f67036, #f67836, #f68037, #f68037, #f68037, #f68037, #f67836, #f67036, #f66737, #f65e38);
@@ -70,8 +81,4 @@
       opacity: 0.75;
     }
   }
-}
-
-#diamond-booking-additional {
-
 }

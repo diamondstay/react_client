@@ -9,6 +9,9 @@ module.exports = {
   resetPasswordSuccess: 'You have reset your password successfully',
   resetPasswordError: 'You have reset your password failed',
 
+  bookingSuccess: 'Đặt phòng thành công.',
+  bookingError: 'Đặt phòng thất bại.',
+
   confirmTitle: 'Confirm',
   confirmLogout: 'Are you sure you want to logout?',
 

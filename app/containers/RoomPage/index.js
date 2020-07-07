@@ -54,8 +54,6 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
     getRoomDetail(id);
   }, []);
 
-  console.log(roomDetail);
-
   return (
     <article>
       <Helmet>

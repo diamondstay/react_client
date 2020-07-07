@@ -11,6 +11,10 @@ const selectBookingPageDomain = state => state.bookingPage || initialState;
  * Other specific selectors
  */
 
+const makeSelectBooking = () =>
+  createSelector(selectBookingPageDomain,
+    substate => substate.success);
+
 /**
  * Default selector used by BookingPage
  */
@@ -22,4 +26,4 @@ const makeSelectBookingPage = () =>
   );
 
 export default makeSelectBookingPage;
-export { selectBookingPageDomain };
+export { selectBookingPageDomain, makeSelectBooking };
