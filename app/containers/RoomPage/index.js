@@ -41,6 +41,8 @@ import RoomRate from 'components/RoomRate';
 import RoomPolicy from 'components/RoomPolicy';
 import RoomConveniences from 'components/RoomConveniences';
 import RoomBooking from 'components/RoomBooking';
+import RoomOtherList from 'components/RoomOtherList';
+import RoomSimilarList from '../../components/RoomSimilarList';
 
 export function RoomPage({getRoomDetail, roomDetail, match}) {
   useInjectReducer({ key: 'roomPage', reducer });
@@ -87,9 +89,9 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
       <div className="full-width-wrapper">
         <Container className="container-origin">
           <div className="gap-50" />
-          <HotelSimilarList list={similarList} />
+          <RoomSimilarList list={roomDetail.list_apartment_similar} />
           <div className="gap-50" />
-          <HotelOtherList list={otherList} host={hotelDetail.host.data.full_name} />
+          <RoomOtherList list={roomDetail.list_apartment_same_owner} host={roomDetail.owner} />
           <div className="gap-50" />
         </Container>
       </div>

@@ -2,7 +2,7 @@
  * Global App Config
  */
 
-const API_BASE_URL = 'http://35.197.153.19:12345/';
+const API_BASE_URL = 'http://35.197.153.19:12345';
 
 module.exports = {
   // App Details

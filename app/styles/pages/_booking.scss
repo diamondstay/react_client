@@ -82,3 +82,13 @@
     }
   }
 }
+
+#diamond-similar-list, #diamond-other-list {
+  .slick-prev {
+    left: -5rem;
+  }
+
+  .slick-next {
+    right: -5rem;
+  }
+}

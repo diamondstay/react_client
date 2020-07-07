@@ -35,6 +35,11 @@ const formatVndCurrency = (str) => {
   return str.toLocaleString('vi', {style : 'currency', currency : 'VND'});
 };
 
+const formatPrice = str => {
+  const newStr = parseInt(str).toFixed();
+  return formatVndCurrency(parseInt(newStr));
+};
+
 const getReviewStars = (number) => {
   let stars = '';
   let nostars = '';
@@ -50,6 +55,6 @@ const getReviewStars = (number) => {
   return number === 0 ? '' : stars + nostars;
 };
 
-const filter = { limitHtml, slugUrl, firstSentence, suffix, formatVndCurrency, getReviewStars };
+const filter = { limitHtml, slugUrl, firstSentence, suffix, formatVndCurrency, formatPrice, getReviewStars };
 
 module.exports = filter;
