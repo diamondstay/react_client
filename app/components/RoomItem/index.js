@@ -24,7 +24,7 @@ function RoomItem(props) {
           <div className="promo-description">
             {item.capacity_max} khách <span className="bullet" />
             {item.amount_bedroom} phòng ngủ <span className="bullet" />
-            {item.amount_sofa} phòng tắm
+            {item.amount_bathroom} phòng tắm
           </div>
           <h4 className="promo-price">{Filter.formatPrice(item.price)}/đêm</h4>
           <h5 className="promo-location">{item.village}, {item.district}, {item.province}</h5>

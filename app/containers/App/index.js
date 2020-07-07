@@ -14,6 +14,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import ScrollToTop from 'react-router-scroll-top';
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPage from 'containers/AuthPage/login';
 import RegisterPage from 'containers/AuthPage/register';
@@ -123,24 +124,26 @@ function App({ alerts }) {
         <meta name="description" content="Diamond Stay" />
       </Helmet>
       <Alert {...alertsProps} />
-      <Switch>
-        <GeneralLayout exact path="/" component={HomePage} />
-        <AuthLayout exact path="/login" component={LoginPage} />
-        <AuthLayout exact path="/register" component={RegisterPage} />
-        <AuthLayout exact path="/thank-you" component={ThankYouPage} />
-        <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
-        <HotelLayout exact path="/room/:roomId" component={RoomPage} />
-        <HotelLayout exact path="/checkout/booking/:id" component={BookingPage} />
-        <HotelLayout exact path="/checkout/payment" component={PaymentPage} />
+      <ScrollToTop>
+        <Switch>
+          <GeneralLayout exact path="/" component={HomePage} />
+          <AuthLayout exact path="/login" component={LoginPage} />
+          <AuthLayout exact path="/register" component={RegisterPage} />
+          <AuthLayout exact path="/thank-you" component={ThankYouPage} />
+          <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
+          <HotelLayout exact path="/room/:roomId" component={RoomPage} />
+          <HotelLayout exact path="/checkout/booking/:id" component={BookingPage} />
+          <HotelLayout exact path="/checkout/payment" component={PaymentPage} />
 
-        <GeneralLayout path="/search" component={SearchResultPage} exact />
-        <GeneralLayout path="/host/:id" component={HostPage} exact />
+          <GeneralLayout path="/search" component={SearchResultPage} exact />
+          <GeneralLayout path="/host/:id" component={HostPage} exact />
 
-        {/* <Route exact path="/" component={HomePage} /> */}
-        {/* <Route path="/location/:slug.:id" component={LocationPage} exact /> */}
-        {/* <Route path="/search-result" component={LocationPage} exact /> */}
-        <Route path="" component={NotFoundPage} />
-      </Switch>
+          {/* <Route exact path="/" component={HomePage} /> */}
+          {/* <Route path="/location/:slug.:id" component={LocationPage} exact /> */}
+          {/* <Route path="/search-result" component={LocationPage} exact /> */}
+          <Route path="" component={NotFoundPage} />
+        </Switch>
+      </ScrollToTop>
     </AppWrapper>
   );
 }

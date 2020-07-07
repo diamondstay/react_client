@@ -17,23 +17,10 @@ import reducer from './reducer';
 import saga from './saga';
 import { getRoomDetail } from './actions';
 import { Helmet } from 'react-helmet';
-import {
-  hotelDetail,
-  otherList,
-  places,
-  promotion,
-  reviews,
-  similarList,
-} from '../HotelDetailPage/data';
+import {places, review_list} from '../HotelDetailPage/data';
 import { Col, Container, Row } from 'react-bootstrap';
-import { find } from 'lodash';
 
-import HotelAmenities from '../HotelDetailPage/amenities';
-import HotelReview from '../HotelDetailPage/review';
 import HotelPlaces from '../HotelDetailPage/places';
-import HotelBooking from '../HotelDetailPage/booking';
-import HotelSimilarList from '../HotelDetailPage/similar-list';
-import HotelOtherList from '../HotelDetailPage/other-list';
 
 import RoomGallery from 'components/RoomGallery';
 import RoomOverview from 'components/RoomOverview';
@@ -42,19 +29,18 @@ import RoomPolicy from 'components/RoomPolicy';
 import RoomConveniences from 'components/RoomConveniences';
 import RoomBooking from 'components/RoomBooking';
 import RoomOtherList from 'components/RoomOtherList';
-import RoomSimilarList from '../../components/RoomSimilarList';
+import RoomSimilarList from 'components/RoomSimilarList';
+import RoomReview from 'components/RoomReview';
 
 export function RoomPage({getRoomDetail, roomDetail, match}) {
   useInjectReducer({ key: 'roomPage', reducer });
   useInjectSaga({ key: 'roomPage', saga });
 
-  // let roomId = match.params.roomId;
-
-  let id = 7253957655120650;
+  const roomId = parseInt(match.params.roomId) < 10 ? 7254081302154099 : match.params.roomId;
 
   useEffect(() => {
-    getRoomDetail(id);
-  }, []);
+    getRoomDetail(roomId);
+  }, [roomId]);
 
   return (
     <article>
@@ -74,7 +60,7 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
             <div className="gap-50" />
             <RoomRate detail={roomDetail}  />
             <div className="gap-50" />
-            <HotelReview reviews={reviews} count={hotelDetail.review_count} />
+            <RoomReview reviews={roomDetail.list_review} />
             <div className="gap-50" />
             <RoomPolicy detail={roomDetail} />
             <div className="gap-50" />

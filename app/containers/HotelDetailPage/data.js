@@ -2204,3 +2204,30 @@ export const promotion = {
   flash_sale: null,
   my_coupon: null,
 };
+
+export const review_list = [
+  {
+    id: 11088,
+    star_number: 5,
+    content: 'homestay nằm trong 1 khu phố cổ rất yên tĩnh bình yên',
+    created_at: '2020-02-29T09:45:45+00:00',
+    name: 'Anh Ngoc',
+    avatar: 'https://lh3.googleusercontent.com/a-/AAuE7mBOtMaPMr-saw_uuhB67saXQL7soML1-js0_PXeMw',
+  },
+  {
+    id: 7577,
+    star_number: 4,
+    content: 'Mình đi cùng bạn, phòng rất đáng yêu và sạch sẽ. Chắc chắn sẽ quay lại khi có dịp',
+    created_at: '2019-11-28T07:01:56+00:00',
+    name: 'Phạm Lành',
+    avatar: 'https://cdn.luxstay.com/users_avatar_default/default-avatar.png',
+  },
+  {
+    id: 6199,
+    star_number: 3,
+    content: 'sạch sẽ tiện nghi, hài lòng',
+    created_at: '2019-10-21T09:52:51+00:00',
+    name: 'Trang Nguyen',
+    avatar: 'https://lh3.googleusercontent.com/a-/AAuE7mDUUjF9JIZhkBUlJ4w9U5ktTcyvf-AWA-tTaPeB',
+  },
+];
