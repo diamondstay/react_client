@@ -14,7 +14,7 @@ export function* submitBooking(args) {
     if (resp.code === 200) {
       yield put(submitBookingSuccess(resp));
       toast(Messages.bookingSuccess);
-      yield put(push('checkout/payment')); // Redirect to Payment page
+      yield put(push('/checkout/payment')); // Redirect to Payment page
     } else {
       toast(Messages.bookingError);
     }

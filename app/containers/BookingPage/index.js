@@ -22,7 +22,6 @@ import BookingInfo from 'components/BookingInfo';
 import BookingUser from 'components/BookingUser';
 import BookingAdditional from 'components/BookingAdditional';
 import BookingCoupon from 'components/BookingCoupon';
-import { useHistory } from 'react-router-dom';
 import { submitBooking } from './actions';
 import reactLocalStorage from 'utils/localStorage';
 
@@ -30,7 +29,6 @@ export function BookingPage({onSubmitForm, match}) {
   useInjectReducer({ key: 'bookingPage', reducer });
   useInjectSaga({ key: 'bookingPage', saga });
 
-  let history = useHistory();
   const bookingInfo = reactLocalStorage.getObject('booking-info');
 
   const methods = useForm({
@@ -44,7 +42,6 @@ export function BookingPage({onSubmitForm, match}) {
     }
   });
   const onSubmit = (data) => {
-    // history.push('/checkout/payment');
     data.id = match.params.id;
     console.log(data);
     onSubmitForm(data);
