@@ -40,6 +40,8 @@ function Book(props) {
     return dateArr[2] + '-' + dateArr[1] + '-' + dateArr[0];
   };
 
+  console.log(detail);
+
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
     let bookingInfo = {
@@ -50,7 +52,16 @@ function Book(props) {
       child: child,
       days: days,
       start_date: startDate,
-      end_date: endDate
+      end_date: endDate,
+      raw_price: getRawPrice(),
+      discount_price: useCoupon ? getDiscountPrice() : 0,
+      total_price: useCoupon ? getTotalPrice() : getRawPrice(),
+      coupon: coupon,
+      name: detail.name,
+      addr: detail.detail_address,
+      village: detail.village_address,
+      district: detail.district_address,
+      province: detail.province_address
     }
     reactLocalStorage.setObject('booking-info', bookingInfo);
 

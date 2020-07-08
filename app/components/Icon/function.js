@@ -11,6 +11,7 @@ export const getIcon = (str) => {
       return wifi;
     }
     case "TV":
+    case "Smart TV":
     case "lst-icon-tv": {
       return tv;
     }
@@ -18,7 +19,7 @@ export const getIcon = (str) => {
     case "lst-icon-washer": {
       return washer;
     }
-    case "Điều hoà":
+    case "Điều hòa":
     case "lst-icon-air-conditioning": {
       return airConditioner;
     }
@@ -55,7 +56,7 @@ export const getIcon = (str) => {
     case "lst-icon-stove-electric": {
       return electricStove;
     }
-    case "Bếp ga":
+    case "Bếp gas":
     case "lst-icon-stove-gas": {
       return gasStove;
     }
@@ -102,6 +103,7 @@ export const getIcon = (str) => {
     case "icon_windows": {
       return window;
     }
+    case "Đệm bổ sung":
     case "lst-icon-room-promotion": {
       return cushion;
     }

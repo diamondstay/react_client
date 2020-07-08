@@ -24,6 +24,7 @@ import BookingAdditional from 'components/BookingAdditional';
 import BookingCoupon from 'components/BookingCoupon';
 import { submitBooking } from './actions';
 import reactLocalStorage from 'utils/localStorage';
+import BookingDetail from 'components/BookingDetail';
 
 export function BookingPage({onSubmitForm, match}) {
   useInjectReducer({ key: 'bookingPage', reducer });
@@ -44,7 +45,7 @@ export function BookingPage({onSubmitForm, match}) {
   const onSubmit = (data) => {
     data.id = match.params.id;
     console.log(data);
-    onSubmitForm(data);
+    // onSubmitForm(data);
   }
 
   return (
@@ -71,7 +72,8 @@ export function BookingPage({onSubmitForm, match}) {
             </FormProvider>
           </Col>
           <Col xs={12} sm={{ span: 4, offset: 2 }}>
-
+            <h2 className="page-title">Chi tiết đặt phòng</h2>
+            <BookingDetail />
           </Col>
         </Row>
       </Container>

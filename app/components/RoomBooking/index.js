@@ -1,6 +1,6 @@
 /**
  *
- * Hotel Booking
+ * Room Booking
  *
  */
 
@@ -11,7 +11,7 @@ import Host from './host';
 import isEmpty from 'lodash/isEmpty';
 import Book from './book';
 
-function HotelBooking(props) {
+function RoomBooking(props) {
   const { detail } = { ...props };
 
   return (
@@ -30,4 +30,4 @@ function HotelBooking(props) {
   );
 }
 
-export default HotelBooking;
+export default RoomBooking;

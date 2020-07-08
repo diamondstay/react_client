@@ -1,4 +1,6 @@
 .custom-slider {
+  max-height: 361px;
+  overflow: hidden;
   .slick-list {
     margin: 0 -5px;
     @include media-breakpoint-up(lg) {

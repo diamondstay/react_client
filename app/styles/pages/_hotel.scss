@@ -486,6 +486,32 @@
       }
     }
   }
+  .booking-room-name {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  ul.booking-info {
+    > li {
+      margin-bottom: 10px;
+      > i, > span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      > i {
+        width: 20px;
+        > svg {
+          width: 20px;
+        }
+      }
+      > span {
+        @include calc(width, '100% - 30px');
+        padding-left: 10px;
+      }
+    }
+  }
+  .ant-divider {
+    margin: 10px 0;
+  }
 }
 
 .booking-sticky {
