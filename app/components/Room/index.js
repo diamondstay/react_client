@@ -1,9 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-
+import { Filter } from 'constants/index';
 export default function Room(props) {
   const { width, room } = props;
+  console.log();
   return (
     <Col
       style={{
@@ -30,8 +31,12 @@ export default function Room(props) {
           phòng tắm
         </span>
         <div className="room__price">
-          <span className="discount">{room.price_promotion}₫/đêm </span>
-          <span className="origin">{room.price}₫</span>
+          <span className="discount">
+            {Filter.formatVndCurrency(parseInt(room.price_promotion))}/đêm{' '}
+          </span>
+          <span className="origin">
+            {Filter.formatVndCurrency(parseInt(room.price))}
+          </span>
         </div>
         <div className="room__address">
           {room.province}, {room.village}, Vietnam

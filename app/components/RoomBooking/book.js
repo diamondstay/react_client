@@ -46,11 +46,12 @@ function Book(props) {
       child: child,
       days: days,
       start_date: startDate,
-      end_date: endDate
-    }
+      end_date: endDate,
+    };
     reactLocalStorage.setObject('booking-info', bookingInfo);
 
     // Redirect to Checkout page
+    if (checkinDate == checkoutDate) return;
     history.push('/checkout/booking/' + roomId);
   };
 
@@ -59,11 +60,12 @@ function Book(props) {
     let outDate = getBookTime(dateString[1]);
     setCheckinDate(inDate);
     setCheckoutDate(outDate);
-    
+
     setStartDate(dateString[0]);
     setEndDate(dateString[1]);
 
-    let days = parseInt(dateString[1].slice(0,2)) - parseInt(dateString[0].slice(0,2));
+    let days =
+      parseInt(dateString[1].slice(0, 2)) - parseInt(dateString[0].slice(0, 2));
     setDays(days);
   };
 
@@ -72,7 +74,7 @@ function Book(props) {
     return current && current < moment().endOf('day');
   }
 
-  const [adult, setAdult] = useState(0);
+  const [adult, setAdult] = useState(1);
   const [child, setChild] = useState(0);
   // const [baby, setBaby] = useState(0);
 
@@ -105,7 +107,7 @@ function Book(props) {
             <InputNumber
               min={0}
               max={100}
-              defaultValue={0}
+              defaultValue={1}
               onChange={selectAdult}
             />
           </Col>

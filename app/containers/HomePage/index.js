@@ -16,9 +16,10 @@ import {
   makeSelectRepos,
   makeSelectLoading,
   makeSelectError,
+  makeSelectFetchBestPlace,
 } from 'containers/App/selectors';
 import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
+import { changeUsername, fetchBestPlace } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -36,32 +37,34 @@ import Intro from 'components/Intro';
 
 const key = 'home';
 
-export function HomePage({
-  username,
-  loading,
-  error,
-  repos,
-  onSubmitForm,
-  onChangeUsername,
-}) {
+export function HomePage(props) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
+  const { home } = props;
 
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
-    if (username && username.trim().length > 0) onSubmitForm();
+    // if (username && username.trim().length > 0) onSubmitForm();
+    props.fetchBestPlace();
   }, []);
 
-  const reposListProps = {
-    loading,
-    error,
-    repos,
-  };
-
+  // const reposListProps = {
+  //   loading,
+  //   error,
+  //   repos,
+  // };
+  console.log(',,,,', home);
   return (
     <article id="home-page">
       <Welcome />
-      <BestPlaces />
+      {home ? (
+        <React.Fragment>
+          {home.bestPlace.length > 0 ? (
+            <BestPlaces bestPlaces={home.bestPlace} />
+          ) : null}
+        </React.Fragment>
+      ) : null}
+
       <BookVilla />
       <SaiGon />
       <VungTau />
@@ -74,28 +77,37 @@ export function HomePage({
   );
 }
 
-HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
+// HomePage.propTypes = {
+//   loading: PropTypes.bool,
+//   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+//   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+//   onSubmitForm: PropTypes.func,
+//   username: PropTypes.string,
+//   onChangeUsername: PropTypes.func,
+// };
+
+// const mapStateToProps = createStructuredSelector({
+//   // repos: makeSelectRepos(),
+//   // username: makeSelectUsername(),
+//   // loading: makeSelectLoading(),
+//   // error: makeSelectError(),
+//   x: makeSelectFetchBestPlace(),
+// });
+
+const mapStateToProps = state => {
+  return {
+    home: state.home,
+  };
 };
-
-const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-});
-
 export function mapDispatchToProps(dispatch) {
   return {
-    onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: evt => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
+    // onChangeUsername: evt => dispatch(changeUsername(evt.target.value)),
+    // onSubmitForm: evt => {
+    //   if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    //   dispatch(loadRepos());
+    // },
+    fetchBestPlace: () => {
+      dispatch(fetchBestPlace());
     },
   };
 }

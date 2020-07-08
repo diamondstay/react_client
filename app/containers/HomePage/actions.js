@@ -15,7 +15,13 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import {
+  CHANGE_USERNAME,
+  DEFAULT_ACTION,
+  FETCH_BEST_PLACE,
+  FETCH_BEST_PLACE_ERROR,
+  FETCH_BEST_PLACE_SUCCESS,
+} from './constants';
 
 /**
  * Changes the input field of the form
@@ -28,5 +34,34 @@ export function changeUsername(username) {
   return {
     type: CHANGE_USERNAME,
     username,
+  };
+}
+
+export function defaultAction() {
+  return {
+    type: DEFAULT_ACTION,
+  };
+}
+
+export function fetchBestPlace() {
+  debugger;
+  console.log('LAN 1');
+  return {
+    type: FETCH_BEST_PLACE,
+  };
+}
+
+export function fetchBestPlaceSuccess(response) {
+  // debugger;
+  // console.log('lan 5', response);
+  return {
+    type: FETCH_BEST_PLACE_SUCCESS,
+    response: response.data,
+  };
+}
+
+export function fetchBestPlaceError() {
+  return {
+    type: FETCH_BEST_PLACE_ERROR,
   };
 }

@@ -10,3 +10,9 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+
+export const DEFAULT_ACTION = 'app/HomePage/DEFAULT_ACTION';
+
+export const FETCH_BEST_PLACE = 'app/HomePage/FETCH_BEST_PLACE';
+export const FETCH_BEST_PLACE_SUCCESS = 'app/HomePage/FETCH_BEST_PLACE_SUCCESS';
+export const FETCH_BEST_PLACE_ERROR = 'app/HomePage/FETCH_BEST_PLACE_ERROR';

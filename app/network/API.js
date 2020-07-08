@@ -9,9 +9,9 @@ let config = {
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Authorization': `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
-  }
-}
+    Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
+  },
+};
 
 const getInstance = () => {
   const instance = axios.create({
@@ -83,14 +83,39 @@ API.resetPassword = data => {
 
 API.booking = params => {
   return API.instance
-    .post(Endpoints.BOOKING_URL + '?aid=' + params.id + '&checkin=' + params.check_in + '&checkout=' + params.check_out +
-    '&adult=' + params.adult + '&child=' + params.child + '&nameCustomer=' + params.customer_name + '&phoneCustomer=' +
-      params.customer_phone + '&mailCustomer=' + params.customer_email +
-      '&nameOrder=' + ( params.order_name ? params.order_name : params.customer_name ) +
-      '&phoneOrder=' + ( params.order_phone ? + params.order_phone : params.customer_phone ) +
-      '&mailOrder=' + ( params.order_email ? params.order_email : params.customer_email ) +
-      '&notForMe=' + !!params.order_name + '&purpose=' + params.purpose + '&coupon=' + params.coupon,
-      {}, config)
+    .post(
+      Endpoints.BOOKING_URL +
+        '?aid=' +
+        params.id +
+        '&checkin=' +
+        params.check_in +
+        '&checkout=' +
+        params.check_out +
+        '&adult=' +
+        params.adult +
+        '&child=' +
+        params.child +
+        '&nameCustomer=' +
+        params.customer_name +
+        '&phoneCustomer=' +
+        params.customer_phone +
+        '&mailCustomer=' +
+        params.customer_email +
+        '&nameOrder=' +
+        (params.order_name ? params.order_name : params.customer_name) +
+        '&phoneOrder=' +
+        (params.order_phone ? +params.order_phone : params.customer_phone) +
+        '&mailOrder=' +
+        (params.order_email ? params.order_email : params.customer_email) +
+        '&notForMe=' +
+        !!params.order_name +
+        '&purpose=' +
+        params.purpose +
+        '&coupon=' +
+        params.coupon,
+      {},
+      config,
+    )
     .then(response => {
       return response.data;
     })
@@ -154,6 +179,23 @@ API.searchLoction = query => {
   return API.instance
     .post(`${Endpoints.ENDPOINT_CLIENT}/search-box?key=${query}`)
     .then(response => response.data)
+    .catch(error => {
+      throw error;
+    });
+};
+
+API.fetchBestPlace = () => {
+  console.log('lan 3');
+  // console.log(headers);
+
+  debugger;
+  return API.instance
+    .get(`${Endpoints.ENDPOINT_CLIENT}/all-location`)
+    .then(
+      response =>
+        // console.log(response);
+        response.data,
+    )
     .catch(error => {
       throw error;
     });
