@@ -44,8 +44,7 @@ export function BookingPage({onSubmitForm, match}) {
   });
   const onSubmit = (data) => {
     data.id = match.params.id;
-    console.log(data);
-    // onSubmitForm(data);
+    onSubmitForm(data);
   }
 
   return (
