@@ -30,7 +30,7 @@ function Search(props) {
     e.target.reset(); // reset after form submit
   };
 
-  const [adult, setAdult] = useState(0);
+  const [adult, setAdult] = useState(1);
   const [kid, setKid] = useState(0);
   const [baby, setBaby] = useState(0);
   const [checkin, setCheckin] = useState('');
@@ -55,7 +55,21 @@ function Search(props) {
 
   const halderChange = e => {
     // searchLocation(e.target.value);
-    setLocation(() => ['Tỉnh Thanh Hóa', 'Tỉnh Bình Thuận', 'TP Hà Nội']);
+    if (e.target.value.includes('Hà')) {
+      setLocation(() => ['Hà Nội']);
+    }
+    if (e.target.value.includes('Đà')) {
+      setLocation(() => ['Đà Nẵng']);
+    }
+    if (e.target.value.includes('Hồ')) {
+      setLocation(() => ['Hồ Chí Minh']);
+    }
+    if (e.target.value.includes('Vũng')) {
+      setLocation(() => ['Bà Rịa - Vũng Tàu']);
+    }
+    if (e.target.value.includes('Quảng')) {
+      setLocation(() => ['Quảng Ninh']);
+    }
     if (e.target.value === '') {
       setLocation(() => []);
     }
@@ -72,7 +86,7 @@ function Search(props) {
             <InputNumber
               min={0}
               max={100}
-              defaultValue={0}
+              defaultValue={1}
               onChange={selectAdult}
             />
           </Col>
@@ -94,7 +108,7 @@ function Search(props) {
           </Col>
         </Row>
       </div>
-      <div className="select-item">
+      {/* <div className="select-item">
         <Row>
           <Col xs={6}>
             <h4>Trẻ sơ sinh</h4>
@@ -109,7 +123,7 @@ function Search(props) {
             />
           </Col>
         </Row>
-      </div>
+      </div> */}
     </div>
   );
 
@@ -164,7 +178,8 @@ function Search(props) {
             <button
               className="btn search-btn"
               type="submit"
-              onClick={() =>
+              onClick={() => {
+                if (checkin == checkout) return;
                 props.history.push(
                   `/search?${queryString.stringify({
                     convenience:
@@ -184,8 +199,8 @@ function Search(props) {
                     page: 1,
                     sort_by_price: 'desc',
                   })}`,
-                )
-              }
+                );
+              }}
             >
               {search}
             </button>

@@ -16,14 +16,14 @@ export function* filter(args) {
       // console.log('lan 4  ', resp);
       // debugger;
       yield put(filterSuccess(resp));
-      toast(Messages.registerSuccess);
+      // toast(Messages.registerSuccess);
     } else {
       // debugger;
-      toast(Messages.registerError);
+      // toast(Messages.registerError);
     }
   } catch (err) {
     // debugger;
-    toast(Messages.registerError);
+    // toast(Messages.registerError);
   }
 }
 export function* fetchRoomNextPage(args) {
@@ -35,14 +35,14 @@ export function* fetchRoomNextPage(args) {
       // console.log('lan 4  ', resp);
       // debugger;
       yield put(fetchRoomNextPageSucces(resp));
-      toast(Messages.registerSuccess);
+      // toast(Messages.registerSuccess);
     } else {
       // debugger;
-      toast(Messages.registerError);
+      // toast(Messages.registerError);
     }
   } catch (err) {
     // debugger;
-    toast(Messages.registerError);
+    // toast(Messages.registerError);
   }
 }
 

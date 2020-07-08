@@ -10,8 +10,8 @@ import { withRouter, Link } from 'react-router-dom';
 
 function LocationItem(props) {
   const location = props.item;
-  console.log(props);
-  console.log(location.url);
+  // console.log(props);
+  // console.log(location.url);
 
   return (
     <Link

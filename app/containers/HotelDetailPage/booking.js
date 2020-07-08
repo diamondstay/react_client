@@ -32,7 +32,7 @@ function HotelBooking(props) {
     console.log(dateString);
   };
 
-  const [adult, setAdult] = useState(0);
+  const [adult, setAdult] = useState(1);
   const [kid, setKid] = useState(0);
   const [baby, setBaby] = useState(0);
 
@@ -59,7 +59,7 @@ function HotelBooking(props) {
             <InputNumber
               min={0}
               max={100}
-              defaultValue={0}
+              defaultValue={1}
               onChange={selectAdult}
             />
           </Col>
@@ -81,7 +81,7 @@ function HotelBooking(props) {
           </Col>
         </Row>
       </div>
-      <div className="select-item">
+      {/* <div className="select-item">
         <Row>
           <Col xs={6}>
             <h4>Trẻ sơ sinh</h4>
@@ -96,7 +96,7 @@ function HotelBooking(props) {
             />
           </Col>
         </Row>
-      </div>
+      </div> */}
     </div>
   );
 
