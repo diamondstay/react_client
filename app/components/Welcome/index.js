@@ -32,7 +32,7 @@ function Welcome() {
         }
         <div className="welcome-text">
           <p>Đặt chỗ ở, homestay, cho thuê xe, trải nghiệm và nhiều hơn nữa trên Diamond Stay</p>
-          <p><Link to={'/login'}>Đăng nhập</Link> hoặc <Link to={'/register'}>Đăng ký</Link> để trải nghiệm !</p>
+          <p className={`${auth ? 'd-none' : ''}`}><Link to={'/login'}>Đăng nhập</Link> hoặc <Link to={'/register'}>Đăng ký</Link> để trải nghiệm !</p>
         </div>
       </Container>
     </section>

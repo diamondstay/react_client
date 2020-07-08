@@ -13,6 +13,10 @@ import moment from 'moment';
 import reactLocalStorage from 'utils/localStorage';
 import { Filter } from 'constants/index';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import * as AppConfig from 'constants/appconfig';
+import * as Endpoints from 'constants/endpoints';
+import config from 'network/API';
 
 function Book(props) {
   const { detail } = { ...props };
@@ -59,7 +63,7 @@ function Book(props) {
     let outDate = getBookTime(dateString[1]);
     setCheckinDate(inDate);
     setCheckoutDate(outDate);
-    
+
     setStartDate(dateString[0]);
     setEndDate(dateString[1]);
 
@@ -88,11 +92,38 @@ function Book(props) {
   //   setBaby(value);
   // };
 
-  const getTotalPrice = () => {
+  const getRawPrice = () => {
     const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
-    const totalPrice = roomNum * days * parseInt(price);
-    return Filter.formatVndCurrency(totalPrice);
+    return roomNum * days * parseInt(price);
   };
+
+  const [coupons, setCoupons] = useState([]);
+
+  useEffect(() => {
+    axios.get(AppConfig.API_BASE_URL + Endpoints.COUPON_URL, config)
+      .then(response => {
+        setCoupons(response.data.data);
+      });
+  }, []);
+
+  const [useCoupon, setUseCoupon] = useState(false);
+  const [coupon, setCoupon] = useState({});
+
+  const applyCoupon = (coupon) => {
+    console.log(coupon);
+    setUseCoupon(true);
+    setCoupon(coupon);
+  };
+
+  const getDiscountPrice = () => {
+    const price = getRawPrice();
+    const percent = Math.floor(coupon.percent) / 100;
+    return price * percent;
+  };
+
+  const getTotalPrice = () => {
+    return getRawPrice() - getDiscountPrice();
+  }
 
   const content = (
     <div className="guest-select-number">
@@ -170,10 +201,43 @@ function Book(props) {
         </Popover>
       </div>
       {days > 0 && adult > 0 ? (
-        <div className="book-price is-flex">
-          <span className="fl-item-50">Giá thuê {days} đêm</span>
-          <span className="fl-item-50">{getTotalPrice()}</span>
-        </div>
+        <>
+          <div className="price-wrapper">
+            <div className="book-price is-flex">
+              <span className="fl-item-50">Giá thuê {days} đêm</span>
+              <span className="fl-item-50">{Filter.formatVndCurrency(getRawPrice())}</span>
+            </div>
+            <div className="book-price is-flex">
+              <span className="fl-item-50">Mã khuyến mại</span>
+              <span className="fl-item-50">{useCoupon ? '-' + Filter.formatVndCurrency(getDiscountPrice()) : 0}</span>
+            </div>
+            <div className="ant-divider" />
+            <div className="book-price is-flex">
+              <span className="fl-item-50">Tổng tiền</span>
+              <span className="fl-item-50">{useCoupon ? Filter.formatVndCurrency(getTotalPrice()) : Filter.formatVndCurrency(getRawPrice())}</span>
+            </div>
+          </div>
+
+          <ul className="coupon-list">
+            {coupons && coupons.map((coupon, index) => (
+              <li className="coupon-item" key={index}>
+                <Row className="no-gutters">
+                  <Col xs={8}>
+                    <p>Giảm giá <span>{Math.floor(coupon.percent)}%</span></p>
+                    <p>&nbsp;-&nbsp;</p>
+                    <p>Mã: <span>{coupon.coupon}</span></p>
+                  </Col>
+                  <Col xs={4} className="text-right">
+                    <button className={`btn btn-sm btn-warning ${useCoupon ? 'd-none' : ''}`} type="button"
+                            onClick={() => applyCoupon(coupon)}>
+                      Áp dụng
+                    </button>
+                  </Col>
+                </Row>
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
         <></>
       )}

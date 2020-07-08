@@ -344,11 +344,11 @@
     margin-top: 60px;
   }
   .booking-wrapper {
-    padding: 30px 20px;
+    padding: 20px;
   }
   .booking-price {
     white-space: nowrap;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     > span {
       display: inline-block;
     }
@@ -408,7 +408,7 @@
     }
   }
   .book-price {
-    margin-top: 30px;
+    margin-bottom: 10px;
     > span {
       &:last-child {
         font-weight: 600;
@@ -424,7 +424,6 @@
     font-weight: 600;
     text-align: center;
     @include transition(opacity 0.3s linear);
-    margin-top: 30px;
     padding: 10px;
     &:hover {
       opacity: 0.8;
@@ -467,6 +466,25 @@
     color: #666;
     font-size: 12px;
     margin: 0;
+  }
+  .price-wrapper {
+    margin-top: 1rem;
+  }
+  .coupon-list {
+    margin: 1rem 0;
+    .coupon-item {
+      p {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 12px;
+      }
+      span {
+        color: #FF0037;
+      }
+      button {
+        color: white;
+      }
+    }
   }
 }
 

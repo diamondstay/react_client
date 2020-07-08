@@ -5,7 +5,7 @@ import { AppConfig, Env, Endpoints, Enum } from '../constants';
 import moment from 'moment';
 import queryString from 'query-string';
 
-let config = {
+export let config = {
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
