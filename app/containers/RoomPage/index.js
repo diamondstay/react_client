@@ -43,7 +43,7 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
   }, [roomId]);
 
   return (
-    <article>
+    <article id="diamond-room-page">
       <Helmet>
         <title>Room</title>
       </Helmet>

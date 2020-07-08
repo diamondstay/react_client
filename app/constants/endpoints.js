@@ -5,5 +5,6 @@ module.exports = {
   APARTMENT_URL: '/client/apartment',
   BOOKING_URL: '/client/booking',
   COUPON_URL: '/client/coupons',
+  PAYMENT_URL: '/payment/pay',
   ENDPOINT_CLIENT: '/client',
 };

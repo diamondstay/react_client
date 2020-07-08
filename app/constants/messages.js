@@ -12,6 +12,9 @@ module.exports = {
   bookingSuccess: 'Đặt phòng thành công.',
   bookingError: 'Đặt phòng thất bại.',
 
+  paySuccess: 'Thanh toán thành công.',
+  payError: 'Thanh toán thất bại.',
+
   confirmTitle: 'Confirm',
   confirmLogout: 'Are you sure you want to logout?',
 

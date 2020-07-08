@@ -1,0 +1,52 @@
+#diamond-payment-page {
+  .ant-radio-group {
+    display: block;
+  }
+  .ant-radio-wrapper {
+    width: 100%;
+    @include flexbox();
+    @include align-items();
+    span {
+      &:first-child {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 10%;
+        flex: 0 0 10%;
+        max-width: 10%;
+      }
+      &:last-child {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 90%;
+        flex: 0 0 90%;
+        max-width: 90%;
+      }
+    }
+  }
+  .pay-item {
+    width: 100%;
+    border: 1px solid $border-color;
+    @include border-radius(5px);
+    box-shadow: 1px 1px 1px 0 rgba(0,0,0,.05);
+    padding: 20px;
+    margin-bottom: 1rem;
+    p {
+      font-size: 13px;
+      margin: 0;
+    }
+  }
+  .submit-button {
+    height: 3.5rem;
+    background-image: linear-gradient(to right, #f65e38, #f66737, #f67036, #f67836, #f68037, #f68037, #f68037, #f68037, #f67836, #f67036, #f66737, #f65e38);
+    box-shadow: 0 4px 12px 0 rgba(246,116,57,.4);
+    border: none;
+    @include border-radius(5px);
+    color: white;
+    font-weight: 600;
+    outline: 0;
+    padding: 0 30px;
+    margin: 30px 0;
+    @include transition(opacity 0.3s ease);
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

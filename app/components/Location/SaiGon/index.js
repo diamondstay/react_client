@@ -63,7 +63,7 @@ function SaiGon() {
       id: 6,
       name: 'Siêu giảm giá!',
       description:
-        'Top chỗ ở giảm giá đến 50% từ các chủ nhà thân thiện trên Luxstay.',
+        'Top chỗ ở giảm giá đến 50% từ các chủ nhà thân thiện trên Diamond Stay.',
       image: option6,
       url: 'Hồ Chí Minh',
       min_price: 1000000,

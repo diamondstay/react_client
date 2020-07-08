@@ -97,6 +97,7 @@ function BestPlaces(props) {
         <p className="mb-4">
           Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn
         </p>
+        <p className="mb-4">Cùng Diamond Stay bắt đầu chuyến hành trình chinh phục thế giới của bạn</p>
         <Slider {...settings} className="custom-slider">
           {bestPlaces &&
             bestPlaces.map(place => (

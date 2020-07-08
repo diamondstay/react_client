@@ -48,7 +48,7 @@ export function BookingPage({onSubmitForm, match}) {
   }
 
   return (
-    <article className="content">
+    <article id="diamond-booking-page" className="content">
       <Helmet>
         <title>Checkout | Booking</title>
       </Helmet>

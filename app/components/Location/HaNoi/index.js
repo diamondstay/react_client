@@ -51,7 +51,7 @@ function HaNoi() {
       id: 4,
       name: 'Siêu ưu đãi!',
       description:
-        'Top homestay giảm đến 50% từ các chủ nhà uy tín trên Luxstay!',
+        'Top homestay giảm đến 50% từ các chủ nhà uy tín trên Diamond Stay!',
       image: option4,
       url: 'Hà Nội',
       min_price: 500000,

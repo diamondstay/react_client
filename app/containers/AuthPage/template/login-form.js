@@ -18,7 +18,7 @@ function FormTemplate(props) {
   return (
     <section id="auth-form">
       <h2 className="page-title">Đăng nhập</h2>
-      <p className="mb-4">Đăng nhập Luxstay để trải nghiệm</p>
+      <p className="mb-4">Đăng nhập PaymentMethod để trải nghiệm</p>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group controlId="formEmail">
           <Form.Label>Email</Form.Label>
@@ -49,7 +49,7 @@ function FormTemplate(props) {
 
       <div className="form-note">
         <p>Quên mật khẩu? <br /> <Link to={'/reset-password'}>Nhấn vào đây</Link></p>
-        <p>Bạn chưa có tài khoản Luxstay? <br /> <Link to={'/register'}>Đăng ký</Link></p>
+        <p>Bạn chưa có tài khoản Diamond Stay? <br /> <Link to={'/register'}>Đăng ký</Link></p>
       </div>
     </section>
   );

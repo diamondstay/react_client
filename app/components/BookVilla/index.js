@@ -82,7 +82,7 @@ function BookVilla() {
       <Container>
         <h2 className="page-title">Book Villa đi nào. Mãi bên nhau bạn nhé!</h2>
         <p className="mb-4">
-          Top Villa sang chảnh đón hè đã sẵn sàng trên Luxstay. Book hôm nay đi
+          Top Villa sang chảnh đón hè đã sẵn sàng trên Diamond Stay. Book hôm nay đi
           ngay cùng nhóm bạn. Đặc biệt, tặng mã giảm giá đến 400.000đ cho các
           chỗ ở trong chương trình.
         </p>

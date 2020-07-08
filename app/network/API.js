@@ -132,6 +132,14 @@ API.getHotelDetail = id =>
       throw error;
     });
 
+API.getPaymentRequest = id =>
+  API.instance
+    .post(`${Endpoints.PAYMENT_URL}?id=${id}&pay-method=vnp`, {}, config)
+    .then(response => response.data)
+    .catch(error => {
+      throw error;
+    });
+
 // === bo loc
 API.filter = param => {
   // console.log('lan 3', param);

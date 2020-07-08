@@ -133,7 +133,7 @@ function App({ alerts }) {
           <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
           <HotelLayout exact path="/room/:roomId" component={RoomPage} />
           <HotelLayout exact path="/checkout/booking/:id" component={BookingPage} />
-          <HotelLayout exact path="/checkout/payment" component={PaymentPage} />
+          <HotelLayout exact path="/checkout/payment/:id" component={PaymentPage} />
 
           <GeneralLayout path="/search" component={SearchResultPage} exact />
           <GeneralLayout path="/host/:id" component={HostPage} exact />

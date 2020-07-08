@@ -12,29 +12,47 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectPaymentPage from './selectors';
+import makeSelectPaymentPage, { makeSelectPaymentRequest } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { Helmet } from 'react-helmet';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import { getPaymentRequest } from './actions';
+import BookingDetail from 'components/BookingDetail';
+import PaymentMethod from 'components/PaymentMethod';
 
-export function PaymentPage() {
+export function PaymentPage({getPaymentRequest, paymentRequest, match}) {
   useInjectReducer({ key: 'paymentPage', reducer });
   useInjectSaga({ key: 'paymentPage', saga });
 
+  const roomId = match.params.id;
+
+  const handleSubmit = () => {
+    getPaymentRequest(roomId);
+  };
+
   return (
-    <article className="content">
+    <article id="diamond-payment-page" className="content">
       <Helmet>
         <title>Checkout | Payment</title>
       </Helmet>
       <Container>
         <Row>
-          <Col xs={12} sm={6}>
+          <Col xs={12} sm={8}>
             <h2 className="page-title">Thanh toán</h2>
             <p>Vui lòng lựa chọn phương thức thanh toán</p>
-          </Col>
-          <Col xs={12} sm={{ span: 4, offset: 2 }}>
 
+            <div className="payment-method">
+              <PaymentMethod />
+
+              <div className="form-submit">
+                <button className="btn submit-button" onClick={handleSubmit}>Thanh toán</button>
+              </div>
+            </div>
+          </Col>
+          <Col xs={12} sm={4}>
+            <h2 className="page-title">Chi tiết đặt phòng</h2>
+            <BookingDetail />
           </Col>
         </Row>
       </Container>
@@ -44,15 +62,20 @@ export function PaymentPage() {
 
 PaymentPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  getPaymentRequest: PropTypes.func
 };
 
 const mapStateToProps = createStructuredSelector({
   paymentPage: makeSelectPaymentPage(),
+  paymentRequest: makeSelectPaymentRequest()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    getPaymentRequest: (id) => {
+      dispatch(getPaymentRequest(id));
+    },
   };
 }
 

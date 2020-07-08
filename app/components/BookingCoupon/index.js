@@ -19,7 +19,7 @@ function BookingCoupon() {
 
       <div className="coupon-form">
         <Form.Group controlId="formCoupon">
-          <Form.Control type="text" name="coupon" defaultValue={bookingInfo.coupon.coupon}  ref={register} disabled />
+          <Form.Control type="text" name="coupon" defaultValue={bookingInfo.coupon.coupon}  ref={register} />
         </Form.Group>
       </div>
     </section>

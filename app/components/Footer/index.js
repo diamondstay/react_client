@@ -129,7 +129,7 @@ function Footer() {
             </ul>
           </Col>
           <Col xs={12} sm={4} className="col-md-20">
-            <h5 className="footer-title">Tải ứng dụng Luxstay</h5>
+            <h5 className="footer-title">Tải ứng dụng Diamond Stay</h5>
             <Row>
               <Col xs={6}>
                 <div className="qr-code">

@@ -11,6 +11,13 @@ const selectPaymentPageDomain = state => state.paymentPage || initialState;
  * Other specific selectors
  */
 
+const makeSelectPaymentRequest = () =>
+  createSelector(
+    selectPaymentPageDomain,
+    substate => substate.payment,
+  );
+
+
 /**
  * Default selector used by PaymentPage
  */
@@ -22,4 +29,4 @@ const makeSelectPaymentPage = () =>
   );
 
 export default makeSelectPaymentPage;
-export { selectPaymentPageDomain };
+export { selectPaymentPageDomain, makeSelectPaymentRequest };

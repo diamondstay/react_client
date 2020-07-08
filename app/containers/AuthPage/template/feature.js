@@ -36,7 +36,7 @@ function Feature() {
       id: 4,
       image: feature4,
       title: 'Ưu đãi mỗi ngày',
-      desc: 'Nhận thông báo ưu đãi từ Luxstay khi có kế hoạch du lịch để lựa chọn và đặt ngay cho mình một chỗ ở phù hợp, tiện nghi với giá tốt nhất.'
+      desc: 'Nhận thông báo ưu đãi từ Diamond Stay khi có kế hoạch du lịch để lựa chọn và đặt ngay cho mình một chỗ ở phù hợp, tiện nghi với giá tốt nhất.'
     },
   ];
 
