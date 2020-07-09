@@ -79,8 +79,10 @@ function Book(props) {
     setStartDate(dateString[0]);
     setEndDate(dateString[1]);
 
-    let days =
-      parseInt(dateString[1].slice(0, 2)) - parseInt(dateString[0].slice(0, 2));
+    let date1 = date[0]._d;
+    let date2 = date[1]._d;
+    let gap = date2.getTime() - date1.getTime();
+    let days = gap / (1000 * 3600 * 24);
     setDays(days);
   };
 
