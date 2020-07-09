@@ -8,8 +8,7 @@ import queryString from 'query-string';
 export let config = {
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    Authorization: `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
+    'Authorization': `Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGFuaGFpbmFtMTE3OTdAZ21haWwuY29tIiwiZXhwIjoxNTk0Mjk5MjE0fQ.4uZxtOPmSar7tEb24Qlmkcq_fGqbfHtb4XnsWY8Kl_OBlNZLgpcLxzh-fZ53ULYF5nM_5B9YSydUAbrOf2HqnQ`,
   },
 };
 
