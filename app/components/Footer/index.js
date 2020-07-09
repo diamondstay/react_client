@@ -16,7 +16,7 @@ import DMCA from 'images/brand/dmca.png';
 
 function Footer() {
   return (
-    <footer id="diamond-footer">
+    <footer id="diamond-footer" className="content">
       <Container>
         <Row>
           <Col xs={12} sm={6} className="col-md-20">
@@ -211,7 +211,6 @@ function Footer() {
             </ul>
           </Col>
         </Row>
-        <div className="footer-gap" />
       </Container>
     </footer>
   );

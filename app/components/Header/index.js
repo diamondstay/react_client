@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import Logo from 'images/header-logo.png';
 import Search from 'components/Search';
 import { Dropdown } from 'antd';
@@ -9,6 +9,13 @@ import defaultAvatar from 'images/default-avatar.png';
 import UserMenu from './menu';
 import isEmpty from 'lodash/isEmpty';
 import reactLocalStorage from 'utils/localStorage';
+import { toast } from 'react-toastify';
+import * as Messages from 'constants/messages';
+
+export const logOut = () => {
+  reactLocalStorage.clear();
+  toast(Messages.logoutSuccess);
+};
 
 function Header() {
   const [auth, setAuth] = useState(false);

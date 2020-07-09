@@ -22,7 +22,7 @@ import place7 from 'images/places/qn.png';
 import place8 from 'images/places/ha.png';
 
 function BestPlaces(props) {
-  const { bestPlaces } = props;
+  const { bestPlaces } = {...props};
   console.log('lllll', bestPlaces);
   const places = [
     {

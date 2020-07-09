@@ -25,11 +25,13 @@ export function PaymentPage({getPaymentRequest, paymentRequest, match}) {
   useInjectReducer({ key: 'paymentPage', reducer });
   useInjectSaga({ key: 'paymentPage', saga });
 
-  const roomId = match.params.id;
+  const bookingId = match.params.id;
 
   const handleSubmit = () => {
-    getPaymentRequest(roomId);
+    getPaymentRequest(bookingId);
   };
+
+  console.log(paymentRequest);
 
   return (
     <article id="diamond-payment-page" className="content">

@@ -8,6 +8,7 @@ import React from 'react';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { calendar, envelope, gear, heart, signOut } from 'components/Icon';
+import { logOut } from './index';
 
 function UserMenu() {
 
@@ -42,7 +43,7 @@ function UserMenu() {
         </Link>
       </Menu.Item>
       <Menu.Item key="5" className="menu-item">
-        <Link to="/logout">
+        <Link to="/login" onClick={logOut}>
           <i>{signOut}</i>
           <span>Đăng xuất</span>
         </Link>

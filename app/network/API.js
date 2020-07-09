@@ -111,8 +111,9 @@ API.booking = params => {
         !!params.order_name +
         '&purpose=' +
         params.purpose +
-        '&coupon=' +
-        params.coupon,
+        // '&coupon=' +
+        // params.coupon,
+        '&coupon=',
       {},
       config,
     )

@@ -16,7 +16,7 @@ import { Fade } from 'react-reveal';
 
 function Intro() {
   return (
-    <section id="diamond-intro" className="content">
+    <section id="diamond-intro" className="content pb-0">
       <Container>
         <Row>
           <Col xs={12} sm={6}>

@@ -7,18 +7,16 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as Messages from 'constants/messages';
 import { push } from 'react-router-redux';
-import reactLocalStorage from 'utils/localStorage';
 
 export function* submitBooking(args) {
   try {
     const resp = yield call(API.booking, args.data);
-    const bookingInfo = reactLocalStorage.getObject('booking-info');
     if (resp.code === 200) {
       yield put(submitBookingSuccess(resp));
       toast(Messages.bookingSuccess);
-      yield put(push('/checkout/payment/' + bookingInfo.aid)); // Redirect to Payment page
+      yield put(push('/checkout/payment/' + resp.data)); // Redirect to Payment page
     } else {
-      toast(Messages.bookingError);
+      toast(resp.message);
     }
   } catch (err) {
     toast(Messages.bookingError);

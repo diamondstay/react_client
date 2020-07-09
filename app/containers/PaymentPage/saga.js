@@ -14,9 +14,12 @@ export function* getPaymentRequest(action) {
     if (resp.code === 200) {
       yield put(getPaymentRequestSuccess(resp));
       toast(Messages.paySuccess);
-      yield put(push('/')); // Redirect to Home page
+      // yield put(push('/')); // Redirect to Home page
+      window.open(resp.data,
+        "Popup", "toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=800, height=600, top=50, left=100");
+
     } else {
-      toast(Messages.payError);
+      toast(resp.message);
     }
   } catch (err) {
     toast(Messages.payError);

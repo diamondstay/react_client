@@ -66,7 +66,7 @@ function Book(props) {
     reactLocalStorage.setObject('booking-info', bookingInfo);
 
     // Redirect to Checkout page
-    if (checkinDate == checkoutDate) return;
+    if (checkinDate === checkoutDate) return;
     history.push('/checkout/booking/' + roomId);
   };
 

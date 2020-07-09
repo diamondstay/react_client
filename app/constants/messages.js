@@ -1,8 +1,7 @@
 module.exports = {
   loginSuccess: 'Đăng nhập thành công.',
   loginError: 'Đăng nhập thất bại.',
-  loginRequired: 'You need to log in to continue.',
-  logoutSuccess: 'You have logged out',
+  logoutSuccess: 'Đăng xuất thành công.',
 
   registerSuccess: 'Đăng ký thành công.',
   registerError: 'Đăng ký thất bại.',
