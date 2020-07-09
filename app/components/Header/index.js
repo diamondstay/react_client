@@ -18,9 +18,9 @@ export const logOut = () => {
 };
 
 function Header() {
+  const userAccount = reactLocalStorage.getObject('user-account');
   const [auth, setAuth] = useState(false);
   useEffect(() => {
-    const userAccount = reactLocalStorage.getObject('user-account');
     if (isEmpty(userAccount)) {
       setAuth(false);
     } else {
@@ -44,7 +44,7 @@ function Header() {
                   <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                     <div className="user-info">
                       <div className="user-avatar" style={{ backgroundImage: `url(${defaultAvatar})` }} />
-                      <div className="user-name">Linh Yo</div>
+                      <div className="user-name">{userAccount.first_name + ' ' + userAccount.last_name}</div>
                     </div>
                     <DownOutlined />
                   </a>
