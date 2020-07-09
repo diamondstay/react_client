@@ -10,6 +10,7 @@ import Welcome from './welcome';
 import Feature from './feature';
 import Form1 from './register-form';
 import Form2 from './login-form';
+import Form3 from './reset-pw-form';
 
 function AuthTemplate({ type, onSubmit }) {
 
@@ -28,6 +29,9 @@ function AuthTemplate({ type, onSubmit }) {
               ),
               2: (
                 <Form2 onSubmit={onSubmit} />
+              ),
+              3: (
+                <Form3 onSubmit={onSubmit} />
               ),
               default: (
                 <></>

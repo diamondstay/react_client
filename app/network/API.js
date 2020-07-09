@@ -70,7 +70,10 @@ API.login = params => {
     });
 };
 
-API.resetPassword = data => {
+API.resetPassword = params => {
+  const data = {
+    email: params.email
+  };
   return API.instance
     .post(Endpoints.RESET_PASSWORD_URL, data)
     .then(response => {
@@ -111,9 +114,8 @@ API.booking = params => {
         !!params.order_name +
         '&purpose=' +
         params.purpose +
-        // '&coupon=' +
-        // params.coupon,
-        '&coupon=',
+        '&coupon=' +
+        params.coupon,
       {},
       config,
     )

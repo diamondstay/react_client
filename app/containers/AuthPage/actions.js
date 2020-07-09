@@ -56,9 +56,10 @@ export function registerError() {
   };
 }
 
-export function userResetPassword() {
+export function resetPassword(data) {
   return {
     type: RESET_PASSWORD,
+    data,
   };
 }
 

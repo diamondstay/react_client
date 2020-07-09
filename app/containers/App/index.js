@@ -18,6 +18,7 @@ import ScrollToTop from 'react-router-scroll-top';
 import HomePage from 'containers/HomePage/Loadable';
 import LoginPage from 'containers/AuthPage/login';
 import RegisterPage from 'containers/AuthPage/register';
+import ResetPasswordPage from 'containers/AuthPage/reset-pw';
 import ThankYouPage from 'containers/AuthPage/thank-you';
 import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
 import RoomPage from 'containers/RoomPage/Loadable';
@@ -129,6 +130,7 @@ function App({ alerts }) {
           <GeneralLayout exact path="/" component={HomePage} />
           <AuthLayout exact path="/login" component={LoginPage} />
           <AuthLayout exact path="/register" component={RegisterPage} />
+          <AuthLayout exact path="/reset-password" component={ResetPasswordPage} />
           <AuthLayout exact path="/thank-you" component={ThankYouPage} />
           <HotelLayout exact path="/hotel/:hotelId" component={HotelDetailPage} />
           <HotelLayout exact path="/room/:roomId" component={RoomPage} />

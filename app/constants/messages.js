@@ -5,8 +5,8 @@ module.exports = {
 
   registerSuccess: 'Đăng ký thành công.',
   registerError: 'Đăng ký thất bại.',
-  resetPasswordSuccess: 'You have reset your password successfully',
-  resetPasswordError: 'You have reset your password failed',
+  resetPasswordSuccess: 'Yêu cầu lấy lại mật khẩu thành công. Vui lòng kiểm tra email.',
+  resetPasswordError: 'Yêu cầu lấy lại mật khẩu thất bại.',
 
   bookingSuccess: 'Đặt phòng thành công.',
   bookingError: 'Đặt phòng thất bại.',

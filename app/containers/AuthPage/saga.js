@@ -46,6 +46,7 @@ export function* resetPassword(args) {
     if (resp.code === 200) {
       yield put(resetPasswordSuccess(resp));
       toast(Messages.resetPasswordSuccess);
+      yield put(push('/login')); // Redirect to Log in page
     } else {
       toast(Messages.resetPasswordError);
     }

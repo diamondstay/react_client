@@ -25,6 +25,7 @@ function ThankYou() {
               <h2 className="page-title">Đăng ký thành công !</h2>
               <p className="pb-2">Vui lòng kiểm tra email để hoàn tất thông tin đăng nhập của bạn.</p>
               <p><Link to={'/'} className="text-orange">Quay lại trang chủ.</Link></p>
+              <p><Link to={'/login'} className="text-orange">Đăng nhập ngay.</Link></p>
             </section>
           </Col>
         </Row>

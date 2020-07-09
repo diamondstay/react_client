@@ -8,17 +8,16 @@ function FormTemplate(props) {
   const { register, handleSubmit, watch, errors } = useForm();
 
   const onSubmit = (data, e) => {
-    let email = data.email,
-        password = data.password;
+    let email = data.email
 
-    props.onSubmit({email, password});
+    props.onSubmit({email});
     e.target.reset(); // reset after form submit
   };
 
   return (
     <section id="auth-form">
-      <h2 className="page-title">Đăng nhập</h2>
-      <p className="mb-4">Đăng nhập Diamond Stay để trải nghiệm</p>
+      <h2 className="page-title">Quên mật khẩu</h2>
+      <p className="mb-4">Vui lòng nhập địa chỉ email được liên kết với tài khoản Luxstay để nhận liên kết đặt lại mật khẩu</p>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group controlId="formEmail">
           <Form.Label>Email</Form.Label>
@@ -33,24 +32,10 @@ function FormTemplate(props) {
           {errors.email && <p className="error">{errors.email.message}</p>}
         </Form.Group>
 
-        <Form.Group controlId="formPassword">
-          <Form.Label>Mật khẩu</Form.Label>
-          <Form.Control type="password" name="password" placeholder=""
-                        ref={register({
-                          required: "Vui lòng nhập"
-                        })} />
-          {errors.password && <p className="error">{errors.password.message}</p>}
-        </Form.Group>
-
         <div className="form-submit">
-          <button className="btn submit-button" type="submit">Đăng nhập</button>
+          <button className="btn submit-button" type="submit">Gửi</button>
         </div>
       </Form>
-
-      <div className="form-note">
-        <p>Quên mật khẩu? <br /> <Link to={'/reset-password'}>Nhấn vào đây</Link></p>
-        <p>Bạn chưa có tài khoản Diamond Stay? <br /> <Link to={'/register'}>Đăng ký</Link></p>
-      </div>
     </section>
   );
 }
