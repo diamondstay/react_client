@@ -19,7 +19,7 @@ function UserMenu() {
   return (
     <Menu onClick={onClick} className="user-menu">
       <Menu.Item key="1" className="menu-item">
-        <Link to="/my-booking">
+        <Link to="/my-bookings">
           <i>{calendar}</i>
           <span>Đặt chỗ của tôi</span>
         </Link>

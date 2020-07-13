@@ -144,6 +144,16 @@ API.getPaymentRequest = id =>
       throw error;
     });
 
+API.getHistoryList = (status, fromMonth, toMonth, page, limit) => {
+  console.log(config);
+  return API.instance
+    .get(`${Endpoints.HISTORY_URL}?status=${status}&from-month=${fromMonth}&to-month=${toMonth}&page=${page}&limit=${limit}`, config)
+    .then(response => response.data)
+    .catch(error => {
+      throw error;
+    });
+}
+
 // === bo loc
 API.filter = param => {
   // console.log('lan 3', param);

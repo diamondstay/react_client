@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import * as Messages from 'constants/messages';
 
 export const logOut = () => {
-  reactLocalStorage.clear();
+  // reactLocalStorage.clear();
   toast(Messages.logoutSuccess);
 };
 

@@ -6,5 +6,6 @@ module.exports = {
   BOOKING_URL: '/client/booking',
   COUPON_URL: '/client/coupons',
   PAYMENT_URL: '/payment/pay',
+  HISTORY_URL: '/client/all-bookings',
   ENDPOINT_CLIENT: '/client',
 };

@@ -24,6 +24,7 @@ import HotelDetailPage from 'containers/HotelDetailPage/Loadable';
 import RoomPage from 'containers/RoomPage/Loadable';
 import BookingPage from 'containers/BookingPage/Loadable';
 import PaymentPage from 'containers/PaymentPage/Loadable';
+import HistoryPage from 'containers/HistoryPage/Loadable';
 import SearchResultPage from 'containers/SearchResultPage/Loadable';
 import HostPage from 'containers/HostPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -136,6 +137,7 @@ function App({ alerts }) {
           <HotelLayout exact path="/room/:roomId" component={RoomPage} />
           <HotelLayout exact path="/checkout/booking/:id" component={BookingPage} />
           <HotelLayout exact path="/checkout/payment/:id" component={PaymentPage} />
+          <HotelLayout exact path="/my-bookings" component={HistoryPage} />
 
           <GeneralLayout path="/search" component={SearchResultPage} exact />
           <GeneralLayout path="/host/:id" component={HostPage} exact />

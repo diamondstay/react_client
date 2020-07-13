@@ -1,0 +1,37 @@
+#diamond-history-page {
+  .history-item {
+    background-color: white;
+    @include border-radius(10px);
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.05);
+    padding:20px;
+    margin-bottom: 30px;
+  }
+  .item-image {
+    margin: 0;
+  }
+  .room-name {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .room-type {
+    width: 100%;
+    color: #888;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ant-divider {
+    margin: 15px 0;
+  }
+  .detail-item {
+    margin-bottom: 15px;
+    .label {
+      font-weight: 600;
+    }
+  }
+}
