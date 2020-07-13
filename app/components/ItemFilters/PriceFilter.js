@@ -16,6 +16,10 @@ function PriceFilter(props) {
     const value = price.split('-');
     set_min_price(value[0]);
     set_max_price(value[1]);
+    if (price.includes('>')) {
+      const value1 = price.split('>');
+      set_min_price(value1[1].trim());
+    }
   }, [price]);
 
   const data = {
@@ -23,6 +27,10 @@ function PriceFilter(props) {
     name: 'price',
     id: 4,
     options: [
+      {
+        name: '0-500000',
+        id: 0,
+      },
       {
         name: '500000-1000000',
         id: 1,
@@ -36,8 +44,12 @@ function PriceFilter(props) {
         id: 3,
       },
       {
-        name: '3000000-4000.000',
+        name: '3000000-4000000',
         id: 4,
+      },
+      {
+        name: ' > 4000000',
+        id: 5,
       },
     ],
   };

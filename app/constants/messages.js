@@ -18,6 +18,8 @@ module.exports = {
   sendContactSuccess: 'Your message has been successfully sent.',
   sendContactError: 'Your message has been sent failed',
 
-  subscribeNewsletterSuccess: 'You have been successfully subscribed to the newsletter',
-  subscribeNewsletterError: 'Unfortunately, your subscription was unsuccessful. Please try again!',
+  subscribeNewsletterSuccess:
+    'You have been successfully subscribed to the newsletter',
+  subscribeNewsletterError:
+    'Unfortunately, your subscription was unsuccessful. Please try again!',
 };

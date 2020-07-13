@@ -5,6 +5,7 @@
  */
 
 import React, { useState, memo } from 'react';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Row, Col, Form } from 'react-bootstrap';
 import { search, user } from 'components/Icon';
@@ -24,9 +25,9 @@ function Search(props) {
 
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
-    const { keyword } = data;
+    // const { keyword } = data;
 
-    props.onSubmit({ keyword });
+    // props.onSubmit({ keyword });
     e.target.reset(); // reset after form submit
   };
 
@@ -36,6 +37,7 @@ function Search(props) {
   const [checkin, setCheckin] = useState('');
   const [checkout, setCheckout] = useState('');
   const [location, setLocation] = useState([]);
+  const [keyword, setkeyword] = useState('');
 
   const selectAdult = value => {
     setAdult(value);
@@ -54,27 +56,23 @@ function Search(props) {
   };
 
   const halderChange = e => {
-    // searchLocation(e.target.value);
-    if (e.target.value.includes('Hà')) {
-      setLocation(() => ['Hà Nội']);
-    }
-    if (e.target.value.includes('Đà')) {
-      setLocation(() => ['Đà Nẵng']);
-    }
-    if (e.target.value.includes('Hồ')) {
-      setLocation(() => ['Hồ Chí Minh']);
-    }
-    if (e.target.value.includes('Vũng')) {
-      setLocation(() => ['Bà Rịa - Vũng Tàu']);
-    }
-    if (e.target.value.includes('Quảng')) {
-      setLocation(() => ['Quảng Ninh']);
-    }
-    if (e.target.value === '') {
-      setLocation(() => []);
-    }
+    axios
+      .post(
+        `http://35.197.153.19:12345/client/search-box?key=${e.target.value}`,
+      )
+      .then(function(response) {
+        // handle success
+        const newLocation = response.data.data;
+        setLocation(newLocation);
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function() {
+        // always executed
+      });
   };
-
   const content = (
     <div className="guest-select-number">
       <div className="select-item">
@@ -142,6 +140,7 @@ function Search(props) {
                 name="keyword"
                 placeholder="Tìm kiếm"
                 onChange={halderChange}
+                defaultValue={keyword}
               />
             </div>
           </Col>
@@ -207,46 +206,7 @@ function Search(props) {
           </Col>
         </Row>
       </Form>
-      {/*{location.length > 0 ? (*/}
-      {/*  <div className="search-box">*/}
-      {/*    <h4 className="title">Kết quả tìm kiếm</h4>*/}
-      {/*    <div className="result">*/}
-      {/*      {location.map(item => (*/}
-      {/*        <span*/}
-      {/*          className="item"*/}
-      {/*          key={item}*/}
-      {/*          onClick={() =>*/}
-      {/*            props.history.push(*/}
-      {/*              `/search?${queryString.stringify({*/}
-      {/*                convenience:*/}
-      {/*                  queryString.parse(props.location.search).convenience ||*/}
-      {/*                type:*/}
-      {/*                type: queryString.parse(props.location.search).type || '',*/}
-      {/*                guest:*/}
-      {/*                  adult + kid + baby !== 0*/}
-      {/*                    ? adult + kid + baby*/}
-      {/*                    : undefined,*/}
-      {/*                checkin,*/}
-      {/*                checkout,*/}
-      {/*                province: item,*/}
-      {/*                min_price: queryString.parse(props.location.search)*/}
-      {/*                  .min_price,*/}
-      {/*                max_price: queryString.parse(props.location.search)*/}
-      {/*                  .max_price,*/}
-      {/*                limit: 10,*/}
-      {/*                page: 1,*/}
-      {/*                sort_by_price: 'desc',*/}
-      {/*              })}`,*/}
-      {/*              setLocation(() => []),*/}
-      {/*            )*/}
-      {/*          }*/}
-      {/*        >*/}
-      {/*          {item}*/}
-      {/*        </span>*/}
-      {/*      ))}*/}
-      {/*    </div>*/}
-      {/*  </div>*/}
-      {/*) : null}*/}
+
       {location.length > 0 ? (
         <div className="search-box">
           <h4 className="title">Kết quả tìm kiếm</h4>
