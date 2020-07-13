@@ -43,7 +43,6 @@ openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
-
 // Create redux store with history
 const initialState = {};
 const store = configureStore(initialState, history);

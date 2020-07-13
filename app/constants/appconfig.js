@@ -2,12 +2,12 @@
  * Global App Config
  */
 
-const API_BASE_URL = 'http://35.197.153.19:12345';
+const API_BASE_URL = 'http://35.240.224.17';
 
 module.exports = {
   // App Details
   appName: 'Diamond Stay',
 
   // URLs
-  API_BASE_URL
+  API_BASE_URL,
 };

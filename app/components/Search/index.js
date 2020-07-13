@@ -18,6 +18,7 @@ import 'moment/locale/vi';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { searchLocation } from './actions';
+import { API_BASE_URL } from '../../constants/appconfig';
 
 function Search(props) {
   const { RangePicker } = DatePicker;
@@ -57,9 +58,7 @@ function Search(props) {
 
   const halderChange = e => {
     axios
-      .post(
-        `http://35.197.153.19:12345/client/search-box?key=${e.target.value}`,
-      )
+      .post(`${API_BASE_URL}/client/search-box?key=${e.target.value}`)
       .then(function(response) {
         // handle success
         const newLocation = response.data.data;
