@@ -14,26 +14,25 @@ function RoomRate(props) {
   return (
     <section id="diamond-room-rate">
       <h2 className="page-title">Giá phòng</h2>
-      <p className="mb-4">Giá có thể tăng vào cuối tuần hoặc ngày lễ</p>
 
       <div className="hotel-price">
         {
           detail.price > 0 ?
             <div className="price-item is-flex">
-              <span className="fl-item-50">Thứ hai - Thứ năm</span>
+              <span className="fl-item-50">Giá 1 đêm</span>
               <span className="fl-item-50">{Filter.formatVndCurrency(detail.price)}</span>
             </div>
             :
             <></>
         }
         {
-          detail.price > 0 ?
+          detail.price_promotion > 0 ?
             <div className="price-item is-flex">
-              <span className="fl-item-50">Thứ sáu - Chủ nhật</span>
-              <span className="fl-item-50">{Filter.formatVndCurrency(detail.price + detail.price * 0.2)}</span>
+              <span className="fl-item-50">Giá khuyến mại</span>
+              <span className="fl-item-50">{Filter.formatVndCurrency(detail.price_promotion)}</span>
             </div>
             :
-            <>:</>
+            <></>
         }
         {
           detail.surcharge_per_person > 0 ?

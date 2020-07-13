@@ -56,8 +56,13 @@
   }
   .promo-price {
     font-weight: 600;
+    span {
+      color: #999;
+    }
   }
   .promo-location {
+    height: 45px;
     font-weight: normal;
+    overflow: hidden;
   }
 }

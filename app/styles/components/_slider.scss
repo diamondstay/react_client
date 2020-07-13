@@ -1,5 +1,4 @@
 .custom-slider {
-  max-height: 361px;
   overflow: hidden;
   .slick-list {
     margin: 0 -5px;
@@ -12,6 +11,12 @@
     @include media-breakpoint-up(lg) {
       padding: 0 0.5rem;
     }
+  }
+}
+
+#diamond-similar-list, #diamond-other-list {
+  .custom-slider {
+    max-height: 380px;
   }
 }
 

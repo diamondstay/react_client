@@ -2,6 +2,7 @@ module.exports = {
   loginSuccess: 'Đăng nhập thành công.',
   loginError: 'Đăng nhập thất bại.',
   logoutSuccess: 'Đăng xuất thành công.',
+  requiredLogin: 'Bạn phải đăng nhập để đặt phòng.',
 
   registerSuccess: 'Đăng ký thành công.',
   registerError: 'Đăng ký thất bại.',

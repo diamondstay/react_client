@@ -17,6 +17,9 @@ import axios from 'axios';
 import * as AppConfig from 'constants/appconfig';
 import * as Endpoints from 'constants/endpoints';
 import config from 'network/API';
+import isEmpty from 'lodash/isEmpty';
+import { toast } from 'react-toastify';
+import * as Messages from 'constants/messages';
 
 function Book(props) {
   const { detail } = { ...props };
@@ -34,6 +37,8 @@ function Book(props) {
 
   const { RangePicker } = DatePicker;
   const dateFormat = 'DD / MM / YYYY';
+
+  const userAccount = reactLocalStorage.getObject('user-account');
 
   const getBookTime = date => {
     let dateArr = date.split(' / ');
@@ -63,11 +68,16 @@ function Book(props) {
       district: detail.district_address,
       province: detail.province_address
     };
-    reactLocalStorage.setObject('booking-info', bookingInfo);
 
-    // Redirect to Checkout page
-    if (checkinDate === checkoutDate) return;
-    history.push('/checkout/booking/' + roomId);
+    if (isEmpty(userAccount)) {
+      toast(Messages.requiredLogin);
+    } else {
+      reactLocalStorage.setObject('booking-info', bookingInfo);
+
+      // Redirect to Checkout page
+      if (checkinDate === checkoutDate) return;
+      history.push('/checkout/booking/' + roomId);
+    }
   };
 
   const changeDate = (date, dateString) => {
@@ -81,8 +91,9 @@ function Book(props) {
 
     let date1 = date[0]._d;
     let date2 = date[1]._d;
-    let gap = date2.getTime() - date1.getTime();
-    let days = gap / (1000 * 3600 * 24);
+    // let gap = date2.getTime() - date1.getTime();
+    // let days = gap / (1000 * 3600 * 24);
+    let days = moment(date2).diff(moment(date1), 'days');
     setDays(days);
   };
 
@@ -227,31 +238,34 @@ function Book(props) {
               <span className="fl-item-50">{useCoupon ? '-' + Filter.formatVndCurrency(getDiscountPrice()) : 0}</span>
             </div>
             <div className="ant-divider" />
-            <div className="book-price is-flex">
+            <div className="book-price is-flex mb-3">
               <span className="fl-item-50">Tổng tiền</span>
               <span className="fl-item-50">{useCoupon ? Filter.formatVndCurrency(getTotalPrice()) : Filter.formatVndCurrency(getRawPrice())}</span>
             </div>
           </div>
 
-          <ul className="coupon-list">
-            {coupons && coupons.map((coupon, index) => (
-              <li className="coupon-item" key={index}>
-                <Row className="no-gutters">
-                  <Col xs={8}>
-                    <p>Giảm giá <span>{Math.floor(coupon.percent)}%</span></p>
-                    <p>&nbsp;-&nbsp;</p>
-                    <p>Mã: <span>{coupon.coupon}</span></p>
-                  </Col>
-                  <Col xs={4} className="text-right">
-                    <button className={`btn btn-sm btn-warning ${useCoupon ? 'd-none' : ''}`} type="button"
-                            onClick={() => applyCoupon(coupon)}>
-                      Áp dụng
-                    </button>
-                  </Col>
-                </Row>
-              </li>
-            ))}
-          </ul>
+          {
+            detail.price_promotion ? <></> :
+              <ul className="coupon-list">
+                {coupons && coupons.map((coupon, index) => (
+                  <li className="coupon-item" key={index}>
+                    <Row className="no-gutters">
+                      <Col xs={8}>
+                        <p>Giảm giá <span>{Math.floor(coupon.percent)}%</span></p>
+                        <p>&nbsp;-&nbsp;</p>
+                        <p>Mã: <span>{coupon.coupon}</span></p>
+                      </Col>
+                      <Col xs={4} className="text-right">
+                        <button className={`btn btn-sm btn-warning ${useCoupon ? 'd-none' : ''}`} type="button"
+                                onClick={() => applyCoupon(coupon)}>
+                          Áp dụng
+                        </button>
+                      </Col>
+                    </Row>
+                  </li>
+                ))}
+              </ul>
+          }
         </>
       ) : (
         <></>
