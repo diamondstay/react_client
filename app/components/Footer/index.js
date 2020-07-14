@@ -25,27 +25,29 @@ function Footer() {
             </figure>
             <div className="contact-item">
               <div>
-                <i className="item-icon">
-                  {email}
-                </i>
+                <i className="item-icon">{email}</i>
               </div>
               <div>
                 <div className="item-text">
                   <h4>Email</h4>
-                  <p><a href="mailto:diamondstay@gmail.com">diamondstay@gmail.com</a></p>
+                  <p>
+                    <a href="mailto:diamondstay@gmail.com">
+                      diamondstaycompany@gmail.com
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
             <div className="contact-item">
               <div>
-                <i className="item-icon">
-                  {phone}
-                </i>
+                <i className="item-icon">{phone}</i>
               </div>
               <div>
                 <div className="item-text">
                   <h4>Điện thoại</h4>
-                  <p><a href="tel:18006586">1800 6586</a></p>
+                  <p>
+                    <a href="tel:18006586">1800 6586</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -139,17 +141,29 @@ function Footer() {
               <Col xs={6}>
                 <ul className="footer-download">
                   <li>
-                    <a target="_blank" rel="nofollow" href="https://itunes.apple.com/us/app/luxstay-%C4%91%E1%BA%B7t-ph%C3%B2ng-homestay/id1339510380?mt=8">
+                    <a
+                      target="_blank"
+                      rel="nofollow"
+                      href="https://itunes.apple.com/us/app/luxstay-%C4%91%E1%BA%B7t-ph%C3%B2ng-homestay/id1339510380?mt=8"
+                    >
                       <img alt="Apple Store" src={AppStore} />
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" rel="nofollow" href="https://wap2.hispace.hicloud.com/uowap/index.jsp#/detailApp/C101516187?accessId=058e904ea40444f1baba622a16bb9466">
+                    <a
+                      target="_blank"
+                      rel="nofollow"
+                      href="https://wap2.hispace.hicloud.com/uowap/index.jsp#/detailApp/C101516187?accessId=058e904ea40444f1baba622a16bb9466"
+                    >
                       <img alt="Huawei" src={Huawei} />
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" rel="nofollow" href="https://play.google.com/store/apps/details?id=net.luxstay.android">
+                    <a
+                      target="_blank"
+                      rel="nofollow"
+                      href="https://play.google.com/store/apps/details?id=net.luxstay.android"
+                    >
                       <img alt="Huawei" src={GooglePlay} />
                     </a>
                   </li>
@@ -167,7 +181,12 @@ function Footer() {
                 <img alt="Visa" width="100" height="60" src={Visa} />
               </li>
               <li>
-                <img alt="Mastercard" width="100" height="60" src={Mastercard} />
+                <img
+                  alt="Mastercard"
+                  width="100"
+                  height="60"
+                  src={Mastercard}
+                />
               </li>
               <li>
                 <img alt="Maestro" width="100" height="60" src={Maestro} />
@@ -178,13 +197,18 @@ function Footer() {
             <h5 className="footer-title">Certification</h5>
             <ul className="footer-certification">
               <li>
-                <a href="http://online.gov.vn/WebsiteDisplay.aspx?DocId=45648" rel="nofollow">
+                <a
+                  href="http://online.gov.vn/WebsiteDisplay.aspx?DocId=45648"
+                  rel="nofollow"
+                >
                   <img alt="Visa" width="100" src={BCT} />
                 </a>
               </li>
               <li>
                 <a
-                  href="https://www.dmca.com/Protection/Status.aspx?ID=b9ae1144-725f-4e8a-8961-bb0c626266e6&amp;refurl=https://www.luxstay.com/vi" rel="nofollow">
+                  href="https://www.dmca.com/Protection/Status.aspx?ID=b9ae1144-725f-4e8a-8961-bb0c626266e6&amp;refurl=https://www.luxstay.com/vi"
+                  rel="nofollow"
+                >
                   <img alt="Visa" width="100" src={DMCA} />
                 </a>
               </li>

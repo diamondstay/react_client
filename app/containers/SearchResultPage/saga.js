@@ -19,11 +19,11 @@ export function* filter(args) {
       // toast(Messages.registerSuccess);
     } else {
       // debugger;
-      // toast(Messages.registerError);
+      toast('Tìm kiếm thất bại');
     }
   } catch (err) {
     // debugger;
-    // toast(Messages.registerError);
+    toast('Tìm kiếm thất bại');
   }
 }
 export function* fetchRoomNextPage(args) {

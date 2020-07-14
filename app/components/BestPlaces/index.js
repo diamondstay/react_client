@@ -83,7 +83,7 @@ function BestPlaces(props) {
     },
   ];
 
-  let settings = {
+  const settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 5,
@@ -107,7 +107,7 @@ function BestPlaces(props) {
                   type: '',
 
                   checkin: '2020-07-11',
-                  checkout: '2020-07-13',
+                  checkout: '2020-10-30',
 
                   province: place.name,
                   limit: 10,
