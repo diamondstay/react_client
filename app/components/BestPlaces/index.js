@@ -22,7 +22,7 @@ import place7 from 'images/places/qn.png';
 import place8 from 'images/places/ha.png';
 
 function BestPlaces(props) {
-  const { bestPlaces } = {...props};
+  const { bestPlaces } = { ...props };
   console.log('lllll', bestPlaces);
   const places = [
     {
@@ -97,42 +97,51 @@ function BestPlaces(props) {
         <p className="mb-4">
           Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn
         </p>
-        <p className="mb-4">Cùng Diamond Stay bắt đầu chuyến hành trình chinh phục thế giới của bạn</p>
+        <p className="mb-4">
+          Cùng Diamond Stay bắt đầu chuyến hành trình chinh phục thế giới của
+          bạn
+        </p>
         <Slider {...settings} className="custom-slider">
           {bestPlaces &&
-            bestPlaces.map(place => (
-              <Link
-                to={`/search?${queryString.stringify({
-                  convenience: '',
-                  type: '',
+            bestPlaces.map(place => {
+              console.log(place.thumb);
+              return (
+                <Link
+                  to={`/search?${queryString.stringify({
+                    convenience: '',
+                    type: '',
 
-                  checkin: '2020-07-11',
-                  checkout: '2020-10-30',
+                    checkin: '2020-07-18',
+                    checkout: '2020-10-30',
 
-                  province: place.name,
-                  limit: 10,
-                  page: 1,
-                  sort_by_price: 'desc',
-                })}`}
-                key={place.name}
-              >
-                <div className="place-item">
-                  <div className="place-image">
-                    <div
-                      style={{
-                        backgroundImage: `url(https://cdn.luxstay.com/home/location/location_10_1559303118.png)`,
-                      }}
-                    />
+                    province: place.name,
+                    limit: 10,
+                    page: 1,
+                    sort_by_price: 'desc',
+                  })}`}
+                  key={place.name}
+                >
+                  <div className="place-item">
+                    <div className="place-image">
+                      <div
+                        style={{
+                          backgroundImage:
+                            place.thumb !== ''
+                              ? `url(${place.thumb})`
+                              : `url(https://media.metrip.vn/tour/content/26733960_1545987582123575_358984364738634029_n.jpg)`,
+                        }}
+                      />
+                    </div>
+                    <div className="place-text">
+                      <h4 className="place-name">{place.name}</h4>
+                      <p className="place-slot">
+                        <strong>{place.amount}</strong> Chỗ ở
+                      </p>
+                    </div>
                   </div>
-                  <div className="place-text">
-                    <h4 className="place-name">{place.name}</h4>
-                    <p className="place-slot">
-                      <strong>{place.amount}</strong> Chỗ ở
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
         </Slider>
       </Container>
     </section>

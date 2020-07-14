@@ -19,7 +19,7 @@ function LocationItem(props) {
         convenience: location.convenience,
         type: location.type,
 
-        checkin: '2020-07-11',
+        checkin: '2020-07-18',
         checkout: '2020-10-30',
         min_price: location.min_price,
         max_price: location.max_price,
