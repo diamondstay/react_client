@@ -60,7 +60,7 @@ function Book(props) {
       end_date: endDate,
       raw_price: getRawPrice(),
       discount_price: useCoupon ? getDiscountPrice() : 0,
-      total_price: useCoupon ? getTotalPrice() : getRawPrice(),
+      total_price: getTotalPrice(),
       coupon: coupon,
       name: detail.name,
       addr: detail.detail_address,
@@ -147,8 +147,20 @@ function Book(props) {
     return price * percent;
   };
 
+  const getSurchargePrice = () => {
+    return detail.surcharge_per_person;
+  }
+
   const getTotalPrice = () => {
-    return getRawPrice() - getDiscountPrice();
+    if (useCoupon) {
+      return getRawPrice() - getDiscountPrice() + getSurchargePrice();
+    } else {
+      if (adult + child > detail.capacity_standard) {
+        return getRawPrice() + getSurchargePrice();
+      } else {
+        return getRawPrice();
+      }
+    }
   }
 
   const content = (
@@ -234,13 +246,17 @@ function Book(props) {
               <span className="fl-item-50">{Filter.formatVndCurrency(getRawPrice())}</span>
             </div>
             <div className="book-price is-flex">
-              <span className="fl-item-50">Mã khuyến mại</span>
+              <span className="fl-item-50">Khuyến mại</span>
               <span className="fl-item-50">{useCoupon ? '-' + Filter.formatVndCurrency(getDiscountPrice()) : 0}</span>
+            </div>
+            <div className="book-price is-flex">
+              <span className="fl-item-50">Phụ phí</span>
+              <span className="fl-item-50">{adult + child > detail.capacity_standard ? Filter.formatVndCurrency(getSurchargePrice()) : 0}</span>
             </div>
             <div className="ant-divider" />
             <div className="book-price is-flex mb-3">
               <span className="fl-item-50">Tổng tiền</span>
-              <span className="fl-item-50">{useCoupon ? Filter.formatVndCurrency(getTotalPrice()) : Filter.formatVndCurrency(getRawPrice())}</span>
+              <span className="fl-item-50">{Filter.formatVndCurrency(getTotalPrice())}</span>
             </div>
           </div>
 
