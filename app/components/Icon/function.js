@@ -1,7 +1,7 @@
 import React from 'react';
 import { wifi, tv, washer, airConditioner, shampoo, towel, toothpaste, soap, dryer, toiletPaper, napkins, bottle,
   electricStove, gasStove, microwave, fridge, bbq, swimmingPool, naturalSurround, beach, balcony, smartTV, internet,
-  cradle, noSmoking, window, cushion, golf,
+  cradle, noSmoking, window, cushion, golf, breakfast, coffeeCup, sofa, bathtub, float, seat,
   cuisine, entertainment, famousPlaces, headOffice, medical, shopping, sports, transportation, urban } from 'components/Icon';
 
 export const getIcon = (str) => {
@@ -59,7 +59,7 @@ export const getIcon = (str) => {
     case "lst-icon-stove-electric": {
       return electricStove;
     }
-    case "Bếp ga":
+    case "Bếp gas":
     case "lst-icon-stove-gas": {
       return gasStove;
     }
@@ -116,7 +116,24 @@ export const getIcon = (str) => {
     case "lst-icon-golf-course-on-site": {
       return golf;
     }
-
+    case "Miễn phí ăn sáng": {
+      return breakfast;
+    }
+    case "Máy pha cà phê": {
+      return coffeeCup;
+    }
+    case "Ghế tình yêu": {
+      return sofa;
+    }
+    case "Ghế massage": {
+      return seat;
+    }
+    case "Bồn tắm": {
+      return bathtub;
+    }
+    case "Phao bơi": {
+      return float;
+    }
     case "cuisine": {
       return cuisine;
     }
