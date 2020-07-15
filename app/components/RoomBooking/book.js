@@ -70,11 +70,15 @@ function Book(props) {
     if (isEmpty(userAccount)) {
       toast(Messages.requiredLogin);
     } else {
-      reactLocalStorage.setObject('booking-info', bookingInfo);
+      if (days < detail.min_day) {
+        toast('Thời gian lưu trú tối thiểu phải là ' + detail.min_day + ' đêm.');
+      } else {
+        reactLocalStorage.setObject('booking-info', bookingInfo);
 
-      // Redirect to Checkout page
-      if (checkinDate === checkoutDate) return;
-      history.push('/checkout/booking/' + roomId);
+        // Redirect to Checkout page
+        if (checkinDate === checkoutDate) return;
+        history.push('/checkout/booking/' + roomId);
+      }
     }
   };
 
@@ -92,9 +96,9 @@ function Book(props) {
     // let gap = date2.getTime() - date1.getTime();
     // let days = gap / (1000 * 3600 * 24);
     let days = moment(date2).diff(moment(date1), 'days');
+    console.log(days);
     if (days < detail.min_day) {
       toast('Thời gian lưu trú tối thiểu phải là ' + detail.min_day + ' đêm.');
-      setDays(detail.min_day);
     } else {
       setDays(days);
     }

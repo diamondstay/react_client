@@ -35,7 +35,7 @@ export const getIcon = (str) => {
     case "lst-icon-uniF12D": {
       return toothpaste;
     }
-    case "Xà phòng":
+    case "Xà phòng tắm":
     case "lst-icon-uniF126": {
       return soap;
     }
@@ -43,12 +43,15 @@ export const getIcon = (str) => {
     case "lst-icon-hair-dryer": {
       return dryer;
     }
+    case "Giấy vệ sinh":
     case "lst-icon-toilet-paper-1": {
       return toiletPaper;
     }
+    case "Giấy ăn":
     case "lst-icon-tissues": {
       return napkins;
     }
+    case "Nước khoáng":
     case "lst-icon-complimentary-bottled-water": {
       return bottle;
     }
@@ -56,7 +59,7 @@ export const getIcon = (str) => {
     case "lst-icon-stove-electric": {
       return electricStove;
     }
-    case "Bếp gas":
+    case "Bếp ga":
     case "lst-icon-stove-gas": {
       return gasStove;
     }
@@ -72,6 +75,7 @@ export const getIcon = (str) => {
     case "lst-icon-bbq-facilities": {
       return bbq;
     }
+    case "Cảnh quan đẹp":
     case "lst-icon-mountain-view": {
       return naturalSurround;
     }
@@ -83,9 +87,11 @@ export const getIcon = (str) => {
     case "icon_ private_pool": {
       return swimmingPool;
     }
+    case "Ban công":
     case "lst-icon-balcony-terrace": {
       return balcony;
     }
+    case "Smart tivi":
     case "lst-icon-smart-tv": {
       return smartTV;
     }
