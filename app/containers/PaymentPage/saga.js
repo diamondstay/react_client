@@ -15,8 +15,7 @@ export function* getPaymentRequest(action) {
       yield put(getPaymentRequestSuccess(resp));
       toast(Messages.paySuccess);
       // yield put(push('/')); // Redirect to Home page
-      window.open(resp.data,
-        "Popup", "toolbar=no, location=no, statusbar=no, menubar=no, scrollbars=1, resizable=0, width=800, height=600, top=50, left=100");
+      window.open(resp.data);
 
     } else {
       toast(resp.message);
