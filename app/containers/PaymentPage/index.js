@@ -31,8 +31,6 @@ export function PaymentPage({getPaymentRequest, paymentRequest, match}) {
     getPaymentRequest(bookingId);
   };
 
-  console.log(paymentRequest);
-
   return (
     <article id="diamond-payment-page" className="content">
       <Helmet>

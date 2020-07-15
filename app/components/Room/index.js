@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { Filter } from 'constants/index';
 export default function Room(props) {
   const { width, room } = props;
-  console.log();
   return (
     <Col
       style={{

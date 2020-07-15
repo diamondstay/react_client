@@ -24,7 +24,6 @@ export default function HotelDetail( {match} ) {
 
   let hotelId = match.params.hotelId;
 
-  console.log(hotelId);
   const policyType = hotelDetail.cancellation_policy;
   const policy = find(settings.cancellation_policies, { 'id': policyType });
 

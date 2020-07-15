@@ -45,8 +45,6 @@ function Book(props) {
     return dateArr[2] + '-' + dateArr[1] + '-' + dateArr[0];
   };
 
-  console.log(detail);
-
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data, e) => {
     let bookingInfo = {
@@ -94,7 +92,12 @@ function Book(props) {
     // let gap = date2.getTime() - date1.getTime();
     // let days = gap / (1000 * 3600 * 24);
     let days = moment(date2).diff(moment(date1), 'days');
-    setDays(days);
+    if (days < detail.min_day) {
+      toast('Thời gian lưu trú tối thiểu phải là ' + detail.min_day + ' đêm.');
+      setDays(detail.min_day);
+    } else {
+      setDays(days);
+    }
   };
 
   function disabledDate(current) {
@@ -136,7 +139,6 @@ function Book(props) {
   const [coupon, setCoupon] = useState({});
 
   const applyCoupon = (coupon) => {
-    console.log(coupon);
     setUseCoupon(true);
     setCoupon(coupon);
   };

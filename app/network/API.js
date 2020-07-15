@@ -6,11 +6,15 @@ import reactLocalStorage from 'utils/localStorage';
 import moment from 'moment';
 import queryString from 'query-string';
 
+const getAccessToken = () => {
+  const userAccount = reactLocalStorage.getObject('user-account');
+  return userAccount ? userAccount.access_token : '';
+};
 
-export let config = {
+export const config = {
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': reactLocalStorage.getObject('user-account').access_token,
+    'Authorization': getAccessToken(),
   },
 };
 
@@ -145,7 +149,6 @@ API.getPaymentRequest = id =>
     });
 
 API.getHistoryList = (status, fromMonth, toMonth, page, limit) => {
-  console.log(config);
   return API.instance
     .get(`${Endpoints.HISTORY_URL}?status=${status}&from-month=${fromMonth}&to-month=${toMonth}&page=${page}&limit=${limit}`, config)
     .then(response => response.data)
@@ -160,7 +163,7 @@ API.filter = param => {
   // console.log(headers);
   const queryStringParam = queryString.stringify(param);
 
-  // debugger;
+  ////  debugger;
   return API.instance
     .get(`${Endpoints.ENDPOINT_CLIENT}/search?${queryStringParam}`)
     .then(
@@ -178,7 +181,7 @@ API.fetchRoomNextPage = param => {
   // console.log(headers);
   const queryStringParam = queryString.stringify(param);
 
-  // debugger;
+  ////  debugger;
   return API.instance
     .get(`${Endpoints.ENDPOINT_CLIENT}/search?${queryStringParam}`)
     .then(
@@ -194,7 +197,7 @@ API.fetchRoomNextPage = param => {
 // == search loaction
 
 API.searchLoction = query => {
-  debugger;
+ //  debugger;
   console.log('lan 3', query);
   // console.log(headers);
 
@@ -210,7 +213,7 @@ API.fetchBestPlace = () => {
   console.log('lan 3');
   // console.log(headers);
 
-  debugger;
+ //  debugger;
   return API.instance
     .get(`${Endpoints.ENDPOINT_CLIENT}/all-location`)
     .then(

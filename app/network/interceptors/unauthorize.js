@@ -1,5 +1,5 @@
 import { reactLocalStorage } from 'utils';
-import { API_ERROR, LOCAL_STORAGE_ACCOUNT_KEY } from 'containers/App/constants';
+import { API_ERROR } from 'containers/App/constants';
 import store from 'store';
 
 const UnauthorizeStatusCode = 401;
@@ -17,7 +17,7 @@ export function onRejected(error) {
       (response && UnauthorizeStatusCode === response.status) ||
       ForbiddenStatusCode === response.status
     ) {
-      reactLocalStorage.clear();
+      // reactLocalStorage.clear();
       store.dispatch({
         type: API_ERROR,
         payload: error,

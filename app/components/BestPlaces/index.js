@@ -23,7 +23,6 @@ import place8 from 'images/places/ha.png';
 
 function BestPlaces(props) {
   const { bestPlaces } = { ...props };
-  console.log('lllll', bestPlaces);
   const places = [
     {
       id: 1,
@@ -104,7 +103,6 @@ function BestPlaces(props) {
         <Slider {...settings} className="custom-slider">
           {bestPlaces &&
             bestPlaces.map(place => {
-              console.log(place.thumb);
               return (
                 <Link
                   to={`/search?${queryString.stringify({

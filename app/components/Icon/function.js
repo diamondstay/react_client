@@ -139,7 +139,6 @@ export const getIcon = (str) => {
       return urban;
     }
     default: {
-      console.log("No icons");
       break;
     }
   }
