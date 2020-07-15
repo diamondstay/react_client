@@ -15,6 +15,7 @@ export const getHeaders = (acc) => {
   }
 };
 
+
 const getInstance = () => {
   const instance = axios.create({
     baseURL: AppConfig.API_BASE_URL,
@@ -158,7 +159,7 @@ API.getPaymentRequest = id => {
 API.getHistoryList = (status, fromMonth, toMonth, page, limit) => {
   const userAccount = reactLocalStorage.getObject('user-account');
   return API.instance
-    .get(`${Endpoints.HISTORY_URL}?status=${status}&from-month=${fromMonth}&to-month=${toMonth}&page=${page}&limit=${limit}`, getHeaders(userAccount))
+    .get(`${Endpoints.HISTORY_URL}?${status ? 'status=' + status + '&' : ''}from-month=${fromMonth}&to-month=${toMonth}&page=${page}&limit=${limit}`, getHeaders(userAccount))
     .then(response => response.data)
     .catch(error => {
       throw error;

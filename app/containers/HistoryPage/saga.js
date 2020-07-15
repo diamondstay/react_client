@@ -6,9 +6,9 @@ import { getHistoryListSuccess } from './actions';
 import { toast } from 'react-toastify';
 
 // Individual exports for testing
-export function* getHistoryList(action) {
+export function* getHistoryList(args) {
   try {
-    const resp = yield call(API.getHistoryList, action.status, action.fromMonth, action.toMonth, action.page, action.limit);
+    const resp = yield call(API.getHistoryList, args.status, args.fromMonth, args.toMonth, args.page, args.limit);
     if (resp.code === 200) {
       yield put(getHistoryListSuccess(resp.data));
     } else {

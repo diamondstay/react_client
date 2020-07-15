@@ -1,4 +1,18 @@
 #diamond-history-page {
+  .history-filter {
+    position: relative;
+    margin-bottom: 50px;
+    .ant-picker {
+      //height: 42px;
+      //padding: 0;
+    }
+    .ant-picker-suffix {
+      //display: none;
+    }
+    .ant-picker-focused {
+      //box-shadow: none;
+    }
+  }
   .history-item {
     background-color: white;
     @include border-radius(10px);
@@ -7,7 +21,21 @@
     margin-bottom: 30px;
   }
   .item-image {
+    position: relative;
     margin: 0;
+  }
+  .booking-status {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: black;
+    @include border-radius(5px);
+    padding: 0 10px;
+    span {
+      color: white;
+      font-size: 12px;
+      font-weight: 600;
+    }
   }
   .room-name {
     font-size: 30px;
@@ -32,6 +60,21 @@
     margin-bottom: 15px;
     .label {
       font-weight: 600;
+    }
+  }
+  .history-button {
+    background-image: linear-gradient(to right, #f65e38, #f66737, #f67036, #f67836, #f68037, #f68037, #f68037, #f68037, #f67836, #f67036, #f66737, #f65e38);
+    box-shadow: 0 4px 12px 0 rgba(246,116,57,.4);
+    border: none;
+    @include border-radius(10px);
+    color: white !important;
+    font-weight: 600;
+    outline: 0;
+    padding: 0.6rem 1.2rem;
+    margin-right: auto;
+    @include transition(opacity 0.3s ease);
+    &:hover {
+      opacity: 0.75;
     }
   }
 }

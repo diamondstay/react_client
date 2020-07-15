@@ -27,7 +27,7 @@ const homeReducer = (state = initialState, action) => {
     case FETCH_BEST_PLACE:
       return state;
     case FETCH_BEST_PLACE_SUCCESS:
-      debugger;
+     //  debugger;
       let newBestPlace = state.bestPlace;
       newBestPlace = action.response;
       return { ...state, bestPlace: newBestPlace };

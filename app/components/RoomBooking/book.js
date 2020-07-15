@@ -103,7 +103,7 @@ function Book(props) {
     }
   };
 
-  function disabledDate(current) {
+  const disabledDate = (current) => {
     // Can not select days before today and today
     return current && current < moment().endOf('day');
   }

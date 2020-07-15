@@ -36,7 +36,7 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
   useInjectReducer({ key: 'roomPage', reducer });
   useInjectSaga({ key: 'roomPage', saga });
 
-  const roomId = parseInt(match.params.roomId) < 10 ? 7254081302154099 : match.params.roomId;
+  const roomId = match.params.roomId;
 
   useEffect(() => {
     getRoomDetail(roomId);

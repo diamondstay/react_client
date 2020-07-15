@@ -8,15 +8,15 @@ import * as Messages from 'constants/messages';
 import { push } from 'react-router-redux';
 
 // Individual exports for testing
-export function* getPaymentRequest(action) {
+export function* getPaymentRequest(args) {
   try {
-    const resp = yield call(API.getPaymentRequest, action.id);
+    const resp = yield call(API.getPaymentRequest, args.id);
+    console.log(resp);
     if (resp.code === 200) {
       yield put(getPaymentRequestSuccess(resp));
       toast(Messages.paySuccess);
       // yield put(push('/')); // Redirect to Home page
-      window.open(resp.data);
-
+      window.open(resp.data, "_blank");
     } else {
       toast(resp.message);
     }

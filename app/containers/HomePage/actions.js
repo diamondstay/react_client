@@ -44,7 +44,7 @@ export function defaultAction() {
 }
 
 export function fetchBestPlace() {
-  debugger;
+ //  debugger;
   console.log('LAN 1');
   return {
     type: FETCH_BEST_PLACE,
@@ -52,7 +52,7 @@ export function fetchBestPlace() {
 }
 
 export function fetchBestPlaceSuccess(response) {
-  // debugger;
+  ////  debugger;
   // console.log('lan 5', response);
   return {
     type: FETCH_BEST_PLACE_SUCCESS,
