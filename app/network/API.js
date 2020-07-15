@@ -6,16 +6,13 @@ import reactLocalStorage from 'utils/localStorage';
 import moment from 'moment';
 import queryString from 'query-string';
 
-const getAccessToken = () => {
-  const userAccount = reactLocalStorage.getObject('user-account');
-  return userAccount ? userAccount.access_token : '';
-};
-
-export const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': getAccessToken(),
-  },
+export const getHeaders = (acc) => {
+  return {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': acc.access_token,
+    },
+  }
 };
 
 const getInstance = () => {
@@ -90,6 +87,7 @@ API.resetPassword = params => {
 };
 
 API.booking = params => {
+  const userAccount = reactLocalStorage.getObject('user-account');
   return API.instance
     .post(
       Endpoints.BOOKING_URL +
@@ -121,8 +119,7 @@ API.booking = params => {
         params.purpose +
         '&coupon=' +
         params.coupon,
-      {},
-      config,
+      {}, getHeaders(userAccount),
     )
     .then(response => {
       return response.data;
@@ -140,17 +137,28 @@ API.getHotelDetail = id =>
       throw error;
     });
 
-API.getPaymentRequest = id =>
+API.getPaymentRequest = id => {
+  const userAccount = reactLocalStorage.getObject('user-account');
   API.instance
-    .post(`${Endpoints.PAYMENT_URL}?id=${id}&pay-method=vnp`, {}, config)
+    .post(`${Endpoints.PAYMENT_URL}?id=${id}&pay-method=vnp`, {}, getHeaders(userAccount))
     .then(response => response.data)
     .catch(error => {
       throw error;
     });
+}
+
+// Status
+// 1. chờ thanh toán
+// 2. hết hạn
+// 3. đã thanh toán
+// 4. đã hủy
+// 5. đợi xác nhận tt
+// 6. hoàn thành
 
 API.getHistoryList = (status, fromMonth, toMonth, page, limit) => {
+  const userAccount = reactLocalStorage.getObject('user-account');
   return API.instance
-    .get(`${Endpoints.HISTORY_URL}?status=${status}&from-month=${fromMonth}&to-month=${toMonth}&page=${page}&limit=${limit}`, config)
+    .get(`${Endpoints.HISTORY_URL}?status=${status}&from-month=${fromMonth}&to-month=${toMonth}&page=${page}&limit=${limit}`, getHeaders(userAccount))
     .then(response => response.data)
     .catch(error => {
       throw error;

@@ -6,6 +6,7 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { FETCH_BEST_PLACE } from './constants';
 import { API } from '../../network';
 import { fetchBestPlaceSuccess } from './actions';
+import { toast } from 'react-toastify';
 
 /**
  * Github repos request/response handler
@@ -25,21 +26,19 @@ import { fetchBestPlaceSuccess } from './actions';
 // }
 
 export function* fetchBestPlace() {
-  debugger;
-  console.log(API);
+ //  debugger;
   try {
     const resp = yield call(API.fetchBestPlace);
     if (resp.code === 200) {
       console.log('lan 4  ', resp);
-      debugger;
+     //  debugger;
       yield put(fetchBestPlaceSuccess(resp));
       // toast(Messages.registerSuccess);
     } else {
-      // debugger;
-      // toast(Messages.registerError);
+      toast(resp.message);
     }
   } catch (err) {
-    // debugger;
+    ////  debugger;
     // toast(Messages.registerError);
   }
 }

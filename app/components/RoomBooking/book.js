@@ -16,10 +16,10 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import * as AppConfig from 'constants/appconfig';
 import * as Endpoints from 'constants/endpoints';
-import config from 'network/API';
 import isEmpty from 'lodash/isEmpty';
 import { toast } from 'react-toastify';
 import * as Messages from 'constants/messages';
+import { getHeaders } from 'network/API';
 
 function Book(props) {
   const { detail } = { ...props };
@@ -96,7 +96,6 @@ function Book(props) {
     // let gap = date2.getTime() - date1.getTime();
     // let days = gap / (1000 * 3600 * 24);
     let days = moment(date2).diff(moment(date1), 'days');
-    console.log(days);
     if (days < detail.min_day) {
       toast('Thời gian lưu trú tối thiểu phải là ' + detail.min_day + ' đêm.');
     } else {
@@ -133,7 +132,7 @@ function Book(props) {
   const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
-    axios.get(AppConfig.API_BASE_URL + Endpoints.COUPON_URL, config)
+    axios.get(AppConfig.API_BASE_URL + Endpoints.COUPON_URL, getHeaders(userAccount))
       .then(response => {
         setCoupons(response.data.data);
       });

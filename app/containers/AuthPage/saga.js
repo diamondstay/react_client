@@ -18,7 +18,7 @@ export function* userLogin(args) {
       yield call(reactLocalStorage.setObject, 'user-account', resp.data);
       yield put(push('/')); // Redirect to Home page
     } else {
-      toast(Messages.loginError);
+      toast(resp.message);
     }
   } catch (err) {
     toast(Messages.loginError);
@@ -33,7 +33,7 @@ export function* userRegister(args) {
       // toast(Messages.registerSuccess);
       yield put(push('/thank-you')); // Redirect to Thank you page
     } else {
-      toast(Messages.registerError);
+      toast(resp.message);
     }
   } catch (err) {
     toast(Messages.registerError);
@@ -48,7 +48,7 @@ export function* resetPassword(args) {
       toast(Messages.resetPasswordSuccess);
       yield put(push('/login')); // Redirect to Log in page
     } else {
-      toast(Messages.resetPasswordError);
+      toast(resp.message);
     }
   } catch (err) {
     toast(Messages.resetPasswordError);

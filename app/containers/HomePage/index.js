@@ -53,7 +53,7 @@ export function HomePage(props) {
   //   error,
   //   repos,
   // };
-  console.log(',,,,', home);
+
   return (
     <article id="home-page">
       <Welcome />
