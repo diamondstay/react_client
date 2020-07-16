@@ -14,11 +14,9 @@ import reactLocalStorage from 'utils/localStorage';
 import { Filter } from 'constants/index';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import * as AppConfig from 'constants/appconfig';
-import * as Endpoints from 'constants/endpoints';
+import { AppConfig, Endpoints, Messages } from 'constants/index';
 import isEmpty from 'lodash/isEmpty';
 import { toast } from 'react-toastify';
-import * as Messages from 'constants/messages';
 import { getHeaders } from 'network/API';
 
 function Book(props) {
@@ -266,7 +264,7 @@ function Book(props) {
           </div>
 
           {
-            detail.price_promotion ? <></> :
+            detail.price_promotion > 0 && detail.price_promotion !== detail.price ? <></> :
               <ul className="coupon-list">
                 {coupons && coupons.map((coupon, index) => (
                   <li className="coupon-item" key={index}>

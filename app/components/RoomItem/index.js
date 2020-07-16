@@ -26,7 +26,12 @@ function RoomItem(props) {
             {item.amount_bedroom} phòng ngủ <span className="bullet" />
             {item.amount_bathroom} phòng tắm
           </div>
-          <h4 className="promo-price">{Filter.formatPrice(item.price_promotion)}/đêm <span className="strike">{Filter.formatPrice(item.price)}</span></h4>
+          {
+            item.price_promotion > 0 && item.price_promotion !== item.price ?
+              <h4 className="promo-price">{Filter.formatPrice(item.price_promotion)}/đêm <span className="strike">{Filter.formatPrice(item.price)}</span></h4>
+              :
+              <h4 className="promo-price">{Filter.formatPrice(item.price)}/đêm</h4>
+          }
           <h5 className="promo-location">{item.village}, {item.district}, {item.province}</h5>
           {/*<div*/}
           {/*  className="promo-ratings stars"*/}

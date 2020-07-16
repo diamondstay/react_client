@@ -11,7 +11,6 @@ import { push } from 'react-router-redux';
 export function* getPaymentRequest(args) {
   try {
     const resp = yield call(API.getPaymentRequest, args.id);
-    console.log(resp);
     if (resp.code === 200) {
       yield put(getPaymentRequestSuccess(resp));
       toast(Messages.paySuccess);

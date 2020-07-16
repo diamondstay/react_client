@@ -13,7 +13,7 @@ function Price(props) {
 
   return (
     <div className="booking-price">
-      {detail.price_promotion > 0 ? (
+      {detail.price_promotion > 0 && detail.price_promotion !== detail.price ? (
         <>
           <span className="price">
             {Filter.formatVndCurrency(detail.price_promotion)}
