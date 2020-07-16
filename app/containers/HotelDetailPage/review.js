@@ -9,16 +9,15 @@ import moment from 'moment';
 import { DateTime } from 'constants/index';
 
 function HotelReview(props) {
+  const { reviews } = { ...props };
 
-  const { reviews } = {...props};
-
-  const getReviewTime = (date) => {
+  const getReviewTime = date => {
     return moment(date).format(DateTime.SHORT_DATE_1);
   };
 
-  const getReviewStars = (number) => {
+  const getReviewStars = number => {
     let stars = '';
-    for (let i = 0; i < number; i ++) {
+    for (let i = 0; i < number; i++) {
       stars += '<i class="icon star" /></i>';
     }
     return stars;
@@ -28,25 +27,33 @@ function HotelReview(props) {
     <section id="diamond-review">
       <h2 className="page-title">Đánh giá</h2>
 
-      {reviews && reviews.map(review => (
-        <div className="review-item" key={review.id}>
-          <div className="review-header">
-            <div className="review-avatar">
-              <img src={review.reviewer.avatar} alt={review.reviewer.name} />
+      {reviews &&
+        reviews.map(review => (
+          <div className="review-item" key={review.id}>
+            <div className="review-header">
+              <div className="review-avatar">
+                <img src={review.reviewer.avatar} alt={review.reviewer.name} />
+              </div>
+              <div className="review-info">
+                <h4 className="review-name">
+                  {review.reviewer.name}
+                  <span
+                    className="stars ml-3"
+                    dangerouslySetInnerHTML={{
+                      __html: getReviewStars(review.star_number),
+                    }}
+                  />
+                </h4>
+                <div className="review-time">
+                  {getReviewTime(review.created_at)}
+                </div>
+              </div>
             </div>
-            <div className="review-info">
-              <h4 className="review-name">
-                {review.reviewer.name}
-                <span className="stars ml-3" dangerouslySetInnerHTML={{__html: getReviewStars(review.star_number)}} />
-              </h4>
-              <div className="review-time">{getReviewTime(review.created_at)}</div>
+            <div className="review-body">
+              <div className="review-text">{review.content}</div>
             </div>
           </div>
-          <div className="review-body">
-            <div className="review-text">{review.content}</div>
-          </div>
-        </div>
-      ))}
+        ))}
     </section>
   );
 }

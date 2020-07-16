@@ -17,7 +17,7 @@ import reducer from './reducer';
 import saga from './saga';
 import { getRoomDetail } from './actions';
 import { Helmet } from 'react-helmet';
-import {places, review_list} from '../HotelDetailPage/data';
+import { places, review_list } from '../HotelDetailPage/data';
 import { Col, Container, Row } from 'react-bootstrap';
 
 import HotelPlaces from '../HotelDetailPage/places';
@@ -33,7 +33,7 @@ import RoomSimilarList from 'components/RoomSimilarList';
 import RoomReview from 'components/RoomReview';
 import RoomMap from 'components/RoomMap';
 
-export function RoomPage({getRoomDetail, roomDetail, match}) {
+export function RoomPage({ getRoomDetail, roomDetail, match }) {
   useInjectReducer({ key: 'roomPage', reducer });
   useInjectSaga({ key: 'roomPage', saga });
 
@@ -59,9 +59,9 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
             <div className="gap-50" />
             <RoomConveniences conveniences={roomDetail.conveniences} />
             <div className="gap-50" />
-            <RoomRate detail={roomDetail}  />
+            <RoomRate detail={roomDetail} />
             <div className="gap-50" />
-            <RoomReview reviews={roomDetail.list_review} />
+            <RoomReview reviews={roomDetail.list_review} roomId={roomId} />
             <div className="gap-50" />
             <RoomPolicy detail={roomDetail} />
             <div className="gap-50" />
@@ -80,7 +80,10 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
           <div className="gap-50" />
           <RoomSimilarList list={roomDetail.list_apartment_similar} />
           <div className="gap-50" />
-          <RoomOtherList list={roomDetail.list_apartment_same_owner} host={roomDetail.owner} />
+          <RoomOtherList
+            list={roomDetail.list_apartment_same_owner}
+            host={roomDetail.owner}
+          />
           <div className="gap-50" />
         </Container>
       </div>
@@ -90,18 +93,18 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
 
 RoomPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  getRoomDetail: PropTypes.func
+  getRoomDetail: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   roomPage: makeSelectRoomPage(),
-  roomDetail: makeSelectRoomDetail()
+  roomDetail: makeSelectRoomDetail(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    getRoomDetail: (id) => {
+    getRoomDetail: id => {
       dispatch(getRoomDetail(id));
     },
   };
