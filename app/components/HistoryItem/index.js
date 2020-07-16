@@ -5,11 +5,12 @@
  */
 
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import defaultImg from 'images/default.jpg';
 import { DateTime, Filter, Enum } from 'constants/index';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { Popconfirm } from 'antd';
 
 function HistoryItem(props) {
   const { item } = { ...props };
@@ -17,6 +18,8 @@ function HistoryItem(props) {
   const getBookingTime = (date) => {
     return moment(date).format(DateTime.SHORT_DATE_1);
   };
+
+  const text = 'Bạn có muốn huỷ phòng?';
 
   return (
     <section className="history-item">
@@ -32,16 +35,31 @@ function HistoryItem(props) {
         <Col xs={8}>
           <div className="item-info">
             <Row>
-              <Col xs={12} sm={8}>
+              <Col xs={12} sm={item.status !== 5 && item.status !== 6 ? 8 : 12}>
                 <h3 className="room-name">{item.name}</h3>
                 <h4 className="room-type">{item.type}</h4>
               </Col>
-              <Col xs={12} sm={4} className="text-right">
+              <Col xs={12} sm={item.status !== 5 && item.status !== 6 ? 4 : 0} className="text-right">
                 {
                   item.status === 1 ?
-                    <Link to={'/room/' + item.apartment_id} className="btn history-button">
+                    <Link to={'/checkout/payment/' + item.apartment_id} className="btn history-button btn-1">
                       Tiếp tục đặt chỗ
                     </Link> : <></>
+                }
+                {
+                  item.status === 2 || item.status === 4 ?
+                    <Link to={'/room/' + item.apartment_id} className="btn history-button btn-2">
+                      Đặt lại
+                    </Link> : <></>
+                }
+                {
+                  item.status === 3 ?
+                    <Popconfirm placement="top" title={text} onConfirm={props.cancelBooking} okText="Đồng ý" cancelText="Huỷ">
+                      <Button className="btn history-button btn-3">
+                        Huỷ phòng
+                      </Button>
+                    </Popconfirm>
+                     : <></>
                 }
               </Col>
             </Row>

@@ -23,7 +23,7 @@ function RoomMap(props) {
   };
 
   return (
-    <div id="diamond-hotel-map" style={{ height: '500px', width: '100%' }}>
+    <div id="diamond-hotel-map">
       {
         isNaN(lat) && isNaN(long) ? <></> :
           <GoogleMapReact

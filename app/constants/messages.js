@@ -15,6 +15,9 @@ module.exports = {
   paySuccess: 'Thanh toán thành công.',
   payError: 'Thanh toán thất bại.',
 
+  cancelSuccess: 'Huỷ phòng thành công.',
+  cancelError: 'Huỷ phòng thất bại.',
+
   confirmTitle: 'Confirm',
   confirmLogout: 'Are you sure you want to logout?',
 

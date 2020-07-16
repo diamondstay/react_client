@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectHistoryPage, { makeSelectHistoryList } from './selectors';
@@ -21,6 +20,11 @@ import HistoryItem from 'components/HistoryItem';
 import { Container, Row, Col } from 'react-bootstrap';
 import { DatePicker, Select } from 'antd';
 import moment from 'moment';
+import axios from 'axios';
+import reactLocalStorage from 'utils/localStorage';
+import { getHeaders } from 'network/API';
+import { AppConfig, Endpoints, Messages } from 'constants/index';
+import { toast } from 'react-toastify';
 
 export function HistoryPage({ getHistoryList, historyList }) {
   useInjectReducer({ key: 'historyPage', reducer });
@@ -39,6 +43,7 @@ export function HistoryPage({ getHistoryList, historyList }) {
   const { Option } = Select;
   const statusData = ['Tất cả', 'Chờ thanh toán', 'Hết hạn', 'Đã thanh toán', 'Đã hủy', 'Đợi xác nhận thông tin', 'Hoàn thành'];
 
+  const userAccount = reactLocalStorage.getObject('user-account');
 
   useEffect(() => {
     getHistoryList(status, fromMonth, toMonth, page, limit);
@@ -62,6 +67,20 @@ export function HistoryPage({ getHistoryList, historyList }) {
 
   const showMore = () => {
     setLimit(limit + 10);
+  };
+
+  const cancelBooking = (bookingId) => {
+    console.log(bookingId);
+    axios.post(AppConfig.API_BASE_URL + `${Endpoints.CANCEL_BOOKING_URL}?bid=${bookingId}`, {}, getHeaders(userAccount))
+      .then(response => {
+        const resp = response.data;
+        if (resp.code === 200) {
+          toast(Messages.cancelSuccess);
+          getHistoryList(status, fromMonth, toMonth, page, limit);
+        } else {
+          toast(resp.message);
+        }
+      });
   };
 
   return (
@@ -93,7 +112,7 @@ export function HistoryPage({ getHistoryList, historyList }) {
         </div>
         <div className="history-wrapper">
           { historyList.data && historyList.data.map((item, index) => (
-            <HistoryItem item={item} key={index} />
+            <HistoryItem item={item} key={index} cancelBooking={() => cancelBooking(item.apartment_id)} />
           ))}
         </div>
         <div className="history-read-more text-center m-3">

@@ -58,18 +58,29 @@
     }
   }
   .history-button {
-    background-image: linear-gradient(to right, #f65e38, #f66737, #f67036, #f67836, #f68037, #f68037, #f68037, #f68037, #f67836, #f67036, #f66737, #f65e38);
-    box-shadow: 0 4px 12px 0 rgba(246,116,57,.4);
+    background-size: 300% 100%;
     border: none;
-    @include border-radius(10px);
+    @include border-radius(30px);
     color: white !important;
     font-weight: 600;
     outline: 0;
-    padding: 0.6rem 1.2rem;
+    padding: 10px 40px;
     margin-right: auto;
-    @include transition(opacity 0.3s ease);
+    @include transition(all 0.3s ease-in-out);
     &:hover {
-      opacity: 0.75;
+      background-position: 100% 0;
+    }
+    &.btn-1 {
+      background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+      box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+    }
+    &.btn-2 {
+      background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+      box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+    }
+    &.btn-3 {
+      background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+      box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
     }
   }
 }
