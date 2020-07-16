@@ -1,0 +1,15 @@
+.read-more {
+  display: block;
+  width: 150px;
+  background: #f6673a;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  padding: 15px;
+  @include border-radius(10px);
+  margin: 50px auto;
+  cursor: pointer;
+  &:hover {
+    background: #d84c21;
+  }
+}

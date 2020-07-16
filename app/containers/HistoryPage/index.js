@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,27 +18,31 @@ import saga from './saga';
 import { getHistoryList } from './actions';
 import { Helmet } from 'react-helmet';
 import HistoryItem from 'components/HistoryItem';
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import { DatePicker, Select } from 'antd';
 import moment from 'moment';
-import { toast } from 'react-toastify';
-import { DatePicker } from 'antd';
 
 export function HistoryPage({ getHistoryList, historyList }) {
   useInjectReducer({ key: 'historyPage', reducer });
   useInjectSaga({ key: 'historyPage', saga });
 
-  let status = '';
-  let fromMonth = '2020-06-01';
-  let toMonth = '2020-07-30';
   let page = 1;
-  let limit = 10;
+
+  const [limit, setLimit] = useState(10);
+  const [status, setStatus] = useState(0);
+  const [fromMonth, setFromMonth] = useState('2020-06-01');
+  const [toMonth, setToMonth] = useState('2020-07-30');
 
   const { RangePicker } = DatePicker;
   const dateFormat = 'DD / MM / YYYY';
 
+  const { Option } = Select;
+  const statusData = ['Tất cả', 'Chờ thanh toán', 'Hết hạn', 'Đã thanh toán', 'Đã hủy', 'Đợi xác nhận thông tin', 'Hoàn thành'];
+
+
   useEffect(() => {
     getHistoryList(status, fromMonth, toMonth, page, limit);
-  }, []);
+  }, [status, fromMonth, toMonth, limit]);
 
   const getBookTime = date => {
     let dateArr = date.split(' / ');
@@ -48,8 +52,16 @@ export function HistoryPage({ getHistoryList, historyList }) {
   const changeDate = (date, dateString) => {
     let inDate = getBookTime(dateString[0]);
     let outDate = getBookTime(dateString[1]);
-    console.log(inDate);
-    console.log(outDate);
+    setFromMonth(inDate);
+    setToMonth(outDate);
+  };
+
+  const handleStatusChange = (value) => {
+    setStatus(value);
+  };
+
+  const showMore = () => {
+    setLimit(limit + 10);
   };
 
   return (
@@ -60,12 +72,37 @@ export function HistoryPage({ getHistoryList, historyList }) {
 
       <Container>
         <div className="history-filter">
-          <RangePicker format={dateFormat} onChange={changeDate} />
+          <Row>
+            <Col xs={12} sm={3} md={2}>
+              <Select defaultValue={statusData[0]}
+                      onChange={handleStatusChange}>
+                {statusData.map((status, index) => (
+                  <Option key={index}>{status}</Option>
+                ))}
+              </Select>
+            </Col>
+            <Col xs={12} sm={5} md={4}>
+              <RangePicker format={dateFormat}
+                           defaultValue={[
+                             moment('01 / 06 / 2020', dateFormat),
+                             moment('30 / 07 / 2020', dateFormat),
+                           ]}
+                           onChange={changeDate} />
+            </Col>
+          </Row>
         </div>
         <div className="history-wrapper">
-          { historyList.data && historyList.data.map(item => (
-            <HistoryItem item={item} key={item.apartment_id} />
+          { historyList.data && historyList.data.map((item, index) => (
+            <HistoryItem item={item} key={index} />
           ))}
+        </div>
+        <div className="history-read-more text-center m-3">
+          {
+            historyList.length > page ?
+              <span className="read-more" onClick={showMore}>
+                Xem thêm
+              </span> : <></>
+          }
         </div>
       </Container>
     </article>

@@ -1,17 +1,12 @@
 #diamond-history-page {
   .history-filter {
-    position: relative;
     margin-bottom: 50px;
-    .ant-picker {
-      //height: 42px;
-      //padding: 0;
-    }
-    .ant-picker-suffix {
-      //display: none;
-    }
-    .ant-picker-focused {
-      //box-shadow: none;
-    }
+  }
+  .ant-select {
+    width: 100%;
+  }
+  .ant-picker {
+    width: 100%;
   }
   .history-item {
     background-color: white;
