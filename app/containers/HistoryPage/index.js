@@ -112,7 +112,7 @@ export function HistoryPage({ getHistoryList, historyList }) {
         </div>
         <div className="history-wrapper">
           { historyList.data && historyList.data.map((item, index) => (
-            <HistoryItem item={item} key={index} cancelBooking={() => cancelBooking(item.apartment_id)} />
+            <HistoryItem item={item} key={index} cancelBooking={() => cancelBooking(item.id)} />
           ))}
         </div>
         <div className="history-read-more text-center m-3">

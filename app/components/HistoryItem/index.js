@@ -42,7 +42,7 @@ function HistoryItem(props) {
               <Col xs={12} sm={item.status !== 5 && item.status !== 6 ? 4 : 0} className="text-right">
                 {
                   item.status === 1 ?
-                    <Link to={'/checkout/payment/' + item.apartment_id} className="btn history-button btn-1">
+                    <Link to={'/checkout/payment/' + item.id} className="btn history-button btn-1">
                       Tiếp tục đặt chỗ
                     </Link> : <></>
                 }
