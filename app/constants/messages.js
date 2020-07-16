@@ -9,7 +9,7 @@ module.exports = {
   resetPasswordSuccess: 'Yêu cầu lấy lại mật khẩu thành công. Vui lòng kiểm tra email.',
   resetPasswordError: 'Yêu cầu lấy lại mật khẩu thất bại.',
 
-  bookingSuccess: 'Đặt phòng thành công.',
+  bookingSuccess: 'Lưu đặt phòng thành công.',
   bookingError: 'Đặt phòng thất bại.',
 
   paySuccess: 'Thanh toán thành công.',

@@ -39,7 +39,7 @@ export function PaymentPage({getPaymentRequest, paymentRequest, match}) {
       .then(response => {
         const resp = response.data;
         if (resp.code === 200) {
-          toast(Messages.paySuccess);
+          // toast(Messages.paySuccess);
           window.open(resp.data, "_blank");
         } else {
           toast(resp.message);
