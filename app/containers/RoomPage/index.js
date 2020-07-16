@@ -31,6 +31,7 @@ import RoomBooking from 'components/RoomBooking';
 import RoomOtherList from 'components/RoomOtherList';
 import RoomSimilarList from 'components/RoomSimilarList';
 import RoomReview from 'components/RoomReview';
+import RoomMap from 'components/RoomMap';
 
 export function RoomPage({getRoomDetail, roomDetail, match}) {
   useInjectReducer({ key: 'roomPage', reducer });
@@ -65,6 +66,8 @@ export function RoomPage({getRoomDetail, roomDetail, match}) {
             <RoomPolicy detail={roomDetail} />
             <div className="gap-50" />
             <HotelPlaces places={places} />
+            <div className="gap-50" />
+            <RoomMap lat={roomDetail.latitude} long={roomDetail.longitude} />
           </Col>
           <Col xs={12} md={4}>
             <RoomBooking detail={roomDetail} />

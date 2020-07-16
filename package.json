@@ -80,6 +80,7 @@
     "express": "4.16.4",
     "fontfaceobserver": "2.1.0",
     "glamor": "^2.20.40",
+    "google-map-react": "^1.1.7",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
     "immer": "3.0.0",
