@@ -47,7 +47,8 @@ function BookingDetail() {
             </div>
             <div className="book-price is-flex">
               <span className="fl-item-50">Phụ phí</span>
-              <span className="fl-item-50">{bookingInfo.discount_price > 0 ? Filter.formatVndCurrency(bookingInfo.total_price - bookingInfo.discount_price - bookingInfo.raw_price) : Filter.formatVndCurrency(bookingInfo.total_price - bookingInfo.raw_price)}</span>
+              <span className="fl-item-50">{bookingInfo.discount_price > 0 ? Filter.formatVndCurrency(bookingInfo.total_price - bookingInfo.discount_price - bookingInfo.raw_price) :
+                (bookingInfo.total_price === bookingInfo.raw_price) ? 0 : Filter.formatVndCurrency(bookingInfo.total_price - bookingInfo.raw_price)}</span>
             </div>
             <div className="ant-divider" />
             <div className="book-price is-flex">

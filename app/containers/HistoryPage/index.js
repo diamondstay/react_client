@@ -70,7 +70,6 @@ export function HistoryPage({ getHistoryList, historyList }) {
   };
 
   const cancelBooking = (bookingId) => {
-    console.log(bookingId);
     axios.post(AppConfig.API_BASE_URL + `${Endpoints.CANCEL_BOOKING_URL}?bid=${bookingId}`, {}, getHeaders(userAccount))
       .then(response => {
         const resp = response.data;

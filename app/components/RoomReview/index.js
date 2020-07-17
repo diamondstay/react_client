@@ -21,7 +21,6 @@ function RoomReview(props) {
   const toggle = () => setIsOpen(!isOpen);
   const { reviews, roomId } = props;
   console.log(contentReview);
-  console.log(roomId);
 
   const getReviewTime = date => {
     return moment(date).format(DateTime.SHORT_DATE_1);

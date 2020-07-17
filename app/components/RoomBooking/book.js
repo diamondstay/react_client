@@ -108,7 +108,6 @@ function Book(props) {
 
   const [adult, setAdult] = useState(1);
   const [child, setChild] = useState(0);
-  // const [baby, setBaby] = useState(0);
 
   const selectAdult = value => {
     setAdult(value);
@@ -118,10 +117,6 @@ function Book(props) {
     setChild(value);
   };
 
-  // const selectBaby = value => {
-  //   setBaby(value);
-  // };
-
   const getRawPrice = () => {
     const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
     return roomNum * days * parseInt(price);
@@ -130,18 +125,29 @@ function Book(props) {
   const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
-    axios.get(AppConfig.API_BASE_URL + Endpoints.COUPON_URL, getHeaders(userAccount))
-      .then(response => {
-        setCoupons(response.data.data);
-      });
+    if (detail.price_promotion === 0 || detail.price_promotion === detail.price) {
+      axios.get(AppConfig.API_BASE_URL + Endpoints.COUPON_URL, getHeaders(userAccount))
+        .then(response => {
+          setCoupons(response.data.data);
+        });
+    }
   }, []);
 
   const [useCoupon, setUseCoupon] = useState(false);
   const [coupon, setCoupon] = useState({});
 
-  const applyCoupon = (coupon) => {
-    setUseCoupon(true);
-    setCoupon(coupon);
+  const applyCoupon = (coupon, e) => {
+    e.target.className = 'btn btn-sm btn-warning d-none';
+    axios.post(AppConfig.API_BASE_URL + `${Endpoints.CHECK_COUPON_URL}?aid=${roomId}&coupon=${coupon}`, {}, getHeaders(userAccount))
+      .then(response => {
+        const resp = response.data;
+        if (resp.code === 200) {
+          setUseCoupon(true);
+          setCoupon(coupon);
+        } else {
+          toast(resp.message);
+        }
+      });
   };
 
   const getDiscountPrice = () => {
@@ -276,7 +282,7 @@ function Book(props) {
                       </Col>
                       <Col xs={4} className="text-right">
                         <button className={`btn btn-sm btn-warning ${useCoupon ? 'd-none' : ''}`} type="button"
-                                onClick={() => applyCoupon(coupon)}>
+                                onClick={(e) => applyCoupon(coupon.coupon, e)}>
                           Áp dụng
                         </button>
                       </Col>
