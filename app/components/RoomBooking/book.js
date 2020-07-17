@@ -243,9 +243,9 @@ function Book(props) {
             </div>
           </div>
           {
-            (detail.price_promotion === 0 || detail.price_promotion === detail.price) ?
+            coupons && coupons.length > 0 ?
               <ul className="coupon-list">
-                {coupons && coupons.map((coupon, index) => (
+                {coupons.map((coupon, index) => (
                   <li className="coupon-item" key={index}>
                     <Row className="no-gutters">
                       <Col xs={8}>
