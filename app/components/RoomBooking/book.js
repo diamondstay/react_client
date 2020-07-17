@@ -57,6 +57,7 @@ function Book(props) {
       end_date: endDate,
       raw_price: getRawPrice(),
       discount_price: useCoupon ? getDiscountPrice() : 0,
+      surcharge_price: getSurchargePrice(),
       total_price: getTotalPrice(),
       coupon: coupon,
       name: detail.name,
@@ -134,7 +135,7 @@ function Book(props) {
 
   const applyCoupon = (coupon, e) => {
     e.target.className = 'btn btn-sm btn-warning d-none';
-    axios.post(AppConfig.API_BASE_URL + `${Endpoints.CHECK_COUPON_URL}?aid=${roomId}&coupon=${coupon}`, {}, getHeaders(userAccount))
+    axios.post(AppConfig.API_BASE_URL + `${Endpoints.CHECK_COUPON_URL}?aid=${roomId}&coupon=${coupon.coupon}`, {}, getHeaders(userAccount))
       .then(response => {
         const resp = response.data;
         if (resp.code === 200) {
@@ -254,7 +255,7 @@ function Book(props) {
                       </Col>
                       <Col xs={4} className="text-right">
                         <button className={`btn btn-sm btn-warning ${useCoupon ? 'd-none' : ''}`} type="button"
-                                onClick={(e) => applyCoupon(coupon.coupon, e)}>
+                                onClick={(e) => applyCoupon(coupon, e)}>
                           Áp dụng
                         </button>
                       </Col>

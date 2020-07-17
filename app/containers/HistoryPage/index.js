@@ -106,6 +106,7 @@ export function HistoryPage({ getHistoryList, historyList }) {
             end_date: formatDate(detail.check_out.slice(0, 10)),
             raw_price: detail.money_stay - detail.money_discount,
             discount_price: detail.money_discount,
+            surcharge_price: detail.money_surcharge,
             total_price: detail.total,
             coupon: detail.coupon,
             name: detail.name,
