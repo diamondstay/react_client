@@ -25,12 +25,14 @@ import reactLocalStorage from 'utils/localStorage';
 import { getHeaders } from 'network/API';
 import { AppConfig, Endpoints, Messages } from 'constants/index';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 export function HistoryPage({ getHistoryList, historyList }) {
   useInjectReducer({ key: 'historyPage', reducer });
   useInjectSaga({ key: 'historyPage', saga });
 
   let page = 1;
+  let history = useHistory();
 
   const [limit, setLimit] = useState(10);
   const [status, setStatus] = useState(0);
@@ -82,6 +84,50 @@ export function HistoryPage({ getHistoryList, historyList }) {
       });
   };
 
+  const formatDate = (date) => {
+    let dateArr = date.split('-');
+    return dateArr[2] + ' / ' + dateArr[1] + ' / ' + dateArr[0];
+  };
+
+  const reBooking = (bookingId, roomId) => {
+    axios.get(AppConfig.API_BASE_URL + `${Endpoints.BOOKING_URL}/${bookingId}`, getHeaders(userAccount))
+      .then(response => {
+        const resp = response.data;
+        const detail = resp.data;
+        if (resp.code === 200) {
+          let bookingInfo = {
+            aid: detail.apartment_id,
+            check_in: detail.check_in.slice(0, 10),
+            check_out: detail.check_out.slice(0, 10),
+            adult: detail.number_adult,
+            child: detail.number_child,
+            days: detail.days,
+            start_date: formatDate(detail.check_in.slice(0, 10)),
+            end_date: formatDate(detail.check_out.slice(0, 10)),
+            raw_price: detail.money_stay - detail.money_discount,
+            discount_price: detail.money_discount,
+            total_price: detail.total,
+            coupon: detail.coupon,
+            name: detail.name,
+            addr: '',
+            village: '',
+            district: '',
+            province: ''
+          };
+
+          async function saveBooking() {
+            reactLocalStorage.setObject('booking-info', bookingInfo);
+          }
+          saveBooking().then( function() {
+            history.push('/checkout/booking/' + roomId);
+          });
+
+        } else {
+          toast(resp.message);
+        }
+      });
+  };
+
   return (
     <article id="diamond-history-page" className="content">
       <Helmet>
@@ -111,7 +157,9 @@ export function HistoryPage({ getHistoryList, historyList }) {
         </div>
         <div className="history-wrapper">
           { historyList.data && historyList.data.map((item, index) => (
-            <HistoryItem item={item} key={index} cancelBooking={() => cancelBooking(item.id)} />
+            <HistoryItem item={item} key={index}
+                         cancelBooking={() => cancelBooking(item.id)}
+                         reBooking={() => reBooking(item.id, item.apartment_id)}/>
           ))}
         </div>
         <div className="history-read-more text-center m-3">

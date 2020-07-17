@@ -19,7 +19,8 @@ function HistoryItem(props) {
     return moment(date).format(DateTime.SHORT_DATE_1);
   };
 
-  const text = 'Bạn có muốn huỷ phòng?';
+  const text_1 = 'Bạn có muốn đặt lại phòng?';
+  const text_2 = 'Bạn có muốn huỷ phòng?';
 
   return (
     <section className="history-item">
@@ -48,13 +49,16 @@ function HistoryItem(props) {
                 }
                 {
                   item.status === 2 || item.status === 4 ?
-                    <Link to={'/room/' + item.apartment_id} className="btn history-button btn-2">
-                      Đặt lại
-                    </Link> : <></>
+                    <Popconfirm placement="top" title={text_1} onConfirm={props.reBooking} okText="Đồng ý" cancelText="Huỷ">
+                      <Button className="btn history-button btn-2">
+                        Đặt lại
+                      </Button>
+                    </Popconfirm>
+                    : <></>
                 }
                 {
                   item.status === 3 ?
-                    <Popconfirm placement="top" title={text} onConfirm={props.cancelBooking} okText="Đồng ý" cancelText="Huỷ">
+                    <Popconfirm placement="top" title={text_2} onConfirm={props.cancelBooking} okText="Đồng ý" cancelText="Huỷ">
                       <Button className="btn history-button btn-3">
                         Huỷ phòng
                       </Button>
