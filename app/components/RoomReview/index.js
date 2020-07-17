@@ -57,7 +57,6 @@ function RoomReview(props) {
         getHeaders(userAccount),
       )
       .then(function(response) {
-        debugger;
         console.log(response);
         // handle success
         const newComment = response.data.data;

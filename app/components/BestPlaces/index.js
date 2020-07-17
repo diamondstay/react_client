@@ -94,7 +94,8 @@ function BestPlaces(props) {
       <Container>
         <h2 className="page-title">Địa điểm nổi bật</h2>
         <p className="mb-4">
-          Cùng Luxstay bắt đầu chuyến hành trình chinh phục thế giới của bạn
+          Cùng Diamond Stay bắt đầu chuyến hành trình chinh phục thế giới của
+          bạn
         </p>
         <p className="mb-4">
           Cùng Diamond Stay bắt đầu chuyến hành trình chinh phục thế giới của
