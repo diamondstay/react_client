@@ -132,7 +132,7 @@ function Search(props) {
         autoComplete="off"
       >
         <Row className="no-gutters align-items-center">
-          <Col xs={12} md={5}>
+          <Col xs={12} md={4}>
             <div className="search-location">
               <Form.Control
                 type="text"
@@ -143,12 +143,12 @@ function Search(props) {
               />
             </div>
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={4}>
             <div className="search-date">
               <RangePicker
                 defaultValue={[
                   moment('2020-07-10', dateFormat),
-                  moment('2020-07-10', dateFormat),
+                  moment('2020-10-30', dateFormat),
                 ]}
                 format={dateFormat}
                 onChange={changeDate}

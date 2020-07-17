@@ -10,6 +10,7 @@ export default function Room(props) {
         maxWidth: `${width}%`,
         boxSizing: 'border-box',
         flexBasis: `${width}%`,
+        marginBottom: '30px'
       }}
     >
       <NavLink className="room" to={`/room/${room.id}`}>
@@ -30,12 +31,21 @@ export default function Room(props) {
           phòng tắm
         </span>
         <div className="room__price">
-          <span className="discount">
-            {Filter.formatVndCurrency(parseInt(room.price_promotion))}/đêm{' '}
-          </span>
-          <span className="origin">
-            {Filter.formatVndCurrency(parseInt(room.price))}
-          </span>
+          {
+            room.price_promotion > 0 && room.price_promotion !== room.price ?
+              <>
+                <span className="discount">
+                  {Filter.formatVndCurrency(parseInt(room.price_promotion))}/đêm{' '}
+                </span>
+                      <span className="origin">
+                  {Filter.formatVndCurrency(parseInt(room.price))}
+                </span>
+              </>
+              :
+              <span className="discount">
+                {Filter.formatVndCurrency(parseInt(room.price))}/đêm
+              </span>
+          }
         </div>
         <div className="room__address">
           {room.province}, {room.village}, Vietnam
