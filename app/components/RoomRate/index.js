@@ -26,7 +26,7 @@ function RoomRate(props) {
             <></>
         }
         {
-          detail.price_promotion > 0 ?
+          detail.price_promotion !== detail.price ?
             <div className="price-item is-flex">
               <span className="fl-item-50">Giá khuyến mại</span>
               <span className="fl-item-50">{Filter.formatVndCurrency(detail.price_promotion)}</span>

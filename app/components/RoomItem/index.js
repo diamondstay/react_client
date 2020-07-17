@@ -22,7 +22,7 @@ function RoomItem(props) {
           <div className="promo-type">{item.type}</div>
           <h3 className="promo-name">{item.name}</h3>
           <div className="promo-description">
-            {item.capacity_max} khách <span className="bullet" />
+            {item.capacity_standard} khách <span className="bullet" />
             {item.amount_bedroom} phòng ngủ <span className="bullet" />
             {item.amount_bathroom} phòng tắm
           </div>

@@ -26,7 +26,7 @@ export default function Room(props) {
           {room.name} - {room.type}
         </h1>
         <span className="room__info">
-          {room.capacity_max} khách · {room.amount_bedroom} phòng ngủ ·{' '}
+          {room.capacity_standard} khách · {room.amount_bedroom} phòng ngủ ·{' '}
           {room.amount_bed}
           phòng tắm
         </span>

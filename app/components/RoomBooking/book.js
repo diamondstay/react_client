@@ -24,8 +24,9 @@ function Book(props) {
   let history = useHistory();
   const roomId = history.location.pathname.match(/\d+/)[0];
 
-  const maxGuests = detail.capacity_max;
-  const price = detail.price_promotion ? detail.price_promotion : detail.price;
+  // const maxGuests = detail.capacity_max;
+  const maxGuests = detail.capacity_standard;
+  const price = (detail.price_promotion === 0 || detail.price_promotion === detail.price) ? detail.price : detail.price_promotion;
 
   const [checkinDate, setCheckinDate] = useState('');
   const [checkoutDate, setCheckoutDate] = useState('');
@@ -146,31 +147,24 @@ function Book(props) {
   };
 
   const getRawPrice = () => {
-    let guests = adult + child;
-    const roomNum = guests > maxGuests ? Math.ceil(guests / maxGuests) : 1;
+    const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
     return roomNum * days * parseInt(price);
   };
 
   const getDiscountPrice = () => {
     const price = getRawPrice();
+    const surcharge = getSurchargePrice();
     const percent = Math.floor(coupon.percent) / 100;
-    return price * percent;
+    return useCoupon ? (price + surcharge) * percent : 0;
   };
 
   const getSurchargePrice = () => {
-    return detail.surcharge_per_person;
+    const abundant = adult > maxGuests ? adult - maxGuests : 0;
+    return abundant * detail.surcharge_per_person * days;
   }
 
   const getTotalPrice = () => {
-    if (useCoupon) {
-      return getRawPrice() - getDiscountPrice() + getSurchargePrice();
-    } else {
-      if (adult + child > maxGuests) {
-        return getRawPrice() + getSurchargePrice();
-      } else {
-        return getRawPrice();
-      }
-    }
+    return getRawPrice() + getSurchargePrice() - getDiscountPrice() ;
   }
 
   const content = (
@@ -194,7 +188,6 @@ function Book(props) {
         <Row className="align-items-center">
           <Col xs={6}>
             <h4 className="m-0">Trẻ em</h4>
-            {/*<h5>Tuổi từ 2–12</h5>*/}
           </Col>
           <Col xs={6}>
             <InputNumber
@@ -206,22 +199,6 @@ function Book(props) {
           </Col>
         </Row>
       </div>
-      {/*<div className="select-item">*/}
-      {/*  <Row>*/}
-      {/*    <Col xs={6}>*/}
-      {/*      <h4>Trẻ sơ sinh</h4>*/}
-      {/*      <h5>Dưới 2 tuổi</h5>*/}
-      {/*    </Col>*/}
-      {/*    <Col xs={6}>*/}
-      {/*      <InputNumber*/}
-      {/*        min={0}*/}
-      {/*        max={100}*/}
-      {/*        defaultValue={0}*/}
-      {/*        onChange={selectBaby}*/}
-      {/*      />*/}
-      {/*    </Col>*/}
-      {/*  </Row>*/}
-      {/*</div>*/}
     </div>
   );
 
@@ -238,12 +215,7 @@ function Book(props) {
         <Popover placement="top" title="" content={content} trigger="click">
           <div className="guest-info">
             <span className="guest-quality">
-              {/*{adult < 1 ? 'Số khách' : `${adult + child + baby} khách`}*/}
-              {adult < 1
-                ? 'Số khách'
-                : adult +
-                  ' người lớn' +
-                  (child > 0 ? ' - ' + child + ' trẻ em' : '')}
+              {adult < 1 ? 'Số khách' : adult + ' người lớn' + (child > 0 ? ' - ' + child + ' trẻ em' : '')}
             </span>
           </div>
         </Popover>
@@ -261,7 +233,7 @@ function Book(props) {
             </div>
             <div className="book-price is-flex">
               <span className="fl-item-50">Phụ phí</span>
-              <span className="fl-item-50">{adult + child > detail.capacity_standard ? Filter.formatVndCurrency(getSurchargePrice()) : 0}</span>
+              <span className="fl-item-50">{adult > maxGuests ? Filter.formatVndCurrency(getSurchargePrice()) : 0}</span>
             </div>
             <div className="ant-divider" />
             <div className="book-price is-flex mb-3">
@@ -269,9 +241,8 @@ function Book(props) {
               <span className="fl-item-50">{Filter.formatVndCurrency(getTotalPrice())}</span>
             </div>
           </div>
-
           {
-            detail.price_promotion > 0 && detail.price_promotion !== detail.price ? <></> :
+            (detail.price_promotion === 0 || detail.price_promotion === detail.price) ?
               <ul className="coupon-list">
                 {coupons && coupons.map((coupon, index) => (
                   <li className="coupon-item" key={index}>
@@ -290,7 +261,7 @@ function Book(props) {
                     </Row>
                   </li>
                 ))}
-              </ul>
+              </ul> : <></>
           }
         </>
       ) : (
