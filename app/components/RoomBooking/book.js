@@ -148,7 +148,8 @@ function Book(props) {
   };
 
   const getRawPrice = () => {
-    const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
+    // const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
+    const roomNum = 1;
     return roomNum * days * parseInt(price);
   };
 
@@ -178,7 +179,7 @@ function Book(props) {
           <Col xs={6}>
             <InputNumber
               min={0}
-              max={100}
+              max={detail.capacity_max}
               defaultValue={1}
               onChange={selectAdult}
             />
@@ -193,7 +194,7 @@ function Book(props) {
           <Col xs={6}>
             <InputNumber
               min={0}
-              max={100}
+              max={detail.capacity_max}
               defaultValue={0}
               onChange={selectChild}
             />
