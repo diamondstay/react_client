@@ -117,11 +117,6 @@ function Book(props) {
     setChild(value);
   };
 
-  const getRawPrice = () => {
-    const roomNum = adult > maxGuests ? Math.ceil(adult / maxGuests) : 1;
-    return roomNum * days * parseInt(price);
-  };
-
   const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
@@ -134,7 +129,7 @@ function Book(props) {
   }, []);
 
   const [useCoupon, setUseCoupon] = useState(false);
-  const [coupon, setCoupon] = useState({});
+  const [coupon, setCoupon] = useState('');
 
   const applyCoupon = (coupon, e) => {
     e.target.className = 'btn btn-sm btn-warning d-none';
@@ -148,6 +143,12 @@ function Book(props) {
           toast(resp.message);
         }
       });
+  };
+
+  const getRawPrice = () => {
+    let guests = adult + child;
+    const roomNum = guests > maxGuests ? Math.ceil(guests / maxGuests) : 1;
+    return roomNum * days * parseInt(price);
   };
 
   const getDiscountPrice = () => {
@@ -164,7 +165,7 @@ function Book(props) {
     if (useCoupon) {
       return getRawPrice() - getDiscountPrice() + getSurchargePrice();
     } else {
-      if (adult + child > detail.capacity_standard) {
+      if (adult + child > maxGuests) {
         return getRawPrice() + getSurchargePrice();
       } else {
         return getRawPrice();
