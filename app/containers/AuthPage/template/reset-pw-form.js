@@ -17,7 +17,7 @@ function FormTemplate(props) {
   return (
     <section id="auth-form">
       <h2 className="page-title">Quên mật khẩu</h2>
-      <p className="mb-4">Vui lòng nhập địa chỉ email được liên kết với tài khoản Luxstay để nhận liên kết đặt lại mật khẩu</p>
+      <p className="mb-4">Vui lòng nhập địa chỉ email được liên kết với tài khoản Diamond Stay để nhận liên kết đặt lại mật khẩu</p>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group controlId="formEmail">
           <Form.Label>Email</Form.Label>
